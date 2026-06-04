@@ -1,0 +1,18 @@
+# Pinned Python dependencies (§6.7). Exact versions so a clean clone
+# reproduces published numbers. Python 3.11+ required (developed on 3.13).
+#
+# Regenerate a full transitive lockfile with:
+#   pip install -r requirements.txt && pip freeze > requirements.lock.txt
+
+# --- core numerics ---
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+
+# --- config + plotting ---
+PyYAML==6.0.3
+matplotlib==3.10.9
+
+# --- dev: lint + test ---
+ruff==0.15.0
+pytest==9.0.3

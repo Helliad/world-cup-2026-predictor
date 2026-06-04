@@ -1,0 +1,94 @@
+# =============================================================================
+# World Cup 2026 Predictor — single source of every tunable knob (§6.7)
+# The pipeline reads ONLY from this file. No magic numbers in code.
+# Values marked "tuned" are determined by the walk-forward search (§4.6.4),
+# not guessed; the chosen values + justification are recorded in the
+# experiment ledger once fit.
+# =============================================================================
+
+model:
+  version: "1.0"
+  max_goals: 10            # scoreline matrix truncation (P[x,y] for x,y in 0..max_goals)
+
+  # Time-decay weighting w_t = exp(-xi * delta_t_days)  (§4.2, §4.5).
+  # `xi` is tuned on the walk-forward loop. The implied half-life (in days)
+  # is reported in human terms by train.py.
+  xi: 0.0018               # tuned: ~half-life of ~385 days (~12.6 months)
+
+  # L2 (ridge) penalty on attack/defence parameters, shrinking toward the
+  # global baseline (§4.4). Tuned in the walk-forward loop.
+  l2: 0.05                 # tuned
+
+  # Hierarchical / partial-pooling shrinkage toward confederation mean (§4.4).
+  # 0 disables pooling; larger pulls sparse teams harder toward their prior.
+  confederation_pooling: 1.0
+
+  # Minimum-data guardrail (§4.4): below this many recent competitive matches a
+  # team is flagged low data_confidence and leans on its prior.
+  min_matches_high_confidence: 30
+  min_matches_medium_confidence: 12
+
+  # Optional up-weighting of competitive matches vs friendlies (§5.2).
+  # multiplier applied to a match's time-decay weight when it is competitive.
+  competitive_weight: 1.0   # 1.0 = no up-weighting
+
+  optimizer:
+    method: "L-BFGS-B"
+    max_iter: 500
+    tol: 1.0e-7
+
+data:
+  # martj42/international_results snapshot (§5.1). Pinned for reproducibility.
+  source_url: "https://raw.githubusercontent.com/martj42/international_results/master/results.csv"
+  snapshot_path: "data/results.csv"
+  # Only matches on/after this date enter the fit pool (time-decay does the rest).
+  # A loose floor avoids pre-modern, pre-professional football skewing priors.
+  min_date: "2002-01-01"
+  schema_version: 1
+
+home_advantage:
+  # gamma is FIT from data (§8.2); these are the *application-time* knobs.
+  # Co-hosts playing in their own country get a reduced home term.
+  cohost_multiplier: 0.5    # tuned/documented: WC home effects < club football
+  cohosts: ["United States", "Canada", "Mexico"]
+  # Every non-cohost-at-home match is neutral: gamma applied to neither side.
+
+simulation:
+  n_simulations: 100000
+  quick_n: 2000             # --quick path for fast iteration + CI
+  master_seed: 42
+
+  knockout:
+    # Knockout resolution mode: "staged" (regulation -> ET -> penalties) or
+    # "coinflip" (single regulation, draw -> 50/50). Staged is default (§6.3).
+    mode: "staged"
+    extra_time_fraction: 0.3333   # ET goal rates ~ 30/90 of a full match
+    # Penalty shootout: near coin-flip with a small skill tilt, capped.
+    penalty_skill_tilt: true
+    penalty_cap: 0.55             # strongest side wins a shootout <= 55% of the time
+
+  # Compact sample of full bracket outcomes retained for the "what if" feature
+  # (§6.5). Far fewer than n_simulations to keep the artifact small (< ~2-3 MB).
+  whatif_sample_size: 8000
+
+calibration:
+  # Post-hoc calibration fit on a validation block, never the test block (§4.6.5).
+  method: "temperature"     # "none" | "temperature" | "isotonic"
+
+evaluation:
+  # Walk-forward (rolling-origin) backtest (§4.6.4).
+  test_holdout_months: 9    # final untouched block, never seen in tuning
+  walk_forward_block_months: 6
+  walk_forward_min_train_months: 60
+  # Acceptance gates (§4.6.2). Model does not ship "good" until it clears these.
+  gates:
+    floor:   { rps_max: 0.230, accuracy_min: 0.47 }
+    target:  { rps_max: 0.215, accuracy_min: 0.50 }
+    stretch: { rps_max: 0.208, accuracy_min: 0.52 }
+  ece_max: 0.05
+
+output:
+  predictions_path: "web/public/predictions.json"
+  params_path: "model/params.json"
+  metrics_path: "model/evaluation/metrics.json"
+  ledger_path: "experiments/ledger.csv"

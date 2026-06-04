@@ -1,0 +1,35 @@
+[project]
+name = "worldcup-2026-predictor"
+version = "1.0.0"
+description = "Dixon-Coles match model + Monte Carlo simulator for the 2026 World Cup."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+[tool.setuptools]
+# This is a script/pipeline repo, not a distributable package; we keep modules
+# importable from the repo root rather than installing.
+py-modules = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["web", "data/results.csv"]
+
+[tool.ruff.lint]
+# pycodestyle (E/W), pyflakes (F), isort (I), pyupgrade (UP),
+# flake8-bugbear (B), comprehensions (C4), naming (N).
+select = ["E", "W", "F", "I", "UP", "B", "C4", "N"]
+ignore = [
+  "E501",   # line length handled by formatter
+  "N803",   # allow math-style arg names (xi, l2, alpha)
+  "N806",   # allow math-style locals (P, lambda_, mu)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = ["N802"]  # test method naming flexibility
+
+[tool.pytest.ini_options]
+testpaths = ["model/tests", "simulation/tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning"]

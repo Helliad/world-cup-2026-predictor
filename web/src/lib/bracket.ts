@@ -27,12 +27,14 @@ export function projectBracket(o: Outcomes, conditions: Condition[]): BracketPro
   const tallies = ROUND_SIZES.map((sz) => Array.from({ length: sz }, () => new Int32Array(T)));
   let count = 0;
 
-  let level = new Int32Array(32);
   for (let s = 0; s < o.n; s++) {
     if (conditions.length > 0 && !simSatisfies(o, conditions, s)) continue;
     count++;
     const sbase = s * 32;
     const stbase = s * T;
+    // Fresh per simulation: this array is folded down to length 1 below, so it
+    // must be reallocated each sim (reusing it silently corrupts later sims).
+    let level = new Int32Array(32);
     for (let j = 0; j < 32; j++) {
       const t = o.slots[sbase + j];
       level[j] = t;

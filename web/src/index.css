@@ -58,3 +58,35 @@ body {
 :focus-visible {
   @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface;
 }
+
+/* Long-form prose for the About / FAQ / Privacy / Terms pages. */
+.content {
+  @apply text-text;
+}
+.content h2 {
+  @apply mb-2 mt-8 text-step-2 font-bold;
+}
+.content h3 {
+  @apply mb-1 mt-5 text-step-1 font-semibold;
+}
+.content p {
+  @apply mb-3 leading-relaxed text-text/90;
+}
+.content ul {
+  @apply mb-3 ml-5 list-disc space-y-1 text-text/90;
+}
+.content li {
+  @apply leading-relaxed;
+}
+.content a {
+  @apply text-accent underline underline-offset-2;
+}
+.content strong {
+  @apply font-semibold text-text;
+}
+.content code {
+  @apply rounded bg-surface-2 px-1 py-0.5 font-mono text-[0.85em];
+}
+.content .note {
+  @apply rounded-lg border border-border bg-surface-2/40 px-4 py-3 text-step-0 text-muted;
+}

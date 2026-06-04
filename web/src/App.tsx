@@ -4,9 +4,13 @@ import { ConditionsBar } from "./components/ConditionsBar";
 import { Footer } from "./components/Footer";
 import { ViewNav } from "./components/ViewNav";
 import { parseConditions, serializeConditions } from "./lib/recompute";
+import { About } from "./routes/About";
 import { Bracket } from "./routes/Bracket";
+import { FAQ } from "./routes/FAQ";
 import { Groups } from "./routes/Groups";
+import { Privacy } from "./routes/Privacy";
 import { TeamDetail } from "./routes/TeamDetail";
+import { Terms } from "./routes/Terms";
 import { TitleRace } from "./routes/TitleRace";
 import { useStore } from "./store/store";
 
@@ -94,6 +98,10 @@ export default function App() {
             <Route path="/groups" element={<Groups />} />
             <Route path="/bracket" element={<Bracket />} />
             <Route path="/team/:id" element={<TeamDetail />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="*" element={<TitleRace />} />
           </Routes>
         )}

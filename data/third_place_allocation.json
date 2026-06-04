@@ -1,0 +1,25 @@
+{
+  "provisional": true,
+  "note": "PROVISIONAL bracket + best-third allocation (§2.2, §8.1 — release gate). FIFA publishes a lookup mapping the sorted set of the 8 qualifying third-place groups to specific bracket slots; until that official 2026 table is encoded, this file defines (a) a valid, documented 32-team bracket and (b) a deterministic fallback that ranks the 8 best thirds 1..8 and assigns them to the winner-vs-third slots in bracket order, swapping to avoid a third meeting its own group's winner. All predictions are flagged provisional in meta and the UI until replaced.",
+  "winners_facing_thirds": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "r32": [
+    { "match": 1,  "top": "W_A", "bottom": "3RD" },
+    { "match": 2,  "top": "R_C", "bottom": "R_D" },
+    { "match": 3,  "top": "W_E", "bottom": "3RD" },
+    { "match": 4,  "top": "W_I", "bottom": "R_K" },
+    { "match": 5,  "top": "W_B", "bottom": "3RD" },
+    { "match": 6,  "top": "R_E", "bottom": "R_F" },
+    { "match": 7,  "top": "W_G", "bottom": "3RD" },
+    { "match": 8,  "top": "W_J", "bottom": "R_L" },
+    { "match": 9,  "top": "W_C", "bottom": "3RD" },
+    { "match": 10, "top": "R_A", "bottom": "R_B" },
+    { "match": 11, "top": "W_F", "bottom": "3RD" },
+    { "match": 12, "top": "W_K", "bottom": "R_I" },
+    { "match": 13, "top": "W_D", "bottom": "3RD" },
+    { "match": 14, "top": "R_G", "bottom": "R_H" },
+    { "match": 15, "top": "W_H", "bottom": "3RD" },
+    { "match": 16, "top": "W_L", "bottom": "R_J" }
+  ],
+  "fold": "Sequential: Round-of-16 match k is contested by the winners of Round-of-32 matches (2k-1, 2k). Matches 1-8 form the top half (Semi-final 1), matches 9-16 the bottom half (Semi-final 2). This guarantees a valid 32->16->8->4->2->1 single-elimination tree and no same-group meeting before the Round of 16.",
+  "official_table": null
+}

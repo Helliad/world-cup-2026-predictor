@@ -1,0 +1,20 @@
+{
+  "source_url": "https://raw.githubusercontent.com/martj42/international_results/master/results.csv",
+  "downloaded_at": "2026-06-04T10:30:40+00:00",
+  "rows": 49378,
+  "played_rows": 49306,
+  "max_date": "2026-06-27",
+  "sha256": "7f3d1becd7653e486c012fb82ed4f276b417f60bfbf293f04401c231b39cb304",
+  "schema_columns": [
+    "date",
+    "home_team",
+    "away_team",
+    "home_score",
+    "away_score",
+    "tournament",
+    "city",
+    "country",
+    "neutral"
+  ],
+  "license": "CC BY-NC-SA 4.0 (martj42/international_results) \u2014 see data/README.md"
+}

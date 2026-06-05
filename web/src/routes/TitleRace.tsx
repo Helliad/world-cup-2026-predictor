@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Explainer } from "../components/Explainer";
 import { StatCallout } from "../components/StatCallout";
 import { TeamRow } from "../components/TeamRow";
 import { pct } from "../lib/format";
@@ -48,7 +49,25 @@ export function TitleRace() {
         <StatCallout label="Simulations" value={(meta.n_simulations / 1000).toFixed(0) + "k"} />
       </div>
 
-      <div className="mt-8">
+      <div className="mt-6">
+        <Explainer title="What these percentages mean">
+          <p>
+            Each number is how often a team is champion across{" "}
+            {meta.n_simulations.toLocaleString()} simulated tournaments — not a prediction of who{" "}
+            <em>will</em> win. With 48 teams and seven knockout rounds to survive, even the favourite
+            is far more likely to lose than to win, so the field is spread thin.
+          </p>
+          <p>
+            Every figure carries a small Monte Carlo margin of error (about ±0.1% here), so a 12.1%
+            vs 11.8% gap is noise, not a real ranking. Tap any team for its full stage-by-stage odds,
+            or pin a “what if” (e.g. on the Bracket page) to see these numbers recompute — a{" "}
+            <span className="text-prob-fill">▲</span>/<span className="text-warning">▼</span> then
+            shows the change versus the unconditional value.
+          </p>
+        </Explainer>
+      </div>
+
+      <div className="mt-6">
         <h2 className="mb-2 flex items-center gap-2 text-step-2 font-bold">
           Title race
           {dp.active && <span className="text-sm font-normal text-accent">· conditional</span>}

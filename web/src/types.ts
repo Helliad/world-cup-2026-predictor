@@ -50,11 +50,25 @@ export interface Matchup {
   away_win: number;
 }
 
+export interface Fixture {
+  group: string;
+  date: string;
+  home: string;
+  away: string;
+  home_win: number;
+  draw: number;
+  away_win: number;
+  exp_home: number;
+  exp_away: number;
+  host: string | null; // home team name if it has co-host home advantage, else null
+}
+
 export interface Predictions {
   meta: Meta;
   groups: Record<string, GroupRow[]>;
   teams: TeamPrediction[];
   matchups: Record<string, Matchup>;
+  fixtures: Fixture[];
 }
 
 // Stage probabilities a team can be shown at (ordered furthest → nearest).

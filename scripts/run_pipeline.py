@@ -56,6 +56,33 @@ def _round1(x: float) -> float:
     return round(float(x), 4)
 
 
+def build_fixtures(model: DixonColesModel, cfg: dict) -> list[dict]:
+    """The 72 group-stage fixtures with their 1X2 match probabilities.
+
+    Computed with the model + the per-fixture co-host home advantage (§8.2), so
+    the frontend can show the chance of each result without a model in the browser.
+    """
+    groups_data = json.loads((ROOT / "data" / "groups.json").read_text(encoding="utf-8"))
+    cohost_mult = cfg["home_advantage"]["cohost_multiplier"]
+    out: list[dict] = []
+    for f in groups_data["fixtures"]:
+        home_adv = cohost_mult * model.gamma if f["home_advantage"] else 0.0
+        o = model.predict_outcome(f["home"], f["away"], home_advantage=home_adv)
+        out.append({
+            "group": f["group"],
+            "date": f["date"],
+            "home": f["home"],
+            "away": f["away"],
+            "home_win": _round1(o["home_win"]),
+            "draw": _round1(o["draw"]),
+            "away_win": _round1(o["away_win"]),
+            "exp_home": round(float(o["exp_home"]), 2),
+            "exp_away": round(float(o["exp_away"]), 2),
+            "host": f["home_advantage"],  # home team name if co-host advantage, else null
+        })
+    return out
+
+
 def build_predictions(
     sim: SimResults, model: DixonColesModel, cfg: dict, manifest: dict, allocation: dict
 ) -> dict:
@@ -120,6 +147,7 @@ def build_predictions(
         "teams": teams_out,
         "matchups": matchups,
         "bracket_r32": bracket_r32,
+        "fixtures": build_fixtures(model, cfg),
     }
 
 

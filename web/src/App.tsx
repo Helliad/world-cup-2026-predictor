@@ -7,6 +7,7 @@ import { parseConditions, serializeConditions } from "./lib/recompute";
 import { About } from "./routes/About";
 import { Bracket } from "./routes/Bracket";
 import { FAQ } from "./routes/FAQ";
+import { Fixtures } from "./routes/Fixtures";
 import { Groups } from "./routes/Groups";
 import { Privacy } from "./routes/Privacy";
 import { TeamDetail } from "./routes/TeamDetail";
@@ -96,6 +97,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<TitleRace />} />
             <Route path="/groups" element={<Groups />} />
+            <Route path="/fixtures" element={<Fixtures />} />
             <Route path="/bracket" element={<Bracket />} />
             <Route path="/team/:id" element={<TeamDetail />} />
             <Route path="/about" element={<About />} />

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { REPO_URL } from "../lib/site";
 import { useStore } from "../store/store";
 
 // Honest footer: site/info links, the provisional banner, the "model not
@@ -23,7 +24,7 @@ export function Footer() {
           <Link className="hover:text-text" to="/terms">
             Terms
           </Link>
-          <a className="hover:text-text" href="https://github.com/OWNER/worldcup-2026-predictor">
+          <a className="hover:text-text" href={REPO_URL} target="_blank" rel="noopener noreferrer">
             Source code
           </a>
         </nav>

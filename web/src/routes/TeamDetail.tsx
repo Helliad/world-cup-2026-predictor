@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Bar } from "../components/Bar";
 import { ProbabilityValue } from "../components/ProbabilityValue";
 import { StatCallout } from "../components/StatCallout";
+import { TeamBadge } from "../components/TeamBadge";
 import { CONFIDENCE_TEXT, pct } from "../lib/format";
 import { type ConditionKind, makeCondition } from "../lib/recompute";
 import { useStore } from "../store/store";
@@ -62,7 +63,8 @@ export function TeamDetail() {
       <Link to="/" className="text-sm text-muted hover:text-text">
         ← Title race
       </Link>
-      <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <TeamBadge team={team} className="h-9 w-12" />
         <h1 className="text-step-5 font-extrabold tracking-tight">{team}</h1>
         <span className="text-muted">Group {info.group}</span>
         {info.data_confidence !== "high" && (

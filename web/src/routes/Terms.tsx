@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 import { ContentPage } from "../components/ContentPage";
 
 const UPDATED = "4 June 2026";
-// TODO(site owner): set these before publishing.
-const CONTACT = "[your contact email]";
-const JURISDICTION = "[your country/state]";
+const CONTACT = "hi@abhaybagda.com";
+const JURISDICTION = "Singapore";
 
 export function Terms() {
   return (
@@ -117,7 +116,8 @@ export function Terms() {
 
       <h2>12. Contact</h2>
       <p>
-        Questions about these Terms can be sent to {CONTACT}. See also our{" "}
+        Questions about these Terms can be sent to{" "}
+        <a href={`mailto:${CONTACT}`}>{CONTACT}</a>. See also our{" "}
         <Link to="/privacy">Privacy Policy</Link>.
       </p>
     </ContentPage>

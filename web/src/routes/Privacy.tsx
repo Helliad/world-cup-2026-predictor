@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { ContentPage } from "../components/ContentPage";
 
 const UPDATED = "4 June 2026";
-// TODO(site owner): set your contact address.
-const CONTACT = "[your contact email]";
+const CONTACT = "hi@abhaybagda.com";
 
 export function Privacy() {
   return (
@@ -76,7 +75,8 @@ export function Privacy() {
 
       <h2>Contact</h2>
       <p>
-        Questions about this policy can be sent to {CONTACT}. See also our{" "}
+        Questions about this policy can be sent to{" "}
+        <a href={`mailto:${CONTACT}`}>{CONTACT}</a>. See also our{" "}
         <Link to="/terms">Terms &amp; Conditions</Link>.
       </p>
     </ContentPage>

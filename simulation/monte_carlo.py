@@ -206,9 +206,7 @@ def run_simulations(
     # meets at most once in the bracket, so forcing the winner wherever that exact
     # pairing appears in any round reproduces the real outcome without needing to
     # know which round it was (it only fires in sims where they actually meet).
-    pinned_pairs = [
-        (gidx[w], gidx[loser]) for w, loser in pinned_ko if w in gidx and loser in gidx
-    ]
+    pinned_pairs = [(gidx[w], gidx[loser]) for w, loser in pinned_ko if w in gidx and loser in gidx]
     stage = np.zeros((n, n_teams), dtype=np.uint8)
     stage[rows[:, None], slots] = 1  # all 32 participants reached the Round of 32
     cur = slots

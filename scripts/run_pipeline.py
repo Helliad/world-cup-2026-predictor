@@ -70,18 +70,20 @@ def build_fixtures(model: DixonColesModel, cfg: dict) -> list[dict]:
     for f in groups_data["fixtures"]:
         home_adv = cohost_mult * model.gamma if f["home_advantage"] else 0.0
         o = model.predict_outcome(f["home"], f["away"], home_advantage=home_adv)
-        out.append({
-            "group": f["group"],
-            "date": f["date"],
-            "home": f["home"],
-            "away": f["away"],
-            "home_win": _round1(o["home_win"]),
-            "draw": _round1(o["draw"]),
-            "away_win": _round1(o["away_win"]),
-            "exp_home": round(float(o["exp_home"]), 2),
-            "exp_away": round(float(o["exp_away"]), 2),
-            "host": f["home_advantage"],  # home team name if co-host advantage, else null
-        })
+        out.append(
+            {
+                "group": f["group"],
+                "date": f["date"],
+                "home": f["home"],
+                "away": f["away"],
+                "home_win": _round1(o["home_win"]),
+                "draw": _round1(o["draw"]),
+                "away_win": _round1(o["away_win"]),
+                "exp_home": round(float(o["exp_home"]), 2),
+                "exp_away": round(float(o["exp_away"]), 2),
+                "host": f["home_advantage"],  # home team name if co-host advantage, else null
+            }
+        )
     return out
 
 
@@ -138,8 +140,12 @@ def build_schedule() -> list[dict]:
         members = groups[letter]
         lidx = {t: i for i, t in enumerate(members)}
         res = [
-            (lidx[played[m["match"]]["home"]], lidx[played[m["match"]]["away"]],
-             int(played[m["match"]]["home_score"]), int(played[m["match"]]["away_score"]))
+            (
+                lidx[played[m["match"]]["home"]],
+                lidx[played[m["match"]]["away"]],
+                int(played[m["match"]]["home_score"]),
+                int(played[m["match"]]["away_score"]),
+            )
             for m in ms
         ]
         points, gf, ga = tally(len(members), res)
@@ -188,7 +194,10 @@ def build_schedule() -> list[dict]:
                 ctx["loser_of"][m["match"]] = away if winner == home else home
                 entry.update(
                     status="played",
-                    score={"home": int(played_r["home_score"]), "away": int(played_r["away_score"])},
+                    score={
+                        "home": int(played_r["home_score"]),
+                        "away": int(played_r["away_score"]),
+                    },
                     winner=winner,
                     decided_by=played_r.get("decided_by"),
                 )

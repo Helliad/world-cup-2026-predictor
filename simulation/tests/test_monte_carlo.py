@@ -250,3 +250,43 @@ def test_top_team_matches_reference_frequency(
         f"MC vs reference champion frequency for {top_team!r} disagree: "
         f"p_mc={p_mc:.4f}, p_ref={p_ref:.4f}, combined_se={se_combined:.4f}, z={z:.2f}"
     )
+
+
+# --------------------------------------------------------------------------- #
+# Pinned actual results re-condition the run (live-tracking feature).
+# --------------------------------------------------------------------------- #
+
+
+def _run(model, sim_inputs, params, **pins) -> SimResults:
+    si = {**sim_inputs, "pinned_group": {}, "pinned_ko": [], **pins}
+    return run_simulations(
+        model, si, params, n=N_SIMS, seed=MC_SEED, whatif_sample_size=WHATIF_K, verbose=False
+    )
+
+
+def test_pinned_group_result_reconditions_advancement(model, sim_inputs, params) -> None:
+    """Pinning a lopsided group scoreline lifts the winner's P(advance) and drops
+    the loser's, relative to the unpinned forecast."""
+    base = _run(model, sim_inputs, params)
+    ti = {t: i for i, t in enumerate(base.teams)}
+    # Fixture orientation in groups.json is home=Mexico, away=South Africa.
+    pinned = _run(model, sim_inputs, params, pinned_group={("Mexico", "South Africa"): (0, 5)})
+    assert pinned.p_advance[ti["South Africa"]] > base.p_advance[ti["South Africa"]] + 0.05
+    assert pinned.p_advance[ti["Mexico"]] < base.p_advance[ti["Mexico"]]
+
+
+def test_pinned_knockout_loss_drops_title_odds(model, sim_inputs, params) -> None:
+    """Forcing the favourite to lose any knockout meeting with a set of opponents
+    can only reduce (never raise) its championship probability."""
+    base = _run(model, sim_inputs, params)
+    ti = {t: i for i, t in enumerate(base.teams)}
+    fav = base.teams[int(np.argmax(base.p_win))]
+    koed = _run(model, sim_inputs, params, pinned_ko=[("Panama", fav), ("Jordan", fav)])
+    assert koed.p_win[ti[fav]] <= base.p_win[ti[fav]]
+
+
+def test_empty_pins_match_default_run(model, sim_inputs, params, results: SimResults) -> None:
+    """Explicit empty pins reproduce the default run bit-for-bit (no RNG drift)."""
+    explicit = _run(model, sim_inputs, params)
+    assert np.array_equal(explicit.p_win, results.p_win)
+    assert np.array_equal(explicit.p_advance, results.p_advance)

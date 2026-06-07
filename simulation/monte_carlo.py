@@ -76,6 +76,9 @@ def run_simulations(
     fixtures_by_group = sim_inputs["fixtures_by_group"]
     allocation = sim_inputs["allocation"]
     provisional = sim_inputs["provisional"]
+    # Actual played results to pin instead of sampling (empty pre-tournament).
+    pinned_group = sim_inputs.get("pinned_group", {})
+    pinned_ko = sim_inputs.get("pinned_ko", [])
     rng = np.random.default_rng(seed)
 
     wc_teams = sorted({t for ts in groups.values() for t in ts})
@@ -108,7 +111,13 @@ def run_simulations(
         ga = np.zeros((n, 4), dtype=np.int64)
         fixtures_data = []
         for home, away, home_adv in fixtures_by_group[letter]:
-            gh, gaa = _sample_fixture(model, home, away, home_adv, rng, n)
+            if (home, away) in pinned_group:
+                # actual played result: fix this scoreline in every sim
+                hs, as_ = pinned_group[(home, away)]
+                gh = np.full(n, hs, dtype=np.int64)
+                gaa = np.full(n, as_, dtype=np.int64)
+            else:
+                gh, gaa = _sample_fixture(model, home, away, home_adv, rng, n)
             ih, ia = lidx[home], lidx[away]
             gf[:, ih] += gh
             ga[:, ih] += gaa
@@ -193,6 +202,13 @@ def run_simulations(
     # --- fold the bracket, vectorised across sims ---
     if verbose:
         print("  folding knockout bracket...")
+    # Pinned knockout results as global (winner, loser) index pairs. A given pair
+    # meets at most once in the bracket, so forcing the winner wherever that exact
+    # pairing appears in any round reproduces the real outcome without needing to
+    # know which round it was (it only fires in sims where they actually meet).
+    pinned_pairs = [
+        (gidx[w], gidx[loser]) for w, loser in pinned_ko if w in gidx and loser in gidx
+    ]
     stage = np.zeros((n, n_teams), dtype=np.uint8)
     stage[rows[:, None], slots] = 1  # all 32 participants reached the Round of 32
     cur = slots
@@ -203,6 +219,10 @@ def run_simulations(
         pa = W[a, b]
         u = rng.random(pa.shape)
         winners = np.where(u < pa, a, b)
+        for wi, li in pinned_pairs:
+            forced = ((a == wi) & (b == li)) | ((a == li) & (b == wi))
+            if forced.any():
+                winners[forced] = wi
         stage[rows[:, None], winners] = round_code
         cur = winners
         round_code += 1

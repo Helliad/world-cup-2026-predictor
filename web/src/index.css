@@ -39,6 +39,13 @@ body {
   @apply bg-surface text-text font-sans antialiased;
 }
 
+/* Headlines wear the condensed "broadcast" face; body + numbers stay Inter. */
+h1,
+h2,
+h3 {
+  @apply font-display;
+}
+
 /* Probability bar fill grows from zero — never a misleading baseline. */
 .prob-bar {
   @apply h-2 rounded-full bg-prob-fill transition-[width] duration-300 ease-out;

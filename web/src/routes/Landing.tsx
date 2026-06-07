@@ -74,12 +74,12 @@ export function Landing() {
         <Aurora />
         <div className="mx-auto max-w-3xl py-20 text-center">
           <Reveal>
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
+            <p className="font-display text-xs font-semibold uppercase tracking-[0.25em] text-accent">
               2026 FIFA World Cup · 48 teams · 104 matches
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-4 text-step-6 font-extrabold leading-[1.05] tracking-tight">
+            <h1 className="mt-4 text-step-6 font-bold uppercase leading-[0.95] tracking-tight">
               Who <span className="text-accent">actually</span> wins the World Cup?
             </h1>
           </Reveal>
@@ -123,7 +123,7 @@ export function Landing() {
       <section id="story" className="border-t border-border bg-surface-2/30 px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-3xl">
           <Reveal>
-            <h2 className="text-step-4 font-extrabold tracking-tight">
+            <h2 className="text-step-4 font-bold tracking-tight">
               It starts with a century of football.
             </h2>
           </Reveal>
@@ -241,7 +241,7 @@ export function Landing() {
       <section className="border-t border-border bg-surface-2/30 px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <h2 className="text-step-4 font-extrabold tracking-tight">A model, not a prophecy.</h2>
+            <h2 className="text-step-4 font-bold tracking-tight">A model, not a prophecy.</h2>
           </Reveal>
           <Reveal delay={80}>
             <p className="mt-4 text-step-1 text-muted">
@@ -272,7 +272,7 @@ export function Landing() {
         <Aurora />
         <div className="mx-auto max-w-2xl">
           <Reveal>
-            <h2 className="text-step-5 font-extrabold tracking-tight">Ready to dig in?</h2>
+            <h2 className="text-step-5 font-bold uppercase tracking-tight">Ready to dig in?</h2>
           </Reveal>
           <Reveal delay={80}>
             <p className="mt-3 text-step-1 text-muted">
@@ -304,8 +304,11 @@ export function Landing() {
                 {AUTHOR.name}
               </a>
               {" · "}
-              <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-text">
-                Source code
+              <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 align-middle hover:text-text">
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.21.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z" />
+                </svg>
+                <span className="underline underline-offset-2">Source code</span>
               </a>
             </p>
           </Reveal>
@@ -377,10 +380,10 @@ function Beat({
     <section className={`border-t border-border px-4 py-20 sm:py-24 ${tint ? "bg-surface-2/30" : ""}`}>
       <div className="mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-2">
         <Reveal className={reverse ? "md:order-2" : ""}>
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent">
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-accent">
             {String(index).padStart(2, "0")} · {kicker}
           </p>
-          <h2 className="mt-2 text-step-4 font-extrabold tracking-tight">{title}</h2>
+          <h2 className="mt-2 text-step-4 font-bold uppercase tracking-tight">{title}</h2>
           <p className="mt-3 text-step-1 leading-relaxed text-muted">{text}</p>
           <Link
             to={to}

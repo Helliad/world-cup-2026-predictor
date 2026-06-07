@@ -17,13 +17,13 @@ export function Bracket() {
 
   if (!outcomes || !proj) {
     return (
-      <div className="mx-auto max-w-5xl px-4 py-10 text-muted">Loading bracket sample…</div>
+      <div className="mx-auto max-w-7xl px-4 py-10 text-muted">Loading bracket sample…</div>
     );
   }
 
   return (
     <div className="px-4 py-6">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-7xl">
         <h1 className="text-step-4 font-extrabold">Projected bracket</h1>
         <p className="mt-1 text-muted">
           The most-likely team in each knockout slot, with its probability of reaching that slot.
@@ -67,10 +67,10 @@ export function Bracket() {
           </Explainer>
         </div>
       </div>
-      <div className="mx-auto mt-5 max-w-5xl overflow-x-auto">
+      <div className="mx-auto mt-5 max-w-7xl overflow-x-auto">
         <div className="flex min-w-max gap-3 pb-4">
           {proj.rounds.map((nodes, r) => (
-            <div key={r} className="flex w-44 flex-col">
+            <div key={r} className="flex w-48 flex-col">
               <div className="mb-2 text-center text-[0.7rem] font-bold uppercase tracking-wide text-muted">
                 {ROUND_NAMES[r]}
               </div>

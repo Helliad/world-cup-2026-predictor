@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "note": "Actual 2026 World Cup results as they are played. The pipeline pins these into the Monte Carlo so every downstream probability re-conditions on reality. Group entries pin the scoreline; knockout entries pin the winner (record decided_by + the two teams).",
+    "updated": null
+  },
+  "matches": []
+}

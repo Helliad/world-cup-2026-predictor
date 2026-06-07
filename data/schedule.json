@@ -1,0 +1,1329 @@
+{
+  "meta": {
+    "source": "Group rows from data/groups.json (official membership/dates/host). Knockout rows: official FIFA 2026 schedule (dates, venues, bracket feeds). Group match numbers are stable internal ids in (date, group, home) order and need not match FIFA's published 1-72 labels; knockout numbers 73-104 are FIFA's.",
+    "rounds": [
+      "group",
+      "r32",
+      "r16",
+      "qf",
+      "sf",
+      "third",
+      "final"
+    ],
+    "note": "Knockout participants are decided by results; until then the UI shows the official slot descriptors (top_label/bottom_label) and provisional projected occupants from the simulation."
+  },
+  "matches": [
+    {
+      "match": 1,
+      "round": "group",
+      "date": "2026-06-11",
+      "group": "A",
+      "home": "Mexico",
+      "away": "South Africa",
+      "host": "Mexico",
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 2,
+      "round": "group",
+      "date": "2026-06-11",
+      "group": "A",
+      "home": "South Korea",
+      "away": "Czech Republic",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 3,
+      "round": "group",
+      "date": "2026-06-12",
+      "group": "B",
+      "home": "Canada",
+      "away": "Bosnia and Herzegovina",
+      "host": "Canada",
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 4,
+      "round": "group",
+      "date": "2026-06-12",
+      "group": "D",
+      "home": "United States",
+      "away": "Paraguay",
+      "host": "United States",
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 5,
+      "round": "group",
+      "date": "2026-06-13",
+      "group": "B",
+      "home": "Qatar",
+      "away": "Switzerland",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 6,
+      "round": "group",
+      "date": "2026-06-13",
+      "group": "C",
+      "home": "Brazil",
+      "away": "Morocco",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 7,
+      "round": "group",
+      "date": "2026-06-13",
+      "group": "C",
+      "home": "Haiti",
+      "away": "Scotland",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 8,
+      "round": "group",
+      "date": "2026-06-13",
+      "group": "D",
+      "home": "Australia",
+      "away": "Turkey",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 9,
+      "round": "group",
+      "date": "2026-06-14",
+      "group": "E",
+      "home": "Netherlands",
+      "away": "Japan",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 10,
+      "round": "group",
+      "date": "2026-06-14",
+      "group": "E",
+      "home": "Sweden",
+      "away": "Tunisia",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 11,
+      "round": "group",
+      "date": "2026-06-14",
+      "group": "F",
+      "home": "Germany",
+      "away": "Curaçao",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 12,
+      "round": "group",
+      "date": "2026-06-14",
+      "group": "F",
+      "home": "Ivory Coast",
+      "away": "Ecuador",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 13,
+      "round": "group",
+      "date": "2026-06-15",
+      "group": "G",
+      "home": "Saudi Arabia",
+      "away": "Uruguay",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 14,
+      "round": "group",
+      "date": "2026-06-15",
+      "group": "G",
+      "home": "Spain",
+      "away": "Cape Verde",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 15,
+      "round": "group",
+      "date": "2026-06-15",
+      "group": "H",
+      "home": "Belgium",
+      "away": "Egypt",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 16,
+      "round": "group",
+      "date": "2026-06-15",
+      "group": "H",
+      "home": "Iran",
+      "away": "New Zealand",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 17,
+      "round": "group",
+      "date": "2026-06-16",
+      "group": "I",
+      "home": "France",
+      "away": "Senegal",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 18,
+      "round": "group",
+      "date": "2026-06-16",
+      "group": "I",
+      "home": "Iraq",
+      "away": "Norway",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 19,
+      "round": "group",
+      "date": "2026-06-16",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Algeria",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 20,
+      "round": "group",
+      "date": "2026-06-16",
+      "group": "J",
+      "home": "Austria",
+      "away": "Jordan",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 21,
+      "round": "group",
+      "date": "2026-06-17",
+      "group": "K",
+      "home": "England",
+      "away": "Croatia",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 22,
+      "round": "group",
+      "date": "2026-06-17",
+      "group": "K",
+      "home": "Ghana",
+      "away": "Panama",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 23,
+      "round": "group",
+      "date": "2026-06-17",
+      "group": "L",
+      "home": "Portugal",
+      "away": "DR Congo",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 24,
+      "round": "group",
+      "date": "2026-06-17",
+      "group": "L",
+      "home": "Uzbekistan",
+      "away": "Colombia",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 25,
+      "round": "group",
+      "date": "2026-06-18",
+      "group": "A",
+      "home": "Czech Republic",
+      "away": "South Africa",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 26,
+      "round": "group",
+      "date": "2026-06-18",
+      "group": "A",
+      "home": "Mexico",
+      "away": "South Korea",
+      "host": "Mexico",
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 27,
+      "round": "group",
+      "date": "2026-06-18",
+      "group": "B",
+      "home": "Canada",
+      "away": "Qatar",
+      "host": "Canada",
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 28,
+      "round": "group",
+      "date": "2026-06-18",
+      "group": "B",
+      "home": "Switzerland",
+      "away": "Bosnia and Herzegovina",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 29,
+      "round": "group",
+      "date": "2026-06-19",
+      "group": "C",
+      "home": "Brazil",
+      "away": "Haiti",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 30,
+      "round": "group",
+      "date": "2026-06-19",
+      "group": "C",
+      "home": "Scotland",
+      "away": "Morocco",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 31,
+      "round": "group",
+      "date": "2026-06-19",
+      "group": "D",
+      "home": "Turkey",
+      "away": "Paraguay",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 32,
+      "round": "group",
+      "date": "2026-06-19",
+      "group": "D",
+      "home": "United States",
+      "away": "Australia",
+      "host": "United States",
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 33,
+      "round": "group",
+      "date": "2026-06-20",
+      "group": "E",
+      "home": "Netherlands",
+      "away": "Sweden",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 34,
+      "round": "group",
+      "date": "2026-06-20",
+      "group": "E",
+      "home": "Tunisia",
+      "away": "Japan",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 35,
+      "round": "group",
+      "date": "2026-06-20",
+      "group": "F",
+      "home": "Ecuador",
+      "away": "Curaçao",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 36,
+      "round": "group",
+      "date": "2026-06-20",
+      "group": "F",
+      "home": "Germany",
+      "away": "Ivory Coast",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 37,
+      "round": "group",
+      "date": "2026-06-21",
+      "group": "G",
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 38,
+      "round": "group",
+      "date": "2026-06-21",
+      "group": "G",
+      "home": "Uruguay",
+      "away": "Cape Verde",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 39,
+      "round": "group",
+      "date": "2026-06-21",
+      "group": "H",
+      "home": "Belgium",
+      "away": "Iran",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 40,
+      "round": "group",
+      "date": "2026-06-21",
+      "group": "H",
+      "home": "New Zealand",
+      "away": "Egypt",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 41,
+      "round": "group",
+      "date": "2026-06-22",
+      "group": "I",
+      "home": "France",
+      "away": "Iraq",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 42,
+      "round": "group",
+      "date": "2026-06-22",
+      "group": "I",
+      "home": "Norway",
+      "away": "Senegal",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 43,
+      "round": "group",
+      "date": "2026-06-22",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Austria",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 44,
+      "round": "group",
+      "date": "2026-06-22",
+      "group": "J",
+      "home": "Jordan",
+      "away": "Algeria",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 45,
+      "round": "group",
+      "date": "2026-06-23",
+      "group": "K",
+      "home": "England",
+      "away": "Ghana",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 46,
+      "round": "group",
+      "date": "2026-06-23",
+      "group": "K",
+      "home": "Panama",
+      "away": "Croatia",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 47,
+      "round": "group",
+      "date": "2026-06-23",
+      "group": "L",
+      "home": "Colombia",
+      "away": "DR Congo",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 48,
+      "round": "group",
+      "date": "2026-06-23",
+      "group": "L",
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 49,
+      "round": "group",
+      "date": "2026-06-24",
+      "group": "A",
+      "home": "Mexico",
+      "away": "Czech Republic",
+      "host": "Mexico",
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 50,
+      "round": "group",
+      "date": "2026-06-24",
+      "group": "A",
+      "home": "South Africa",
+      "away": "South Korea",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 51,
+      "round": "group",
+      "date": "2026-06-24",
+      "group": "B",
+      "home": "Bosnia and Herzegovina",
+      "away": "Qatar",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 52,
+      "round": "group",
+      "date": "2026-06-24",
+      "group": "B",
+      "home": "Canada",
+      "away": "Switzerland",
+      "host": "Canada",
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 53,
+      "round": "group",
+      "date": "2026-06-24",
+      "group": "C",
+      "home": "Morocco",
+      "away": "Haiti",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 54,
+      "round": "group",
+      "date": "2026-06-24",
+      "group": "C",
+      "home": "Scotland",
+      "away": "Brazil",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 55,
+      "round": "group",
+      "date": "2026-06-25",
+      "group": "D",
+      "home": "Paraguay",
+      "away": "Australia",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 56,
+      "round": "group",
+      "date": "2026-06-25",
+      "group": "D",
+      "home": "United States",
+      "away": "Turkey",
+      "host": "United States",
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 57,
+      "round": "group",
+      "date": "2026-06-25",
+      "group": "E",
+      "home": "Japan",
+      "away": "Sweden",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 58,
+      "round": "group",
+      "date": "2026-06-25",
+      "group": "E",
+      "home": "Tunisia",
+      "away": "Netherlands",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 59,
+      "round": "group",
+      "date": "2026-06-25",
+      "group": "F",
+      "home": "Curaçao",
+      "away": "Ivory Coast",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 60,
+      "round": "group",
+      "date": "2026-06-25",
+      "group": "F",
+      "home": "Ecuador",
+      "away": "Germany",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 61,
+      "round": "group",
+      "date": "2026-06-26",
+      "group": "G",
+      "home": "Cape Verde",
+      "away": "Saudi Arabia",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 62,
+      "round": "group",
+      "date": "2026-06-26",
+      "group": "G",
+      "home": "Uruguay",
+      "away": "Spain",
+      "host": null,
+      "venue": {
+        "country": "Mexico"
+      }
+    },
+    {
+      "match": 63,
+      "round": "group",
+      "date": "2026-06-26",
+      "group": "H",
+      "home": "Egypt",
+      "away": "Iran",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 64,
+      "round": "group",
+      "date": "2026-06-26",
+      "group": "H",
+      "home": "New Zealand",
+      "away": "Belgium",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 65,
+      "round": "group",
+      "date": "2026-06-26",
+      "group": "I",
+      "home": "Norway",
+      "away": "France",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 66,
+      "round": "group",
+      "date": "2026-06-26",
+      "group": "I",
+      "home": "Senegal",
+      "away": "Iraq",
+      "host": null,
+      "venue": {
+        "country": "Canada"
+      }
+    },
+    {
+      "match": 67,
+      "round": "group",
+      "date": "2026-06-27",
+      "group": "J",
+      "home": "Algeria",
+      "away": "Austria",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 68,
+      "round": "group",
+      "date": "2026-06-27",
+      "group": "J",
+      "home": "Jordan",
+      "away": "Argentina",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 69,
+      "round": "group",
+      "date": "2026-06-27",
+      "group": "K",
+      "home": "Croatia",
+      "away": "Ghana",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 70,
+      "round": "group",
+      "date": "2026-06-27",
+      "group": "K",
+      "home": "Panama",
+      "away": "England",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 71,
+      "round": "group",
+      "date": "2026-06-27",
+      "group": "L",
+      "home": "Colombia",
+      "away": "Portugal",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 72,
+      "round": "group",
+      "date": "2026-06-27",
+      "group": "L",
+      "home": "DR Congo",
+      "away": "Uzbekistan",
+      "host": null,
+      "venue": {
+        "country": "United States"
+      }
+    },
+    {
+      "match": 73,
+      "round": "r32",
+      "date": "2026-06-28",
+      "venue": {
+        "city": "Inglewood",
+        "stadium": "SoFi Stadium",
+        "country": "United States"
+      },
+      "top_label": "Runner-up Group A",
+      "bottom_label": "Runner-up Group B"
+    },
+    {
+      "match": 74,
+      "round": "r32",
+      "date": "2026-06-29",
+      "venue": {
+        "city": "Foxborough",
+        "stadium": "Gillette Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group E",
+      "bottom_label": "3rd Group A/B/C/D/F"
+    },
+    {
+      "match": 75,
+      "round": "r32",
+      "date": "2026-06-29",
+      "venue": {
+        "city": "Guadalupe",
+        "stadium": "Estadio BBVA",
+        "country": "Mexico"
+      },
+      "top_label": "Winner Group F",
+      "bottom_label": "Runner-up Group C"
+    },
+    {
+      "match": 76,
+      "round": "r32",
+      "date": "2026-06-29",
+      "venue": {
+        "city": "Houston",
+        "stadium": "NRG Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group C",
+      "bottom_label": "Runner-up Group F"
+    },
+    {
+      "match": 77,
+      "round": "r32",
+      "date": "2026-06-30",
+      "venue": {
+        "city": "East Rutherford",
+        "stadium": "MetLife Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group I",
+      "bottom_label": "3rd Group C/D/F/G/H"
+    },
+    {
+      "match": 78,
+      "round": "r32",
+      "date": "2026-06-30",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "top_label": "Runner-up Group E",
+      "bottom_label": "Runner-up Group I"
+    },
+    {
+      "match": 79,
+      "round": "r32",
+      "date": "2026-06-30",
+      "venue": {
+        "city": "Mexico City",
+        "stadium": "Estadio Azteca",
+        "country": "Mexico"
+      },
+      "top_label": "Winner Group A",
+      "bottom_label": "3rd Group C/E/F/H/I"
+    },
+    {
+      "match": 80,
+      "round": "r32",
+      "date": "2026-07-01",
+      "venue": {
+        "city": "Atlanta",
+        "stadium": "Mercedes-Benz Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group L",
+      "bottom_label": "3rd Group E/H/I/J/K"
+    },
+    {
+      "match": 81,
+      "round": "r32",
+      "date": "2026-07-01",
+      "venue": {
+        "city": "Santa Clara",
+        "stadium": "Levi's Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group D",
+      "bottom_label": "3rd Group B/E/F/I/J"
+    },
+    {
+      "match": 82,
+      "round": "r32",
+      "date": "2026-07-01",
+      "venue": {
+        "city": "Seattle",
+        "stadium": "Lumen Field",
+        "country": "United States"
+      },
+      "top_label": "Winner Group G",
+      "bottom_label": "3rd Group A/E/H/I/J"
+    },
+    {
+      "match": 83,
+      "round": "r32",
+      "date": "2026-07-02",
+      "venue": {
+        "city": "Toronto",
+        "stadium": "BMO Field",
+        "country": "Canada"
+      },
+      "top_label": "Runner-up Group K",
+      "bottom_label": "Runner-up Group L"
+    },
+    {
+      "match": 84,
+      "round": "r32",
+      "date": "2026-07-02",
+      "venue": {
+        "city": "Inglewood",
+        "stadium": "SoFi Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group H",
+      "bottom_label": "Runner-up Group J"
+    },
+    {
+      "match": 85,
+      "round": "r32",
+      "date": "2026-07-02",
+      "venue": {
+        "city": "Vancouver",
+        "stadium": "BC Place",
+        "country": "Canada"
+      },
+      "top_label": "Winner Group B",
+      "bottom_label": "3rd Group E/F/G/I/J"
+    },
+    {
+      "match": 86,
+      "round": "r32",
+      "date": "2026-07-03",
+      "venue": {
+        "city": "Miami Gardens",
+        "stadium": "Hard Rock Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group J",
+      "bottom_label": "Runner-up Group H"
+    },
+    {
+      "match": 87,
+      "round": "r32",
+      "date": "2026-07-03",
+      "venue": {
+        "city": "Kansas City",
+        "stadium": "Arrowhead Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Group K",
+      "bottom_label": "3rd Group D/E/I/J/L"
+    },
+    {
+      "match": 88,
+      "round": "r32",
+      "date": "2026-07-03",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "top_label": "Runner-up Group D",
+      "bottom_label": "Runner-up Group G"
+    },
+    {
+      "match": 89,
+      "round": "r16",
+      "date": "2026-07-04",
+      "venue": {
+        "city": "Philadelphia",
+        "stadium": "Lincoln Financial Field",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 74",
+      "bottom_label": "Winner Match 77",
+      "feeds": [
+        74,
+        77
+      ]
+    },
+    {
+      "match": 90,
+      "round": "r16",
+      "date": "2026-07-04",
+      "venue": {
+        "city": "Houston",
+        "stadium": "NRG Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 73",
+      "bottom_label": "Winner Match 75",
+      "feeds": [
+        73,
+        75
+      ]
+    },
+    {
+      "match": 91,
+      "round": "r16",
+      "date": "2026-07-05",
+      "venue": {
+        "city": "East Rutherford",
+        "stadium": "MetLife Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 76",
+      "bottom_label": "Winner Match 78",
+      "feeds": [
+        76,
+        78
+      ]
+    },
+    {
+      "match": 92,
+      "round": "r16",
+      "date": "2026-07-05",
+      "venue": {
+        "city": "Mexico City",
+        "stadium": "Estadio Azteca",
+        "country": "Mexico"
+      },
+      "top_label": "Winner Match 79",
+      "bottom_label": "Winner Match 80",
+      "feeds": [
+        79,
+        80
+      ]
+    },
+    {
+      "match": 93,
+      "round": "r16",
+      "date": "2026-07-06",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 83",
+      "bottom_label": "Winner Match 84",
+      "feeds": [
+        83,
+        84
+      ]
+    },
+    {
+      "match": 94,
+      "round": "r16",
+      "date": "2026-07-06",
+      "venue": {
+        "city": "Seattle",
+        "stadium": "Lumen Field",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 81",
+      "bottom_label": "Winner Match 82",
+      "feeds": [
+        81,
+        82
+      ]
+    },
+    {
+      "match": 95,
+      "round": "r16",
+      "date": "2026-07-07",
+      "venue": {
+        "city": "Atlanta",
+        "stadium": "Mercedes-Benz Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 86",
+      "bottom_label": "Winner Match 88",
+      "feeds": [
+        86,
+        88
+      ]
+    },
+    {
+      "match": 96,
+      "round": "r16",
+      "date": "2026-07-07",
+      "venue": {
+        "city": "Vancouver",
+        "stadium": "BC Place",
+        "country": "Canada"
+      },
+      "top_label": "Winner Match 85",
+      "bottom_label": "Winner Match 87",
+      "feeds": [
+        85,
+        87
+      ]
+    },
+    {
+      "match": 97,
+      "round": "qf",
+      "date": "2026-07-09",
+      "venue": {
+        "city": "Foxborough",
+        "stadium": "Gillette Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 89",
+      "bottom_label": "Winner Match 90",
+      "feeds": [
+        89,
+        90
+      ]
+    },
+    {
+      "match": 98,
+      "round": "qf",
+      "date": "2026-07-10",
+      "venue": {
+        "city": "Inglewood",
+        "stadium": "SoFi Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 93",
+      "bottom_label": "Winner Match 94",
+      "feeds": [
+        93,
+        94
+      ]
+    },
+    {
+      "match": 99,
+      "round": "qf",
+      "date": "2026-07-11",
+      "venue": {
+        "city": "Miami Gardens",
+        "stadium": "Hard Rock Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 91",
+      "bottom_label": "Winner Match 92",
+      "feeds": [
+        91,
+        92
+      ]
+    },
+    {
+      "match": 100,
+      "round": "qf",
+      "date": "2026-07-11",
+      "venue": {
+        "city": "Kansas City",
+        "stadium": "Arrowhead Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 95",
+      "bottom_label": "Winner Match 96",
+      "feeds": [
+        95,
+        96
+      ]
+    },
+    {
+      "match": 101,
+      "round": "sf",
+      "date": "2026-07-14",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 97",
+      "bottom_label": "Winner Match 98",
+      "feeds": [
+        97,
+        98
+      ]
+    },
+    {
+      "match": 102,
+      "round": "sf",
+      "date": "2026-07-15",
+      "venue": {
+        "city": "Atlanta",
+        "stadium": "Mercedes-Benz Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 99",
+      "bottom_label": "Winner Match 100",
+      "feeds": [
+        99,
+        100
+      ]
+    },
+    {
+      "match": 103,
+      "round": "third",
+      "date": "2026-07-18",
+      "venue": {
+        "city": "Miami Gardens",
+        "stadium": "Hard Rock Stadium",
+        "country": "United States"
+      },
+      "top_label": "Loser Match 101",
+      "bottom_label": "Loser Match 102",
+      "feeds": [
+        101,
+        102
+      ]
+    },
+    {
+      "match": 104,
+      "round": "final",
+      "date": "2026-07-19",
+      "venue": {
+        "city": "East Rutherford",
+        "stadium": "MetLife Stadium",
+        "country": "United States"
+      },
+      "top_label": "Winner Match 101",
+      "bottom_label": "Winner Match 102",
+      "feeds": [
+        101,
+        102
+      ]
+    }
+  ]
+}

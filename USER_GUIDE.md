@@ -132,4 +132,4 @@ data/third_place_allocation.json ──────┘                          
                                                           npm run dev  →  http://localhost:5173
 ```
 
-For the full design, see the [README](README.md) and the [technical specification](worldcup-2026-predictor-SPEC.md). Module docs: [model](model/README.md) · [simulation](simulation/README.md) · [data](data/README.md) · [web](web/README.md) · [contributing](CONTRIBUTING.md).
+For the full design, see the [README](README.md). Module docs: [model](model/README.md) · [simulation](simulation/README.md) · [data](data/README.md) · [web](web/README.md) · [contributing](CONTRIBUTING.md).

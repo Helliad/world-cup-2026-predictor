@@ -51,6 +51,4 @@ is worth reporting, not hiding.
 
 ## PRs
 
-Small, focused PRs with a clear description. Reference the relevant spec section
-([`worldcup-2026-predictor-SPEC.md`](worldcup-2026-predictor-SPEC.md)) where it
-helps. Be kind in review.
+Small, focused PRs with a clear description. Be kind in review.

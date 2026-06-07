@@ -11,7 +11,7 @@ Three layers, deliberately decoupled: the model knows nothing about tournaments,
 > **Just want the results?** → **[View the live site](https://helliad.github.io/world-cup-2026-predictor/)** — fully static, precomputed; no model runs in your browser.
 > **Want to change the model or data?** → [fork it and run locally](#quickstart) (the model only runs on your machine, never online).
 
-> **Status:** predictions are flagged **provisional** until FIFA's official third-place → bracket allocation table is encoded (a documented release gate, [§8.1 of the spec](worldcup-2026-predictor-SPEC.md)). Group memberships are official, reconstructed from the published fixture list.
+> **Status:** predictions are flagged **provisional** until FIFA's official third-place → bracket allocation table is encoded (a documented release gate). Group memberships are official, reconstructed from the published fixture list.
 
 ---
 
@@ -108,7 +108,7 @@ data/third_place_allocation.json ──┘   (100k tournaments)   web/public/out
 | **Simulator** ([`simulation/`](simulation/README.md)) | Python (NumPy-vectorised) | Exact 2026 format: 12 groups → best-8-thirds → 32-team knockout, 100k times in ~6s. |
 | **Frontend** ([`web/`](web/README.md)) | React · Vite · TypeScript · Tailwind | Static, editorial, accessible; instant conditional "what if" recompute in the browser. |
 
-The Python ↔ React contract is [`predictions.json`](web/public/predictions.json) (schema in [§8.1 of the spec](worldcup-2026-predictor-SPEC.md)). Every run writes a full manifest (git commit, config hash, data checksum, seed, N) into `meta` so any two runs can be diffed and reproduced.
+The Python ↔ React contract is [`predictions.json`](web/public/predictions.json), whose `meta` block documents the schema. Every run writes a full manifest (git commit, config hash, data checksum, seed, N) into `meta` so any two runs can be diffed and reproduced.
 
 ---
 
@@ -120,7 +120,7 @@ A single tournament cannot validate a probabilistic model — if the model says 
 
 ## Repository layout
 
-See the [technical specification](worldcup-2026-predictor-SPEC.md) for the full design. Module docs: [model](model/README.md) · [simulation](simulation/README.md) · [data](data/README.md) · [web](web/README.md) · [contributing](CONTRIBUTING.md).
+See the module docs for the full design: [model](model/README.md) · [simulation](simulation/README.md) · [data](data/README.md) · [web](web/README.md) · [contributing](CONTRIBUTING.md).
 
 ## Data & license
 

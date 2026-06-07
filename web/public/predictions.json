@@ -7,12 +7,20 @@
     "data_snapshot": "2026-06-27",
     "data_checksum": "7f3d1becd7653e486c012fb82ed4f276b417f60bfbf293f04401c231b39cb304",
     "data_rows": 49378,
-    "git_commit": "6f5184968cdd652ffb831af98c1b268d66aa7e64",
+    "git_commit": "e2f778ff0e13479245a69e09c269eb8eabd671aa",
     "config_hash": "40a128ca0b78",
     "provisional": true,
-    "generated_at": "2026-06-05T01:15:22+00:00",
+    "generated_at": "2026-06-07T06:30:54+00:00",
     "home_advantage_gamma": 0.2436,
     "cohost_multiplier": 0.5,
+    "rho": -0.05443,
+    "max_goals": 10,
+    "knockout": {
+      "mode": "staged",
+      "extra_time_fraction": 0.3333,
+      "penalty_skill_tilt": true,
+      "penalty_cap": 0.55
+    },
     "half_life_days": 385.0817669777474,
     "se_note": "Monte Carlo standard error ≈ sqrt(p(1-p)/N); at N=100000 a title probability of 10% carries ±0.09%.",
     "model_metrics": {
@@ -22,7 +30,7 @@
     },
     "libraries": {
       "numpy": "2.4.6",
-      "python": "3.13.13"
+      "python": "3.11.15"
     }
   },
   "groups": {
@@ -2561,6 +2569,2024 @@
       "exp_home": 1.72,
       "exp_away": 0.73,
       "host": null
+    }
+  ],
+  "schedule": [
+    {
+      "match": 1,
+      "round": "group",
+      "date": "2026-06-11",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "A",
+      "host": "Mexico",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Mexico",
+      "away": "South Africa"
+    },
+    {
+      "match": 2,
+      "round": "group",
+      "date": "2026-06-11",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "A",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "South Korea",
+      "away": "Czech Republic"
+    },
+    {
+      "match": 3,
+      "round": "group",
+      "date": "2026-06-12",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "B",
+      "host": "Canada",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Canada",
+      "away": "Bosnia and Herzegovina"
+    },
+    {
+      "match": 4,
+      "round": "group",
+      "date": "2026-06-12",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "D",
+      "host": "United States",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "United States",
+      "away": "Paraguay"
+    },
+    {
+      "match": 5,
+      "round": "group",
+      "date": "2026-06-13",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "B",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Qatar",
+      "away": "Switzerland"
+    },
+    {
+      "match": 6,
+      "round": "group",
+      "date": "2026-06-13",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "C",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Brazil",
+      "away": "Morocco"
+    },
+    {
+      "match": 7,
+      "round": "group",
+      "date": "2026-06-13",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "C",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Haiti",
+      "away": "Scotland"
+    },
+    {
+      "match": 8,
+      "round": "group",
+      "date": "2026-06-13",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "D",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Australia",
+      "away": "Turkey"
+    },
+    {
+      "match": 9,
+      "round": "group",
+      "date": "2026-06-14",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "E",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Netherlands",
+      "away": "Japan"
+    },
+    {
+      "match": 10,
+      "round": "group",
+      "date": "2026-06-14",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "E",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Sweden",
+      "away": "Tunisia"
+    },
+    {
+      "match": 11,
+      "round": "group",
+      "date": "2026-06-14",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "F",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Germany",
+      "away": "Curaçao"
+    },
+    {
+      "match": 12,
+      "round": "group",
+      "date": "2026-06-14",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "F",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Ivory Coast",
+      "away": "Ecuador"
+    },
+    {
+      "match": 13,
+      "round": "group",
+      "date": "2026-06-15",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "G",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Saudi Arabia",
+      "away": "Uruguay"
+    },
+    {
+      "match": 14,
+      "round": "group",
+      "date": "2026-06-15",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "G",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Spain",
+      "away": "Cape Verde"
+    },
+    {
+      "match": 15,
+      "round": "group",
+      "date": "2026-06-15",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "H",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Belgium",
+      "away": "Egypt"
+    },
+    {
+      "match": 16,
+      "round": "group",
+      "date": "2026-06-15",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "H",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Iran",
+      "away": "New Zealand"
+    },
+    {
+      "match": 17,
+      "round": "group",
+      "date": "2026-06-16",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "I",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "France",
+      "away": "Senegal"
+    },
+    {
+      "match": 18,
+      "round": "group",
+      "date": "2026-06-16",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "I",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Iraq",
+      "away": "Norway"
+    },
+    {
+      "match": 19,
+      "round": "group",
+      "date": "2026-06-16",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "J",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Argentina",
+      "away": "Algeria"
+    },
+    {
+      "match": 20,
+      "round": "group",
+      "date": "2026-06-16",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "J",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Austria",
+      "away": "Jordan"
+    },
+    {
+      "match": 21,
+      "round": "group",
+      "date": "2026-06-17",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "K",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "England",
+      "away": "Croatia"
+    },
+    {
+      "match": 22,
+      "round": "group",
+      "date": "2026-06-17",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "K",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Ghana",
+      "away": "Panama"
+    },
+    {
+      "match": 23,
+      "round": "group",
+      "date": "2026-06-17",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "L",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Portugal",
+      "away": "DR Congo"
+    },
+    {
+      "match": 24,
+      "round": "group",
+      "date": "2026-06-17",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "L",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Uzbekistan",
+      "away": "Colombia"
+    },
+    {
+      "match": 25,
+      "round": "group",
+      "date": "2026-06-18",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "A",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Czech Republic",
+      "away": "South Africa"
+    },
+    {
+      "match": 26,
+      "round": "group",
+      "date": "2026-06-18",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "A",
+      "host": "Mexico",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Mexico",
+      "away": "South Korea"
+    },
+    {
+      "match": 27,
+      "round": "group",
+      "date": "2026-06-18",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "B",
+      "host": "Canada",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Canada",
+      "away": "Qatar"
+    },
+    {
+      "match": 28,
+      "round": "group",
+      "date": "2026-06-18",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "B",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Switzerland",
+      "away": "Bosnia and Herzegovina"
+    },
+    {
+      "match": 29,
+      "round": "group",
+      "date": "2026-06-19",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "C",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Brazil",
+      "away": "Haiti"
+    },
+    {
+      "match": 30,
+      "round": "group",
+      "date": "2026-06-19",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "C",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Scotland",
+      "away": "Morocco"
+    },
+    {
+      "match": 31,
+      "round": "group",
+      "date": "2026-06-19",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "D",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Turkey",
+      "away": "Paraguay"
+    },
+    {
+      "match": 32,
+      "round": "group",
+      "date": "2026-06-19",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "D",
+      "host": "United States",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "United States",
+      "away": "Australia"
+    },
+    {
+      "match": 33,
+      "round": "group",
+      "date": "2026-06-20",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "E",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Netherlands",
+      "away": "Sweden"
+    },
+    {
+      "match": 34,
+      "round": "group",
+      "date": "2026-06-20",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "E",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Tunisia",
+      "away": "Japan"
+    },
+    {
+      "match": 35,
+      "round": "group",
+      "date": "2026-06-20",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "F",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Ecuador",
+      "away": "Curaçao"
+    },
+    {
+      "match": 36,
+      "round": "group",
+      "date": "2026-06-20",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "F",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Germany",
+      "away": "Ivory Coast"
+    },
+    {
+      "match": 37,
+      "round": "group",
+      "date": "2026-06-21",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "G",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Spain",
+      "away": "Saudi Arabia"
+    },
+    {
+      "match": 38,
+      "round": "group",
+      "date": "2026-06-21",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "G",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Uruguay",
+      "away": "Cape Verde"
+    },
+    {
+      "match": 39,
+      "round": "group",
+      "date": "2026-06-21",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "H",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Belgium",
+      "away": "Iran"
+    },
+    {
+      "match": 40,
+      "round": "group",
+      "date": "2026-06-21",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "H",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "New Zealand",
+      "away": "Egypt"
+    },
+    {
+      "match": 41,
+      "round": "group",
+      "date": "2026-06-22",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "I",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "France",
+      "away": "Iraq"
+    },
+    {
+      "match": 42,
+      "round": "group",
+      "date": "2026-06-22",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "I",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Norway",
+      "away": "Senegal"
+    },
+    {
+      "match": 43,
+      "round": "group",
+      "date": "2026-06-22",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "J",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Argentina",
+      "away": "Austria"
+    },
+    {
+      "match": 44,
+      "round": "group",
+      "date": "2026-06-22",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "J",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Jordan",
+      "away": "Algeria"
+    },
+    {
+      "match": 45,
+      "round": "group",
+      "date": "2026-06-23",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "K",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "England",
+      "away": "Ghana"
+    },
+    {
+      "match": 46,
+      "round": "group",
+      "date": "2026-06-23",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "K",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Panama",
+      "away": "Croatia"
+    },
+    {
+      "match": 47,
+      "round": "group",
+      "date": "2026-06-23",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "L",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Colombia",
+      "away": "DR Congo"
+    },
+    {
+      "match": 48,
+      "round": "group",
+      "date": "2026-06-23",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "L",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Portugal",
+      "away": "Uzbekistan"
+    },
+    {
+      "match": 49,
+      "round": "group",
+      "date": "2026-06-24",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "A",
+      "host": "Mexico",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Mexico",
+      "away": "Czech Republic"
+    },
+    {
+      "match": 50,
+      "round": "group",
+      "date": "2026-06-24",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "A",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "South Africa",
+      "away": "South Korea"
+    },
+    {
+      "match": 51,
+      "round": "group",
+      "date": "2026-06-24",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "B",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Bosnia and Herzegovina",
+      "away": "Qatar"
+    },
+    {
+      "match": 52,
+      "round": "group",
+      "date": "2026-06-24",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "B",
+      "host": "Canada",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Canada",
+      "away": "Switzerland"
+    },
+    {
+      "match": 53,
+      "round": "group",
+      "date": "2026-06-24",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "C",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Morocco",
+      "away": "Haiti"
+    },
+    {
+      "match": 54,
+      "round": "group",
+      "date": "2026-06-24",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "C",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Scotland",
+      "away": "Brazil"
+    },
+    {
+      "match": 55,
+      "round": "group",
+      "date": "2026-06-25",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "D",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Paraguay",
+      "away": "Australia"
+    },
+    {
+      "match": 56,
+      "round": "group",
+      "date": "2026-06-25",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "D",
+      "host": "United States",
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "United States",
+      "away": "Turkey"
+    },
+    {
+      "match": 57,
+      "round": "group",
+      "date": "2026-06-25",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "E",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Japan",
+      "away": "Sweden"
+    },
+    {
+      "match": 58,
+      "round": "group",
+      "date": "2026-06-25",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "E",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Tunisia",
+      "away": "Netherlands"
+    },
+    {
+      "match": 59,
+      "round": "group",
+      "date": "2026-06-25",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "F",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Curaçao",
+      "away": "Ivory Coast"
+    },
+    {
+      "match": 60,
+      "round": "group",
+      "date": "2026-06-25",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "F",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Ecuador",
+      "away": "Germany"
+    },
+    {
+      "match": 61,
+      "round": "group",
+      "date": "2026-06-26",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "G",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Cape Verde",
+      "away": "Saudi Arabia"
+    },
+    {
+      "match": 62,
+      "round": "group",
+      "date": "2026-06-26",
+      "venue": {
+        "country": "Mexico"
+      },
+      "group": "G",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Uruguay",
+      "away": "Spain"
+    },
+    {
+      "match": 63,
+      "round": "group",
+      "date": "2026-06-26",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "H",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Egypt",
+      "away": "Iran"
+    },
+    {
+      "match": 64,
+      "round": "group",
+      "date": "2026-06-26",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "H",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "New Zealand",
+      "away": "Belgium"
+    },
+    {
+      "match": 65,
+      "round": "group",
+      "date": "2026-06-26",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "I",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Norway",
+      "away": "France"
+    },
+    {
+      "match": 66,
+      "round": "group",
+      "date": "2026-06-26",
+      "venue": {
+        "country": "Canada"
+      },
+      "group": "I",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Senegal",
+      "away": "Iraq"
+    },
+    {
+      "match": 67,
+      "round": "group",
+      "date": "2026-06-27",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "J",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Algeria",
+      "away": "Austria"
+    },
+    {
+      "match": 68,
+      "round": "group",
+      "date": "2026-06-27",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "J",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Jordan",
+      "away": "Argentina"
+    },
+    {
+      "match": 69,
+      "round": "group",
+      "date": "2026-06-27",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "K",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Croatia",
+      "away": "Ghana"
+    },
+    {
+      "match": 70,
+      "round": "group",
+      "date": "2026-06-27",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "K",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Panama",
+      "away": "England"
+    },
+    {
+      "match": 71,
+      "round": "group",
+      "date": "2026-06-27",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "L",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "Colombia",
+      "away": "Portugal"
+    },
+    {
+      "match": 72,
+      "round": "group",
+      "date": "2026-06-27",
+      "venue": {
+        "country": "United States"
+      },
+      "group": "L",
+      "host": null,
+      "top_label": null,
+      "bottom_label": null,
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "home": "DR Congo",
+      "away": "Uzbekistan"
+    },
+    {
+      "match": 73,
+      "round": "r32",
+      "date": "2026-06-28",
+      "venue": {
+        "city": "Inglewood",
+        "stadium": "SoFi Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Runner-up Group A",
+      "bottom_label": "Runner-up Group B",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 74,
+      "round": "r32",
+      "date": "2026-06-29",
+      "venue": {
+        "city": "Foxborough",
+        "stadium": "Gillette Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group E",
+      "bottom_label": "3rd Group A/B/C/D/F",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 75,
+      "round": "r32",
+      "date": "2026-06-29",
+      "venue": {
+        "city": "Guadalupe",
+        "stadium": "Estadio BBVA",
+        "country": "Mexico"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group F",
+      "bottom_label": "Runner-up Group C",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 76,
+      "round": "r32",
+      "date": "2026-06-29",
+      "venue": {
+        "city": "Houston",
+        "stadium": "NRG Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group C",
+      "bottom_label": "Runner-up Group F",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 77,
+      "round": "r32",
+      "date": "2026-06-30",
+      "venue": {
+        "city": "East Rutherford",
+        "stadium": "MetLife Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group I",
+      "bottom_label": "3rd Group C/D/F/G/H",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 78,
+      "round": "r32",
+      "date": "2026-06-30",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Runner-up Group E",
+      "bottom_label": "Runner-up Group I",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 79,
+      "round": "r32",
+      "date": "2026-06-30",
+      "venue": {
+        "city": "Mexico City",
+        "stadium": "Estadio Azteca",
+        "country": "Mexico"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group A",
+      "bottom_label": "3rd Group C/E/F/H/I",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 80,
+      "round": "r32",
+      "date": "2026-07-01",
+      "venue": {
+        "city": "Atlanta",
+        "stadium": "Mercedes-Benz Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group L",
+      "bottom_label": "3rd Group E/H/I/J/K",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 81,
+      "round": "r32",
+      "date": "2026-07-01",
+      "venue": {
+        "city": "Santa Clara",
+        "stadium": "Levi's Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group D",
+      "bottom_label": "3rd Group B/E/F/I/J",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 82,
+      "round": "r32",
+      "date": "2026-07-01",
+      "venue": {
+        "city": "Seattle",
+        "stadium": "Lumen Field",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group G",
+      "bottom_label": "3rd Group A/E/H/I/J",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 83,
+      "round": "r32",
+      "date": "2026-07-02",
+      "venue": {
+        "city": "Toronto",
+        "stadium": "BMO Field",
+        "country": "Canada"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Runner-up Group K",
+      "bottom_label": "Runner-up Group L",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 84,
+      "round": "r32",
+      "date": "2026-07-02",
+      "venue": {
+        "city": "Inglewood",
+        "stadium": "SoFi Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group H",
+      "bottom_label": "Runner-up Group J",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 85,
+      "round": "r32",
+      "date": "2026-07-02",
+      "venue": {
+        "city": "Vancouver",
+        "stadium": "BC Place",
+        "country": "Canada"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group B",
+      "bottom_label": "3rd Group E/F/G/I/J",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 86,
+      "round": "r32",
+      "date": "2026-07-03",
+      "venue": {
+        "city": "Miami Gardens",
+        "stadium": "Hard Rock Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group J",
+      "bottom_label": "Runner-up Group H",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 87,
+      "round": "r32",
+      "date": "2026-07-03",
+      "venue": {
+        "city": "Kansas City",
+        "stadium": "Arrowhead Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Group K",
+      "bottom_label": "3rd Group D/E/I/J/L",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 88,
+      "round": "r32",
+      "date": "2026-07-03",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Runner-up Group D",
+      "bottom_label": "Runner-up Group G",
+      "feeds": null,
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 89,
+      "round": "r16",
+      "date": "2026-07-04",
+      "venue": {
+        "city": "Philadelphia",
+        "stadium": "Lincoln Financial Field",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 74",
+      "bottom_label": "Winner Match 77",
+      "feeds": [
+        74,
+        77
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 90,
+      "round": "r16",
+      "date": "2026-07-04",
+      "venue": {
+        "city": "Houston",
+        "stadium": "NRG Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 73",
+      "bottom_label": "Winner Match 75",
+      "feeds": [
+        73,
+        75
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 91,
+      "round": "r16",
+      "date": "2026-07-05",
+      "venue": {
+        "city": "East Rutherford",
+        "stadium": "MetLife Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 76",
+      "bottom_label": "Winner Match 78",
+      "feeds": [
+        76,
+        78
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 92,
+      "round": "r16",
+      "date": "2026-07-05",
+      "venue": {
+        "city": "Mexico City",
+        "stadium": "Estadio Azteca",
+        "country": "Mexico"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 79",
+      "bottom_label": "Winner Match 80",
+      "feeds": [
+        79,
+        80
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 93,
+      "round": "r16",
+      "date": "2026-07-06",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 83",
+      "bottom_label": "Winner Match 84",
+      "feeds": [
+        83,
+        84
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 94,
+      "round": "r16",
+      "date": "2026-07-06",
+      "venue": {
+        "city": "Seattle",
+        "stadium": "Lumen Field",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 81",
+      "bottom_label": "Winner Match 82",
+      "feeds": [
+        81,
+        82
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 95,
+      "round": "r16",
+      "date": "2026-07-07",
+      "venue": {
+        "city": "Atlanta",
+        "stadium": "Mercedes-Benz Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 86",
+      "bottom_label": "Winner Match 88",
+      "feeds": [
+        86,
+        88
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 96,
+      "round": "r16",
+      "date": "2026-07-07",
+      "venue": {
+        "city": "Vancouver",
+        "stadium": "BC Place",
+        "country": "Canada"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 85",
+      "bottom_label": "Winner Match 87",
+      "feeds": [
+        85,
+        87
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 97,
+      "round": "qf",
+      "date": "2026-07-09",
+      "venue": {
+        "city": "Foxborough",
+        "stadium": "Gillette Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 89",
+      "bottom_label": "Winner Match 90",
+      "feeds": [
+        89,
+        90
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 98,
+      "round": "qf",
+      "date": "2026-07-10",
+      "venue": {
+        "city": "Inglewood",
+        "stadium": "SoFi Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 93",
+      "bottom_label": "Winner Match 94",
+      "feeds": [
+        93,
+        94
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 99,
+      "round": "qf",
+      "date": "2026-07-11",
+      "venue": {
+        "city": "Miami Gardens",
+        "stadium": "Hard Rock Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 91",
+      "bottom_label": "Winner Match 92",
+      "feeds": [
+        91,
+        92
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 100,
+      "round": "qf",
+      "date": "2026-07-11",
+      "venue": {
+        "city": "Kansas City",
+        "stadium": "Arrowhead Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 95",
+      "bottom_label": "Winner Match 96",
+      "feeds": [
+        95,
+        96
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 101,
+      "round": "sf",
+      "date": "2026-07-14",
+      "venue": {
+        "city": "Arlington",
+        "stadium": "AT&T Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 97",
+      "bottom_label": "Winner Match 98",
+      "feeds": [
+        97,
+        98
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 102,
+      "round": "sf",
+      "date": "2026-07-15",
+      "venue": {
+        "city": "Atlanta",
+        "stadium": "Mercedes-Benz Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 99",
+      "bottom_label": "Winner Match 100",
+      "feeds": [
+        99,
+        100
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 103,
+      "round": "third",
+      "date": "2026-07-18",
+      "venue": {
+        "city": "Miami Gardens",
+        "stadium": "Hard Rock Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Loser Match 101",
+      "bottom_label": "Loser Match 102",
+      "feeds": [
+        101,
+        102
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
+    },
+    {
+      "match": 104,
+      "round": "final",
+      "date": "2026-07-19",
+      "venue": {
+        "city": "East Rutherford",
+        "stadium": "MetLife Stadium",
+        "country": "United States"
+      },
+      "group": null,
+      "host": null,
+      "top_label": "Winner Match 101",
+      "bottom_label": "Winner Match 102",
+      "feeds": [
+        101,
+        102
+      ],
+      "status": "scheduled",
+      "score": null,
+      "winner": null,
+      "decided_by": null,
+      "home": null,
+      "away": null
     }
   ]
 }

@@ -30,6 +30,7 @@ import numpy as np
 
 from config import config_hash, load_config, resolve_path
 from model.dixon_coles import DixonColesModel
+from simulation.group_stage import rank_group, tally
 from simulation.knockout import KnockoutParams
 from simulation.monte_carlo import SimResults, run_simulations
 from simulation.setup import load_sim_inputs
@@ -37,6 +38,7 @@ from simulation.tournament import STAGES
 
 ROOT = Path(__file__).resolve().parents[1]
 N_MARQUEE_MATCHUPS = 16  # pairwise 1X2 among the top-N teams by title odds
+LAST_GROUP_MATCH = 72  # matches 1..72 are group games; 73..104 are knockout
 
 
 def _git_commit() -> str:
@@ -80,6 +82,121 @@ def build_fixtures(model: DixonColesModel, cfg: dict) -> list[dict]:
             "exp_away": round(float(o["exp_away"]), 2),
             "host": f["home_advantage"],  # home team name if co-host advantage, else null
         })
+    return out
+
+
+def _resolve_label(label: str | None, ctx: dict) -> str | None:
+    """Resolve a knockout slot descriptor to an actual team, when known.
+
+    Handles the deterministic descriptors — group winner/runner (once a group is
+    fully played) and Winner/Loser of an earlier match (once it is played). The
+    best-third descriptors ("3rd Group A/B/C/D/F") depend on the provisional
+    allocation table and are left unresolved (the UI keeps the descriptor).
+    """
+    if not label:
+        return None
+    if label.startswith("Winner Group "):
+        return ctx["group_winner"].get(label.rsplit(" ", 1)[-1])
+    if label.startswith("Runner-up Group "):
+        return ctx["group_runner"].get(label.rsplit(" ", 1)[-1])
+    if label.startswith("Winner Match "):
+        return ctx["winner_of"].get(int(label.rsplit(" ", 1)[-1]))
+    if label.startswith("Loser Match "):
+        return ctx["loser_of"].get(int(label.rsplit(" ", 1)[-1]))
+    return None
+
+
+def build_schedule() -> list[dict]:
+    """The full 104-match schedule (data/schedule.json) merged with any actual
+    results (data/results_2026.json): each entry gains a status/score, and
+    knockout participants are filled in as results determine them.
+
+    The pipeline only records *facts* here (played scores, and teams a result has
+    decided); pre-result "most-likely occupant" projections are left to the
+    frontend, which reads them from the simulation's bracket sample.
+    """
+    schedule = json.loads((ROOT / "data" / "schedule.json").read_text(encoding="utf-8"))["matches"]
+    results_path = ROOT / "data" / "results_2026.json"
+    played_list = (
+        json.loads(results_path.read_text(encoding="utf-8")).get("matches", [])
+        if results_path.exists()
+        else []
+    )
+    played = {r["match"]: r for r in played_list if "match" in r}
+    groups = json.loads((ROOT / "data" / "groups.json").read_text(encoding="utf-8"))["groups"]
+
+    # Group winner/runner-up, resolved only for groups whose 6 games are all played.
+    group_matches: dict[str, list[dict]] = {}
+    for m in schedule:
+        if m["round"] == "group":
+            group_matches.setdefault(m["group"], []).append(m)
+    group_winner: dict[str, str] = {}
+    group_runner: dict[str, str] = {}
+    for letter, ms in group_matches.items():
+        if not all(m["match"] in played for m in ms):
+            continue
+        members = groups[letter]
+        lidx = {t: i for i, t in enumerate(members)}
+        res = [
+            (lidx[played[m["match"]]["home"]], lidx[played[m["match"]]["away"]],
+             int(played[m["match"]]["home_score"]), int(played[m["match"]]["away_score"]))
+            for m in ms
+        ]
+        points, gf, ga = tally(len(members), res)
+        order = rank_group(points, gf, ga, res, np.zeros(len(members)))
+        group_winner[letter] = members[order[0]]
+        group_runner[letter] = members[order[1]]
+
+    ctx = {
+        "group_winner": group_winner,
+        "group_runner": group_runner,
+        "winner_of": {},  # match_no -> winning team (knockout, from results)
+        "loser_of": {},
+    }
+
+    out: list[dict] = []
+    for m in sorted(schedule, key=lambda x: x["match"]):
+        played_r = played.get(m["match"])
+        entry: dict = {
+            "match": m["match"],
+            "round": m["round"],
+            "date": m["date"],
+            "venue": m["venue"],
+            "group": m.get("group"),
+            "host": m.get("host"),
+            "top_label": m.get("top_label"),
+            "bottom_label": m.get("bottom_label"),
+            "feeds": m.get("feeds"),
+        }
+        if m["round"] == "group":
+            home, away = m["home"], m["away"]
+            if played_r:
+                hs, as_ = int(played_r["home_score"]), int(played_r["away_score"])
+                if (played_r["home"], played_r["away"]) != (home, away):
+                    hs, as_ = as_, hs  # normalise to the schedule's orientation
+                winner = home if hs > as_ else away if as_ > hs else None
+                entry.update(status="played", score={"home": hs, "away": as_}, winner=winner)
+            else:
+                entry.update(status="scheduled", score=None, winner=None)
+        else:
+            home = _resolve_label(m.get("top_label"), ctx)
+            away = _resolve_label(m.get("bottom_label"), ctx)
+            if played_r:
+                home, away = played_r["home"], played_r["away"]
+                winner = played_r["winner"]
+                ctx["winner_of"][m["match"]] = winner
+                ctx["loser_of"][m["match"]] = away if winner == home else home
+                entry.update(
+                    status="played",
+                    score={"home": int(played_r["home_score"]), "away": int(played_r["away_score"])},
+                    winner=winner,
+                    decided_by=played_r.get("decided_by"),
+                )
+            else:
+                entry.update(status="scheduled", score=None, winner=None, decided_by=None)
+        entry["home"] = home
+        entry["away"] = away
+        out.append(entry)
     return out
 
 
@@ -148,6 +265,7 @@ def build_predictions(
         "matchups": matchups,
         "bracket_r32": bracket_r32,
         "fixtures": build_fixtures(model, cfg),
+        "schedule": build_schedule(),
     }
 
 
@@ -176,6 +294,16 @@ def build_manifest(sim: SimResults, model: DixonColesModel, cfg: dict, quick: bo
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "home_advantage_gamma": round(model.gamma, 4),
         "cohost_multiplier": cfg["home_advantage"]["cohost_multiplier"],
+        # Extra model params the frontend needs to reproduce the Dixon-Coles
+        # scoreline distribution in the browser (any matchup, incl. knockouts).
+        "rho": round(float(model.rho), 5),
+        "max_goals": int(model.max_goals),
+        "knockout": {
+            "mode": cfg["simulation"]["knockout"]["mode"],
+            "extra_time_fraction": cfg["simulation"]["knockout"]["extra_time_fraction"],
+            "penalty_skill_tilt": cfg["simulation"]["knockout"]["penalty_skill_tilt"],
+            "penalty_cap": cfg["simulation"]["knockout"]["penalty_cap"],
+        },
         "half_life_days": model.meta.get("half_life_days"),
         "se_note": f"Monte Carlo standard error ≈ sqrt(p(1-p)/N); at N={sim.n} a title "
         f"probability of 10% carries ±{100 * np.sqrt(0.1 * 0.9 / sim.n):.2f}%.",

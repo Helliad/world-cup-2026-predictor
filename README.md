@@ -1,12 +1,15 @@
 # World Cup 2026 Predictor & Simulator
 
-[![CI](https://github.com/OWNER/worldcup-2026-predictor/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/worldcup-2026-predictor/actions/workflows/ci.yml)
+[![CI](https://github.com/Helliad/world-cup-2026-predictor/actions/workflows/ci.yml/badge.svg)](https://github.com/Helliad/world-cup-2026-predictor/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Model tier: STRETCH](https://img.shields.io/badge/eval-STRETCH%20tier-success.svg)](#how-good-is-the-model)
 
 A **Dixon-Coles statistical model** fit on ~49,000 historical international matches, a **vectorised Monte-Carlo simulator** that plays the full 48-team 2026 World Cup 100,000 times, and a **polished React microsite** that turns the results into live title odds, group and bracket probabilities, and instant conditional "what if" scenarios.
 
 Three layers, deliberately decoupled: the model knows nothing about tournaments, the simulator knows nothing about React, and the frontend reads one static `predictions.json` and never calls Python at runtime.
+
+> **Just want the results?** → **[View the live site](https://helliad.github.io/world-cup-2026-predictor/)** — fully static, precomputed; no model runs in your browser.
+> **Want to change the model or data?** → [fork it and run locally](#quickstart) (the model only runs on your machine, never online).
 
 > **Status:** predictions are flagged **provisional** until FIFA's official third-place → bracket allocation table is encoded (a documented release gate, [§8.1 of the spec](worldcup-2026-predictor-SPEC.md)). Group memberships are official, reconstructed from the published fixture list.
 
@@ -56,18 +59,33 @@ Evaluated by a **rolling-origin (walk-forward) backtest** — never random k-fol
 ## Quickstart
 
 ```bash
-# 1. Python model + simulator
-python -m pip install -r requirements.txt
-python -m scripts.refresh_data        # download + validate the latest results.csv
-python -m model.train                 # fit Dixon-Coles -> model/params.json
-python -m model.evaluate              # walk-forward backtest + gates + plots
+# 1. Python model + simulator  (a clean clone already ships model/params.json)
+python -m pip install -r requirements.txt   # Python 3.11+
 python -m scripts.run_pipeline        # 100k-sim Monte Carlo -> web/public/predictions.json
+
+# Optional — only if you change the model or refresh the data:
+#   python -m scripts.refresh_data     # download + validate the latest results.csv
+#   python -m model.train              # re-fit Dixon-Coles -> model/params.json
+#   python -m model.evaluate           # walk-forward backtest + gates + plots
 
 # 2. Frontend
 cd web && npm install && npm run dev   # http://localhost:5173
 ```
 
-A clean clone reproduces the published numbers exactly from the committed config + data snapshot + `params.json`. Use `--quick` on the pipeline/eval for a fast iteration loop (and in CI).
+A clean clone reproduces the published numbers exactly from the committed config + data snapshot + `params.json`, so on a fresh checkout **only `run_pipeline` is needed** to regenerate `predictions.json` — `refresh_data`/`train`/`evaluate` are only for changing the data or re-fitting the model. Use `--quick` on the pipeline/eval for a fast iteration loop (and in CI).
+
+To record actual 2026 results as they're played, add them to [`data/results_2026.json`](data/results_2026.json) and re-run `scripts.run_pipeline` — each result is pinned into the simulation so standings, bracket, and title odds all re-condition on it (see the **Schedule** / Match Center tab).
+
+---
+
+## Deploy your own
+
+The site is fully static — the model runs only at build/commit time, never online — so the built `web/dist/` can be hosted anywhere. Two easy options:
+
+- **GitHub Pages (already wired).** [`.github/workflows/pages.yml`](.github/workflows/pages.yml) builds `web/` and publishes on every push to `main`. One-time setup: **repo Settings → Pages → Build and deployment → Source = “GitHub Actions”**, then re-run the workflow. It deploys to `https://<user>.github.io/world-cup-2026-predictor/`.
+- **Cloudflare Pages (or any static host).** Connect the repo and set **Root directory** `web`, **Build command** `npm run build`, **Output directory** `dist`, and env var **`NODE_VERSION=20`**. `vite.config.ts` uses `base: "./"` + `HashRouter`, so the same bundle works at a domain root or any subpath with no rewrite rules.
+
+To publish fresh results, re-run `python -m scripts.run_pipeline` and push — the host rebuilds automatically.
 
 ---
 

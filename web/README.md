@@ -18,10 +18,18 @@ npm run preview    # serve the production build
 `python -m scripts.run_pipeline`. To refresh the site's data, re-run the pipeline
 and rebuild.
 
-**GitHub Pages.** `vite.config.ts` uses `base: "./"` (relative assets) and the app
-uses `HashRouter`, so the static bundle works under any project subpath with no
-server rewrites. Deploy `dist/` to the `gh-pages` branch (or via an Actions
-workflow).
+**Hosting.** `vite.config.ts` uses `base: "./"` (relative assets) and the app uses
+`HashRouter`, so the static bundle works at a domain root or any project subpath
+with **no server rewrites / `_redirects` file**. The model never runs online — only
+the precomputed `predictions.json` + `outcomes_sample.json` are served.
+
+- **GitHub Pages (already wired):** [`../.github/workflows/pages.yml`](../.github/workflows/pages.yml)
+  runs `npm ci && npm run build` and publishes `dist/` on every push to `main`.
+  One-time: **repo Settings → Pages → Source = “GitHub Actions”**, then re-run it.
+- **Cloudflare Pages / other static hosts:** Root directory `web`, build command
+  `npm run build`, output `dist`, env `NODE_VERSION=20` (pinned in [`.nvmrc`](.nvmrc)).
+  On Cloudflare you can add a `public/_headers` file to cache the hashed `/assets/*`
+  immutably while keeping the fixed-name JSON on a short TTL.
 
 ## Views & user journey
 

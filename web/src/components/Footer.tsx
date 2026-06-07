@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { REPO_URL } from "../lib/site";
+import { AUTHOR, REPO_URL } from "../lib/site";
 import { useStore } from "../store/store";
 
 // Honest footer: site/info links, the provisional banner, the "model not
@@ -65,6 +65,26 @@ export function Footer() {
               martj42/international_results
             </a>{" "}
             (CC BY-NC-SA). Code MIT-licensed.
+          </p>
+          <p>
+            Built by{" "}
+            <a
+              className="font-medium text-text underline hover:text-accent"
+              href={AUTHOR.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {AUTHOR.name}
+            </a>{" "}
+            ·{" "}
+            <a
+              className="underline hover:text-text"
+              href={AUTHOR.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
           </p>
         </div>
       </div>

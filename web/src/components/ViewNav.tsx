@@ -4,7 +4,7 @@ import { useStore } from "../store/store";
 
 // Primary data views (left of the bar).
 const VIEW_TABS = [
-  { to: "/", label: "Title Race", end: true },
+  { to: "/title", label: "Title Race", end: false },
   { to: "/groups", label: "Groups", end: false },
   { to: "/schedule", label: "Schedule", end: false },
   { to: "/fixtures", label: "Fixtures", end: false },

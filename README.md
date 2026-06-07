@@ -125,3 +125,7 @@ See the [technical specification](worldcup-2026-predictor-SPEC.md) for the full 
 ## Data & license
 
 Code is MIT. The historical match data is [`martj42/international_results`](https://github.com/martj42/international_results) (CC BY-NC-SA 4.0) — see [`data/README.md`](data/README.md) for provenance, the schema, and refresh/validation commands.
+
+## Author
+
+Built by **[Abhay Bagda](https://abhaybagda.com/)** ([@Helliad](https://github.com/Helliad)).

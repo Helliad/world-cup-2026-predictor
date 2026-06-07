@@ -9,6 +9,7 @@ import { Bracket } from "./routes/Bracket";
 import { FAQ } from "./routes/FAQ";
 import { Fixtures } from "./routes/Fixtures";
 import { Groups } from "./routes/Groups";
+import { Landing } from "./routes/Landing";
 import { MatchDetail } from "./routes/MatchDetail";
 import { Privacy } from "./routes/Privacy";
 import { Schedule } from "./routes/Schedule";
@@ -97,7 +98,8 @@ export default function App() {
         {status === "error" && <ErrorState message={error} />}
         {status === "ready" && (
           <Routes>
-            <Route path="/" element={<TitleRace />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/title" element={<TitleRace />} />
             <Route path="/groups" element={<Groups />} />
             <Route path="/fixtures" element={<Fixtures />} />
             <Route path="/schedule" element={<Schedule />} />
@@ -108,7 +110,7 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="*" element={<TitleRace />} />
+            <Route path="*" element={<Landing />} />
           </Routes>
         )}
       </main>

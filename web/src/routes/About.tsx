@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ContentPage } from "../components/ContentPage";
+import { AUTHOR } from "../lib/site";
 import { useStore } from "../store/store";
 
 // "How this was made" — the methodology, written for a general audience but
@@ -101,7 +102,15 @@ export function About() {
         The Python model and simulator, the React site, the data snapshot, and the fitted parameters
         are all committed, so anyone can clone the repository and reproduce these exact numbers. Each
         run records its data checksum, configuration, and random seed. Code is MIT-licensed; the
-        underlying match data is CC BY-NC-SA.
+        underlying match data is CC BY-NC-SA. Built by{" "}
+        <a href={AUTHOR.url} target="_blank" rel="noopener noreferrer">
+          {AUTHOR.name}
+        </a>{" "}
+        (
+        <a href={AUTHOR.github} target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+        ).
       </p>
 
       <h2>7. What it is — and isn't</h2>

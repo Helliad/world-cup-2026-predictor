@@ -9,7 +9,9 @@ import { Bracket } from "./routes/Bracket";
 import { FAQ } from "./routes/FAQ";
 import { Fixtures } from "./routes/Fixtures";
 import { Groups } from "./routes/Groups";
+import { MatchDetail } from "./routes/MatchDetail";
 import { Privacy } from "./routes/Privacy";
+import { Schedule } from "./routes/Schedule";
 import { TeamDetail } from "./routes/TeamDetail";
 import { Terms } from "./routes/Terms";
 import { TitleRace } from "./routes/TitleRace";
@@ -98,6 +100,8 @@ export default function App() {
             <Route path="/" element={<TitleRace />} />
             <Route path="/groups" element={<Groups />} />
             <Route path="/fixtures" element={<Fixtures />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/match/:match" element={<MatchDetail />} />
             <Route path="/bracket" element={<Bracket />} />
             <Route path="/team/:id" element={<TeamDetail />} />
             <Route path="/about" element={<About />} />

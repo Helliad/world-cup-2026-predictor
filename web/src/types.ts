@@ -20,6 +20,16 @@ export interface Meta {
   se_note: string;
   model_metrics: { rps_test: number; accuracy_test: number; achieved_tier: string } | null;
   libraries: Record<string, string>;
+  // Extra Dixon-Coles params so the browser can reproduce any matchup's
+  // scoreline distribution (group + knockout) without a model — see lib/predict.ts.
+  rho: number;
+  max_goals: number;
+  knockout: {
+    mode: "staged" | "coinflip";
+    extra_time_fraction: number;
+    penalty_skill_tilt: boolean;
+    penalty_cap: number;
+  };
 }
 
 export interface TeamPrediction {
@@ -63,12 +73,42 @@ export interface Fixture {
   host: string | null; // home team name if it has co-host home advantage, else null
 }
 
+// One match in the full 104-game schedule (emitted by build_schedule, §8.1).
+// Group games always have home/away; knockout games carry the official slot
+// descriptors and fill home/away in as results decide who is there.
+export type MatchRound = "group" | "r32" | "r16" | "qf" | "sf" | "third" | "final";
+
+export interface Venue {
+  country: string;
+  city?: string;
+  stadium?: string;
+}
+
+export interface ScheduleMatch {
+  match: number; // 1..72 group, 73..104 knockout
+  round: MatchRound;
+  date: string; // ISO yyyy-mm-dd
+  venue: Venue;
+  group: string | null; // group letter for group games, else null
+  host: string | null; // home team name with co-host home advantage, else null
+  top_label: string | null; // knockout slot descriptor, e.g. "Winner Group A"
+  bottom_label: string | null;
+  feeds: number[] | null; // source match numbers (R16+)
+  home: string | null; // resolved participant (group: always; knockout: when known)
+  away: string | null;
+  status: "scheduled" | "played";
+  score: { home: number; away: number } | null;
+  winner: string | null;
+  decided_by?: "regulation" | "extra_time" | "penalties" | null;
+}
+
 export interface Predictions {
   meta: Meta;
   groups: Record<string, GroupRow[]>;
   teams: TeamPrediction[];
   matchups: Record<string, Matchup>;
   fixtures: Fixture[];
+  schedule: ScheduleMatch[];
 }
 
 // Stage probabilities a team can be shown at (ordered furthest → nearest).

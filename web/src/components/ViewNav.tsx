@@ -6,6 +6,7 @@ import { useStore } from "../store/store";
 const VIEW_TABS = [
   { to: "/", label: "Title Race", end: true },
   { to: "/groups", label: "Groups", end: false },
+  { to: "/schedule", label: "Schedule", end: false },
   { to: "/fixtures", label: "Fixtures", end: false },
   { to: "/bracket", label: "Bracket", end: false },
 ];

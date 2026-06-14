@@ -106,6 +106,9 @@ export function Landing() {
               </button>
             </div>
           </Reveal>
+          <Reveal delay={320}>
+            <LatestUpdate />
+          </Reveal>
         </div>
         <button
           type="button"
@@ -314,6 +317,96 @@ export function Landing() {
           </Reveal>
         </div>
       </section>
+    </div>
+  );
+}
+
+// ---------- latest-results update ----------
+
+// Hand-written editorial recap, refreshed each time real results are pinned into
+// the model (data/results_2026.json → pipeline → predictions.json). The figures
+// below are the model's pre-tournament number → its re-conditioned number for the
+// same outcome, so the card stays honest about what actually moved.
+const LATEST_UPDATE = {
+  date: "June 14, 2026",
+  matchday: "after the opening 8 matches",
+  summary:
+    "Matchday 1 mostly held at the top, but a few results jolted the model. Argentina (15%) and Spain (14%) haven't kicked off yet and still lead the title race; Brazil and Morocco cancelled each other out in a 1–1 draw, so neither pulled clear.",
+  // p(reach knockouts): model's prior → re-conditioned on the result
+  up: [
+    { team: "United States", from: 56, to: 94, note: "thumped Paraguay 4–1" },
+    { team: "Australia", from: 65, to: 95, note: "beat a favoured Turkey 2–0" },
+    { team: "South Korea", from: 71, to: 94, note: "edged Czechia 2–1" },
+    { team: "Scotland", from: 58, to: 77, note: "1–0 over Haiti" },
+    { team: "Mexico", from: 85, to: 98, note: "2–0 over South Africa" },
+  ],
+  down: [
+    { team: "Paraguay", from: 72, to: 37, note: "blown out by the USA" },
+    { team: "Turkey", from: 79, to: 52, note: "lost to Australia" },
+    { team: "Switzerland", from: 97, to: 87, note: "only drew Qatar (85% expected win)" },
+    { team: "Czech Republic", from: 69, to: 50, note: "lost to South Korea" },
+  ],
+};
+
+function LatestUpdate() {
+  const u = LATEST_UPDATE;
+  return (
+    <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-border bg-surface/70 p-5 text-left shadow-lg shadow-black/5 backdrop-blur">
+      <div className="flex items-center gap-2">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+        </span>
+        <span className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
+          Model update · {u.date}
+        </span>
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-muted">
+        Updated <strong className="text-text">{u.matchday}</strong>. {u.summary}
+      </p>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <UpdateColumn title="Stock up" tone="up" rows={u.up} />
+        <UpdateColumn title="Stock down" tone="down" rows={u.down} />
+      </div>
+      <p className="mt-3 text-[0.7rem] leading-relaxed text-muted/80">
+        Figures are each team's chance of reaching the knockouts: the model's pre-tournament
+        number → re-conditioned on the result now pinned into all 100,000 simulations.
+      </p>
+    </div>
+  );
+}
+
+function UpdateColumn({
+  title,
+  tone,
+  rows,
+}: {
+  title: string;
+  tone: "up" | "down";
+  rows: { team: string; from: number; to: number; note: string }[];
+}) {
+  const isUp = tone === "up";
+  return (
+    <div>
+      <div className="mb-2 flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted">
+        <span className={isUp ? "text-prob-fill" : "text-accent"}>{isUp ? "▲" : "▼"}</span>
+        {title}
+      </div>
+      <ul className="space-y-2">
+        {rows.map((r) => (
+          <li key={r.team} className="flex items-center gap-2">
+            <TeamBadge team={r.team} className="h-4 w-4 text-[0.5rem]" />
+            <span className="min-w-0 flex-1 truncate text-xs font-medium" title={r.note}>
+              {r.team}
+            </span>
+            <span className="shrink-0 text-[0.7rem] tabular-nums text-muted">
+              {r.from}%
+              <span className="px-0.5">→</span>
+              <strong className={isUp ? "text-prob-fill" : "text-accent"}>{r.to}%</strong>
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

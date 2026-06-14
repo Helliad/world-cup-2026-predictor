@@ -1,7 +1,16 @@
 {
   "meta": {
     "note": "Actual 2026 World Cup results as they are played. The pipeline pins these into the Monte Carlo so every downstream probability re-conditions on reality. Group entries pin the scoreline; knockout entries pin the winner (record decided_by + the two teams).",
-    "updated": null
+    "updated": "2026-06-14"
   },
-  "matches": []
+  "matches": [
+    { "match": 1, "home": "Mexico", "away": "South Africa", "home_score": 2, "away_score": 0 },
+    { "match": 2, "home": "South Korea", "away": "Czech Republic", "home_score": 2, "away_score": 1 },
+    { "match": 3, "home": "Canada", "away": "Bosnia and Herzegovina", "home_score": 1, "away_score": 1 },
+    { "match": 4, "home": "United States", "away": "Paraguay", "home_score": 4, "away_score": 1 },
+    { "match": 5, "home": "Qatar", "away": "Switzerland", "home_score": 1, "away_score": 1 },
+    { "match": 6, "home": "Brazil", "away": "Morocco", "home_score": 1, "away_score": 1 },
+    { "match": 7, "home": "Haiti", "away": "Scotland", "home_score": 0, "away_score": 1 },
+    { "match": 8, "home": "Australia", "away": "Turkey", "home_score": 2, "away_score": 0 }
+  ]
 }

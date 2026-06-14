@@ -285,8 +285,20 @@ def test_pinned_knockout_loss_drops_title_odds(model, sim_inputs, params) -> Non
     assert koed.p_win[ti[fav]] <= base.p_win[ti[fav]]
 
 
-def test_empty_pins_match_default_run(model, sim_inputs, params, results: SimResults) -> None:
-    """Explicit empty pins reproduce the default run bit-for-bit (no RNG drift)."""
-    explicit = _run(model, sim_inputs, params)
-    assert np.array_equal(explicit.p_win, results.p_win)
-    assert np.array_equal(explicit.p_advance, results.p_advance)
+def test_empty_pins_match_default_run(model, sim_inputs, params) -> None:
+    """Passing explicit empty pins reproduces an unpinned run bit-for-bit: the
+    ``.get(..., default)`` pin defaulting introduces no RNG drift.
+
+    Baselined against a *pin-free* sim_inputs (real played results are pinned in
+    the data now, so the shared run conditions on them and is no longer empty)."""
+    pin_free = {k: v for k, v in sim_inputs.items() if k not in ("pinned_group", "pinned_ko")}
+
+    def run(si):
+        return run_simulations(
+            model, si, params, n=N_SIMS, seed=MC_SEED, whatif_sample_size=WHATIF_K, verbose=False
+        )
+
+    omitted = run(pin_free)
+    explicit = run({**pin_free, "pinned_group": {}, "pinned_ko": []})
+    assert np.array_equal(explicit.p_win, omitted.p_win)
+    assert np.array_equal(explicit.p_advance, omitted.p_advance)

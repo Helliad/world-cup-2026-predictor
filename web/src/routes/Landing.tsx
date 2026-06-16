@@ -328,23 +328,23 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 14, 2026",
-  matchday: "after the opening 8 matches",
+  date: "June 16, 2026",
+  matchday: "after matchday 2 (16 matches played)",
   summary:
-    "Matchday 1 mostly held at the top, but a few results jolted the model. Argentina (15%) and Spain (14%) haven't kicked off yet and still lead the title race; Brazil and Morocco cancelled each other out in a 1–1 draw, so neither pulled clear.",
+    "Groups E–J opened with the tournament's first real shocks: Cape Verde held Spain to a 0–0 draw and Sweden thrashed Tunisia 5–1, while Germany routed Curaçao 7–1. Argentina (15%) still lead the title race and haven't kicked off yet; Spain (14%) hold second despite dropping points.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "United States", from: 56, to: 94, note: "thumped Paraguay 4–1" },
-    { team: "Australia", from: 65, to: 95, note: "beat a favoured Turkey 2–0" },
-    { team: "South Korea", from: 71, to: 94, note: "edged Czechia 2–1" },
-    { team: "Scotland", from: 58, to: 77, note: "1–0 over Haiti" },
-    { team: "Mexico", from: 85, to: 98, note: "2–0 over South Africa" },
+    { team: "Sweden", from: 46, to: 90, note: "thrashed Tunisia 5–1" },
+    { team: "Ivory Coast", from: 80, to: 98, note: "late winner sank Ecuador 1–0" },
+    { team: "Cape Verde", from: 43, to: 60, note: "held Spain to a 0–0 draw" },
+    { team: "Egypt", from: 75, to: 79, note: "drew Belgium 1–1" },
+    { team: "Saudi Arabia", from: 26, to: 32, note: "drew Uruguay 1–1" },
   ],
   down: [
-    { team: "Paraguay", from: 72, to: 37, note: "blown out by the USA" },
-    { team: "Turkey", from: 79, to: 52, note: "lost to Australia" },
-    { team: "Switzerland", from: 97, to: 87, note: "only drew Qatar (85% expected win)" },
-    { team: "Czech Republic", from: 69, to: 50, note: "lost to South Korea" },
+    { team: "Tunisia", from: 48, to: 16, note: "routed by Sweden" },
+    { team: "Ecuador", from: 91, to: 79, note: "edged out by Ivory Coast" },
+    { team: "Uruguay", from: 83, to: 69, note: "only drew Saudi Arabia" },
+    { team: "Iran", from: 76, to: 57, note: "let a 2–2 slip vs New Zealand" },
   ],
 };
 

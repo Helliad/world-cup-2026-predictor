@@ -13,6 +13,7 @@ import { Landing } from "./routes/Landing";
 import { MatchDetail } from "./routes/MatchDetail";
 import { Privacy } from "./routes/Privacy";
 import { Schedule } from "./routes/Schedule";
+import { Scorecard } from "./routes/Scorecard";
 import { TeamDetail } from "./routes/TeamDetail";
 import { Terms } from "./routes/Terms";
 import { TitleRace } from "./routes/TitleRace";
@@ -103,6 +104,7 @@ export default function App() {
             <Route path="/groups" element={<Groups />} />
             <Route path="/fixtures" element={<Fixtures />} />
             <Route path="/schedule" element={<Schedule />} />
+            <Route path="/scorecard" element={<Scorecard />} />
             <Route path="/match/:match" element={<MatchDetail />} />
             <Route path="/bracket" element={<Bracket />} />
             <Route path="/team/:id" element={<TeamDetail />} />

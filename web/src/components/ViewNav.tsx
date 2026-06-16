@@ -10,6 +10,7 @@ const VIEW_TABS = [
   { to: "/schedule", label: "Schedule", end: false },
   { to: "/fixtures", label: "Fixtures", end: false },
   { to: "/bracket", label: "Bracket", end: false },
+  { to: "/scorecard", label: "Scorecard", end: false },
 ];
 
 // Secondary project/info links (right of the bar, with the theme toggle).

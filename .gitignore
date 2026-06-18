@@ -29,8 +29,10 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
-# Local Claude Code agent worktrees + machine-specific config.
-.claude/
+# Local Claude Code agent worktrees + machine-specific config, except shared
+# committed skills (e.g. the fixtures-update routine) used by scheduled agents.
+.claude/*
+!.claude/skills/
 
 # Spurious root-level npm lockfile (there is no root package.json; the only
 # Node project is web/). Prevents an accidental `npm install` at the repo root

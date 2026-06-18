@@ -329,12 +329,13 @@ export function Landing() {
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
   date: "June 18, 2026",
-  matchday: "after the opening round of Groups I–L (23 matches played)",
+  matchday: "after the opening round of all 12 groups (24 matches played)",
   summary:
-    "The heavyweights opened up: Messi's hat-trick sank Algeria 3–0, Mbappé's brace beat Senegal 3–1, and England edged a 4–2 thriller with Croatia. Argentina (16%) stretched their lead at the top; Spain (13%) slipped to second after their earlier draw, and France climbed into the top five.",
+    "The heavyweights opened up: Messi's hat-trick sank Algeria 3–0, Mbappé's brace beat Senegal 3–1, and England edged a 4–2 thriller with Croatia. Colombia rounded out the openers, coming from behind to beat Uzbekistan 3–1. Argentina (15%) lead the title race; Spain (13%) hold second after their earlier draw, with France now up to fourth.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
     { team: "France", from: 90, to: 99, note: "Mbappé brace beat Senegal 3–1" },
+    { team: "Colombia", from: 87, to: 97, note: "came from behind to beat Uzbekistan 3–1" },
     { team: "Norway", from: 84, to: 97, note: "Haaland double in a 4–1 rout of Iraq" },
     { team: "Austria", from: 77, to: 94, note: "3–1 over Jordan" },
     { team: "Ghana", from: 41, to: 70, note: "stoppage-time winner past Panama 1–0" },
@@ -342,6 +343,7 @@ const LATEST_UPDATE = {
   down: [
     { team: "Algeria", from: 77, to: 62, note: "swept aside by Messi's Argentina" },
     { team: "Senegal", from: 76, to: 61, note: "lost to France" },
+    { team: "Uzbekistan", from: 32, to: 19, note: "lost their opener to Colombia" },
     { team: "Croatia", from: 88, to: 81, note: "lost a 4–2 thriller to England" },
     { team: "Panama", from: 30, to: 9, note: "edged out by Ghana" },
   ],

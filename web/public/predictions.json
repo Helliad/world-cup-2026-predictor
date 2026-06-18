@@ -7,10 +7,10 @@
     "data_snapshot": "2026-06-27",
     "data_checksum": "7f3d1becd7653e486c012fb82ed4f276b417f60bfbf293f04401c231b39cb304",
     "data_rows": 49378,
-    "git_commit": "8fb50432a8f38c2363611cd2c8c348bbe7102f96",
+    "git_commit": "0630f78e2d5408de639fb4c467704627d2867eff",
     "config_hash": "40a128ca0b78",
     "provisional": true,
-    "generated_at": "2026-06-16T05:37:35+00:00",
+    "generated_at": "2026-06-18T01:21:58+00:00",
     "home_advantage_gamma": 0.2436,
     "cohost_multiplier": 0.5,
     "rho": -0.05443,
@@ -37,25 +37,25 @@
     "A": [
       {
         "team": "Mexico",
-        "p_advance": 0.972,
+        "p_advance": 0.9723,
         "exp_points": 6.26,
         "data_confidence": "high"
       },
       {
         "team": "South Korea",
-        "p_advance": 0.9318,
+        "p_advance": 0.9325,
         "exp_points": 5.76,
         "data_confidence": "high"
       },
       {
         "team": "Czech Republic",
-        "p_advance": 0.4942,
+        "p_advance": 0.4932,
         "exp_points": 2.71,
         "data_confidence": "high"
       },
       {
         "team": "South Africa",
-        "p_advance": 0.2729,
+        "p_advance": 0.273,
         "exp_points": 2.1,
         "data_confidence": "high"
       }
@@ -63,7 +63,7 @@
     "B": [
       {
         "team": "Switzerland",
-        "p_advance": 0.8719,
+        "p_advance": 0.8717,
         "exp_points": 4.87,
         "data_confidence": "high"
       },
@@ -75,13 +75,13 @@
       },
       {
         "team": "Bosnia and Herzegovina",
-        "p_advance": 0.6467,
+        "p_advance": 0.6454,
         "exp_points": 3.46,
         "data_confidence": "high"
       },
       {
         "team": "Qatar",
-        "p_advance": 0.3138,
+        "p_advance": 0.313,
         "exp_points": 2.31,
         "data_confidence": "high"
       }
@@ -89,25 +89,25 @@
     "C": [
       {
         "team": "Brazil",
-        "p_advance": 0.9633,
+        "p_advance": 0.9627,
         "exp_points": 5.78,
         "data_confidence": "high"
       },
       {
         "team": "Morocco",
-        "p_advance": 0.9291,
+        "p_advance": 0.9297,
         "exp_points": 5.36,
         "data_confidence": "high"
       },
       {
         "team": "Scotland",
-        "p_advance": 0.7677,
+        "p_advance": 0.7638,
         "exp_points": 4.37,
         "data_confidence": "high"
       },
       {
         "team": "Haiti",
-        "p_advance": 0.0558,
+        "p_advance": 0.0552,
         "exp_points": 0.68,
         "data_confidence": "high"
       }
@@ -115,25 +115,25 @@
     "D": [
       {
         "team": "Australia",
-        "p_advance": 0.9415,
+        "p_advance": 0.9427,
         "exp_points": 5.67,
         "data_confidence": "high"
       },
       {
         "team": "United States",
-        "p_advance": 0.9311,
+        "p_advance": 0.9322,
         "exp_points": 5.28,
         "data_confidence": "high"
       },
       {
         "team": "Turkey",
-        "p_advance": 0.5187,
+        "p_advance": 0.5196,
         "exp_points": 3.18,
         "data_confidence": "high"
       },
       {
         "team": "Paraguay",
-        "p_advance": 0.366,
+        "p_advance": 0.3668,
         "exp_points": 2.7,
         "data_confidence": "high"
       }
@@ -141,25 +141,25 @@
     "E": [
       {
         "team": "Sweden",
-        "p_advance": 0.8963,
+        "p_advance": 0.8976,
         "exp_points": 4.52,
         "data_confidence": "high"
       },
       {
         "team": "Netherlands",
-        "p_advance": 0.8848,
+        "p_advance": 0.8841,
         "exp_points": 5.02,
         "data_confidence": "high"
       },
       {
         "team": "Japan",
-        "p_advance": 0.8558,
+        "p_advance": 0.855,
         "exp_points": 4.79,
         "data_confidence": "high"
       },
       {
         "team": "Tunisia",
-        "p_advance": 0.1557,
+        "p_advance": 0.1532,
         "exp_points": 1.65,
         "data_confidence": "high"
       }
@@ -173,19 +173,19 @@
       },
       {
         "team": "Ivory Coast",
-        "p_advance": 0.9787,
+        "p_advance": 0.9789,
         "exp_points": 6.31,
         "data_confidence": "high"
       },
       {
         "team": "Ecuador",
-        "p_advance": 0.7864,
+        "p_advance": 0.7877,
         "exp_points": 3.81,
         "data_confidence": "high"
       },
       {
         "team": "Curaçao",
-        "p_advance": 0.0278,
+        "p_advance": 0.0267,
         "exp_points": 0.72,
         "data_confidence": "high"
       }
@@ -193,25 +193,25 @@
     "G": [
       {
         "team": "Spain",
-        "p_advance": 0.9543,
+        "p_advance": 0.9545,
         "exp_points": 5.54,
         "data_confidence": "high"
       },
       {
         "team": "Uruguay",
-        "p_advance": 0.6937,
+        "p_advance": 0.6943,
         "exp_points": 3.71,
         "data_confidence": "high"
       },
       {
         "team": "Cape Verde",
-        "p_advance": 0.603,
+        "p_advance": 0.6027,
         "exp_points": 3.39,
         "data_confidence": "high"
       },
       {
         "team": "Saudi Arabia",
-        "p_advance": 0.3221,
+        "p_advance": 0.3215,
         "exp_points": 2.33,
         "data_confidence": "high"
       }
@@ -225,19 +225,19 @@
       },
       {
         "team": "Egypt",
-        "p_advance": 0.7928,
+        "p_advance": 0.7931,
         "exp_points": 4.33,
         "data_confidence": "high"
       },
       {
         "team": "Iran",
-        "p_advance": 0.5683,
+        "p_advance": 0.5663,
         "exp_points": 3.27,
         "data_confidence": "high"
       },
       {
         "team": "New Zealand",
-        "p_advance": 0.2493,
+        "p_advance": 0.2479,
         "exp_points": 2.11,
         "data_confidence": "high"
       }
@@ -245,104 +245,104 @@
     "I": [
       {
         "team": "France",
-        "p_advance": 0.9045,
-        "exp_points": 5.64,
+        "p_advance": 0.9933,
+        "exp_points": 6.96,
         "data_confidence": "high"
       },
       {
         "team": "Norway",
-        "p_advance": 0.843,
-        "exp_points": 5.0,
+        "p_advance": 0.9732,
+        "exp_points": 5.69,
         "data_confidence": "high"
       },
       {
         "team": "Senegal",
-        "p_advance": 0.7582,
-        "exp_points": 4.39,
+        "p_advance": 0.6146,
+        "exp_points": 3.35,
         "data_confidence": "high"
       },
       {
         "team": "Iraq",
-        "p_advance": 0.1688,
-        "exp_points": 1.51,
+        "p_advance": 0.0707,
+        "exp_points": 1.02,
         "data_confidence": "high"
       }
     ],
     "J": [
       {
         "team": "Argentina",
-        "p_advance": 0.9653,
-        "exp_points": 6.49,
+        "p_advance": 0.9989,
+        "exp_points": 7.55,
         "data_confidence": "high"
       },
       {
         "team": "Austria",
-        "p_advance": 0.7702,
-        "exp_points": 4.32,
+        "p_advance": 0.9372,
+        "exp_points": 5.13,
         "data_confidence": "high"
       },
       {
         "team": "Algeria",
-        "p_advance": 0.7699,
-        "exp_points": 4.32,
+        "p_advance": 0.622,
+        "exp_points": 3.54,
         "data_confidence": "high"
       },
       {
         "team": "Jordan",
-        "p_advance": 0.1607,
-        "exp_points": 1.45,
+        "p_advance": 0.0689,
+        "exp_points": 0.84,
         "data_confidence": "high"
       }
     ],
     "K": [
       {
         "team": "England",
-        "p_advance": 0.9643,
-        "exp_points": 6.54,
+        "p_advance": 0.9982,
+        "exp_points": 7.83,
         "data_confidence": "high"
       },
       {
         "team": "Croatia",
-        "p_advance": 0.8812,
-        "exp_points": 5.29,
+        "p_advance": 0.8102,
+        "exp_points": 4.3,
         "data_confidence": "high"
       },
       {
         "team": "Ghana",
-        "p_advance": 0.4125,
-        "exp_points": 2.63,
+        "p_advance": 0.7017,
+        "exp_points": 4.15,
         "data_confidence": "high"
       },
       {
         "team": "Panama",
-        "p_advance": 0.3037,
-        "exp_points": 2.17,
+        "p_advance": 0.0924,
+        "exp_points": 0.93,
         "data_confidence": "high"
       }
     ],
     "L": [
       {
-        "team": "Portugal",
-        "p_advance": 0.884,
-        "exp_points": 5.5,
+        "team": "Colombia",
+        "p_advance": 0.8653,
+        "exp_points": 5.31,
         "data_confidence": "high"
       },
       {
-        "team": "Colombia",
-        "p_advance": 0.867,
-        "exp_points": 5.3,
+        "team": "Portugal",
+        "p_advance": 0.8468,
+        "exp_points": 4.62,
         "data_confidence": "high"
       },
       {
         "team": "DR Congo",
-        "p_advance": 0.517,
-        "exp_points": 3.15,
+        "p_advance": 0.5844,
+        "exp_points": 3.34,
         "data_confidence": "high"
       },
       {
         "team": "Uzbekistan",
-        "p_advance": 0.3207,
-        "exp_points": 2.3,
+        "p_advance": 0.3215,
+        "exp_points": 2.29,
         "data_confidence": "high"
       }
     ]
@@ -352,13 +352,13 @@
       "team": "Argentina",
       "group": "J",
       "data_confidence": "high",
-      "p_advance": 0.9653,
-      "p_r16": 0.6828,
-      "p_qf": 0.4658,
-      "p_sf": 0.3388,
-      "p_final": 0.231,
-      "p_win": 0.1532,
-      "se_win": 0.00114,
+      "p_advance": 0.9989,
+      "p_r16": 0.7128,
+      "p_qf": 0.4784,
+      "p_sf": 0.3471,
+      "p_final": 0.2357,
+      "p_win": 0.1575,
+      "se_win": 0.00115,
       "alpha": 1.1485,
       "beta": -1.3508
     },
@@ -366,13 +366,13 @@
       "team": "Spain",
       "group": "G",
       "data_confidence": "high",
-      "p_advance": 0.9543,
-      "p_r16": 0.7515,
-      "p_qf": 0.4824,
-      "p_sf": 0.3322,
-      "p_final": 0.2192,
-      "p_win": 0.14,
-      "se_win": 0.0011,
+      "p_advance": 0.9545,
+      "p_r16": 0.7555,
+      "p_qf": 0.4632,
+      "p_sf": 0.3207,
+      "p_final": 0.2101,
+      "p_win": 0.1335,
+      "se_win": 0.00108,
       "alpha": 1.3356,
       "beta": -1.0215
     },
@@ -380,12 +380,12 @@
       "team": "Brazil",
       "group": "C",
       "data_confidence": "high",
-      "p_advance": 0.9633,
-      "p_r16": 0.7123,
-      "p_qf": 0.5145,
-      "p_sf": 0.3012,
-      "p_final": 0.1683,
-      "p_win": 0.0889,
+      "p_advance": 0.9627,
+      "p_r16": 0.7151,
+      "p_qf": 0.5173,
+      "p_sf": 0.2967,
+      "p_final": 0.1678,
+      "p_win": 0.088,
       "se_win": 0.0009,
       "alpha": 1.2598,
       "beta": -0.8412
@@ -394,13 +394,13 @@
       "team": "Morocco",
       "group": "C",
       "data_confidence": "high",
-      "p_advance": 0.9291,
-      "p_r16": 0.651,
-      "p_qf": 0.4294,
-      "p_sf": 0.2419,
-      "p_final": 0.128,
-      "p_win": 0.0672,
-      "se_win": 0.00079,
+      "p_advance": 0.9297,
+      "p_r16": 0.6497,
+      "p_qf": 0.4325,
+      "p_sf": 0.2428,
+      "p_final": 0.1292,
+      "p_win": 0.0685,
+      "se_win": 0.0008,
       "alpha": 0.8325,
       "beta": -1.2508
     },
@@ -408,13 +408,13 @@
       "team": "France",
       "group": "I",
       "data_confidence": "high",
-      "p_advance": 0.9045,
-      "p_r16": 0.5736,
-      "p_qf": 0.3581,
-      "p_sf": 0.2168,
-      "p_final": 0.116,
-      "p_win": 0.0625,
-      "se_win": 0.00077,
+      "p_advance": 0.9933,
+      "p_r16": 0.6395,
+      "p_qf": 0.4012,
+      "p_sf": 0.2436,
+      "p_final": 0.1264,
+      "p_win": 0.0675,
+      "se_win": 0.00079,
       "alpha": 1.1479,
       "beta": -0.9403
     },
@@ -422,55 +422,55 @@
       "team": "England",
       "group": "K",
       "data_confidence": "high",
-      "p_advance": 0.9643,
-      "p_r16": 0.5555,
-      "p_qf": 0.3437,
-      "p_sf": 0.2052,
-      "p_final": 0.1128,
-      "p_win": 0.0584,
-      "se_win": 0.00074,
+      "p_advance": 0.9982,
+      "p_r16": 0.5537,
+      "p_qf": 0.3445,
+      "p_sf": 0.2073,
+      "p_final": 0.1194,
+      "p_win": 0.0604,
+      "se_win": 0.00075,
       "alpha": 1.0325,
       "beta": -1.0457
-    },
-    {
-      "team": "Portugal",
-      "group": "L",
-      "data_confidence": "high",
-      "p_advance": 0.884,
-      "p_r16": 0.4664,
-      "p_qf": 0.2803,
-      "p_sf": 0.1734,
-      "p_final": 0.0949,
-      "p_win": 0.0483,
-      "se_win": 0.00068,
-      "alpha": 1.1688,
-      "beta": -0.8601
     },
     {
       "team": "Germany",
       "group": "F",
       "data_confidence": "high",
       "p_advance": 0.9965,
-      "p_r16": 0.6562,
-      "p_qf": 0.3523,
-      "p_sf": 0.183,
-      "p_final": 0.0942,
-      "p_win": 0.0447,
-      "se_win": 0.00065,
+      "p_r16": 0.6573,
+      "p_qf": 0.3398,
+      "p_sf": 0.1761,
+      "p_final": 0.0924,
+      "p_win": 0.0429,
+      "se_win": 0.00064,
       "alpha": 1.216,
       "beta": -0.7047
+    },
+    {
+      "team": "Portugal",
+      "group": "L",
+      "data_confidence": "high",
+      "p_advance": 0.8468,
+      "p_r16": 0.4278,
+      "p_qf": 0.2556,
+      "p_sf": 0.1563,
+      "p_final": 0.0853,
+      "p_win": 0.0427,
+      "se_win": 0.00064,
+      "alpha": 1.1688,
+      "beta": -0.8601
     },
     {
       "team": "Netherlands",
       "group": "E",
       "data_confidence": "high",
-      "p_advance": 0.8848,
-      "p_r16": 0.5544,
-      "p_qf": 0.318,
-      "p_sf": 0.1583,
-      "p_final": 0.0772,
-      "p_win": 0.0383,
-      "se_win": 0.00061,
+      "p_advance": 0.8841,
+      "p_r16": 0.5554,
+      "p_qf": 0.3162,
+      "p_sf": 0.157,
+      "p_final": 0.0763,
+      "p_win": 0.0376,
+      "se_win": 0.0006,
       "alpha": 1.1415,
       "beta": -0.7956
     },
@@ -478,13 +478,13 @@
       "team": "Colombia",
       "group": "L",
       "data_confidence": "high",
-      "p_advance": 0.867,
-      "p_r16": 0.4395,
-      "p_qf": 0.2539,
-      "p_sf": 0.1505,
-      "p_final": 0.0785,
-      "p_win": 0.0368,
-      "se_win": 0.0006,
+      "p_advance": 0.8653,
+      "p_r16": 0.4352,
+      "p_qf": 0.2582,
+      "p_sf": 0.1533,
+      "p_final": 0.0786,
+      "p_win": 0.0367,
+      "se_win": 0.00059,
       "alpha": 1.1606,
       "beta": -0.7988
     },
@@ -492,13 +492,13 @@
       "team": "Norway",
       "group": "I",
       "data_confidence": "high",
-      "p_advance": 0.843,
-      "p_r16": 0.4809,
-      "p_qf": 0.2661,
-      "p_sf": 0.1437,
-      "p_final": 0.0672,
-      "p_win": 0.0306,
-      "se_win": 0.00054,
+      "p_advance": 0.9732,
+      "p_r16": 0.5469,
+      "p_qf": 0.3071,
+      "p_sf": 0.1668,
+      "p_final": 0.0779,
+      "p_win": 0.0354,
+      "se_win": 0.00058,
       "alpha": 1.1122,
       "beta": -0.7718
     },
@@ -507,11 +507,11 @@
       "group": "H",
       "data_confidence": "high",
       "p_advance": 0.9232,
-      "p_r16": 0.579,
-      "p_qf": 0.2941,
-      "p_sf": 0.1572,
-      "p_final": 0.0728,
-      "p_win": 0.0304,
+      "p_r16": 0.5799,
+      "p_qf": 0.3011,
+      "p_sf": 0.1635,
+      "p_final": 0.0743,
+      "p_win": 0.0301,
       "se_win": 0.00054,
       "alpha": 1.0559,
       "beta": -0.7355
@@ -520,13 +520,13 @@
       "team": "Japan",
       "group": "E",
       "data_confidence": "high",
-      "p_advance": 0.8558,
-      "p_r16": 0.5127,
-      "p_qf": 0.2838,
-      "p_sf": 0.1331,
-      "p_final": 0.0625,
-      "p_win": 0.0293,
-      "se_win": 0.00053,
+      "p_advance": 0.855,
+      "p_r16": 0.5119,
+      "p_qf": 0.2826,
+      "p_sf": 0.1314,
+      "p_final": 0.0612,
+      "p_win": 0.0297,
+      "se_win": 0.00054,
       "alpha": 0.9274,
       "beta": -0.946
     },
@@ -534,12 +534,12 @@
       "team": "Ecuador",
       "group": "F",
       "data_confidence": "high",
-      "p_advance": 0.7864,
-      "p_r16": 0.45,
-      "p_qf": 0.2442,
-      "p_sf": 0.1143,
-      "p_final": 0.0538,
-      "p_win": 0.0247,
+      "p_advance": 0.7877,
+      "p_r16": 0.4534,
+      "p_qf": 0.2457,
+      "p_sf": 0.1135,
+      "p_final": 0.053,
+      "p_win": 0.0243,
       "se_win": 0.00049,
       "alpha": 0.6069,
       "beta": -1.2329
@@ -548,12 +548,12 @@
       "team": "Switzerland",
       "group": "B",
       "data_confidence": "high",
-      "p_advance": 0.8719,
-      "p_r16": 0.5402,
-      "p_qf": 0.2718,
-      "p_sf": 0.1132,
-      "p_final": 0.0536,
-      "p_win": 0.0226,
+      "p_advance": 0.8717,
+      "p_r16": 0.5434,
+      "p_qf": 0.2704,
+      "p_sf": 0.1101,
+      "p_final": 0.0523,
+      "p_win": 0.0223,
       "se_win": 0.00047,
       "alpha": 1.0566,
       "beta": -0.7278
@@ -562,27 +562,41 @@
       "team": "Austria",
       "group": "J",
       "data_confidence": "high",
-      "p_advance": 0.7702,
-      "p_r16": 0.3729,
-      "p_qf": 0.1856,
-      "p_sf": 0.0935,
-      "p_final": 0.0414,
-      "p_win": 0.0165,
-      "se_win": 0.0004,
+      "p_advance": 0.9372,
+      "p_r16": 0.4499,
+      "p_qf": 0.2319,
+      "p_sf": 0.1195,
+      "p_final": 0.0534,
+      "p_win": 0.0211,
+      "se_win": 0.00045,
       "alpha": 0.8747,
       "beta": -0.8444
+    },
+    {
+      "team": "Uruguay",
+      "group": "G",
+      "data_confidence": "high",
+      "p_advance": 0.6943,
+      "p_r16": 0.3913,
+      "p_qf": 0.1951,
+      "p_sf": 0.09,
+      "p_final": 0.0382,
+      "p_win": 0.0146,
+      "se_win": 0.00038,
+      "alpha": 0.6299,
+      "beta": -1.0183
     },
     {
       "team": "Algeria",
       "group": "J",
       "data_confidence": "high",
-      "p_advance": 0.7699,
-      "p_r16": 0.3728,
-      "p_qf": 0.1841,
-      "p_sf": 0.0929,
-      "p_final": 0.0408,
-      "p_win": 0.0151,
-      "se_win": 0.00039,
+      "p_advance": 0.622,
+      "p_r16": 0.3046,
+      "p_qf": 0.154,
+      "p_sf": 0.0757,
+      "p_final": 0.0325,
+      "p_win": 0.0132,
+      "se_win": 0.00036,
       "alpha": 0.9263,
       "beta": -0.787
     },
@@ -590,41 +604,27 @@
       "team": "Senegal",
       "group": "I",
       "data_confidence": "high",
-      "p_advance": 0.7582,
-      "p_r16": 0.3871,
-      "p_qf": 0.192,
-      "p_sf": 0.0908,
-      "p_final": 0.0379,
-      "p_win": 0.0149,
-      "se_win": 0.00038,
+      "p_advance": 0.6146,
+      "p_r16": 0.3086,
+      "p_qf": 0.1485,
+      "p_sf": 0.0695,
+      "p_final": 0.0305,
+      "p_win": 0.0123,
+      "se_win": 0.00035,
       "alpha": 0.9641,
       "beta": -0.7477
-    },
-    {
-      "team": "Uruguay",
-      "group": "G",
-      "data_confidence": "high",
-      "p_advance": 0.6937,
-      "p_r16": 0.3909,
-      "p_qf": 0.1984,
-      "p_sf": 0.089,
-      "p_final": 0.0385,
-      "p_win": 0.0142,
-      "se_win": 0.00037,
-      "alpha": 0.6299,
-      "beta": -1.0183
     },
     {
       "team": "Croatia",
       "group": "K",
       "data_confidence": "high",
-      "p_advance": 0.8812,
-      "p_r16": 0.3774,
-      "p_qf": 0.1796,
-      "p_sf": 0.0823,
-      "p_final": 0.0324,
-      "p_win": 0.0123,
-      "se_win": 0.00035,
+      "p_advance": 0.8102,
+      "p_r16": 0.331,
+      "p_qf": 0.1585,
+      "p_sf": 0.0737,
+      "p_final": 0.0283,
+      "p_win": 0.0111,
+      "se_win": 0.00033,
       "alpha": 0.9023,
       "beta": -0.7337
     },
@@ -632,11 +632,11 @@
       "team": "Ivory Coast",
       "group": "F",
       "data_confidence": "high",
-      "p_advance": 0.9787,
-      "p_r16": 0.4433,
-      "p_qf": 0.1785,
-      "p_sf": 0.0588,
-      "p_final": 0.0209,
+      "p_advance": 0.9789,
+      "p_r16": 0.4451,
+      "p_qf": 0.1756,
+      "p_sf": 0.0568,
+      "p_final": 0.0206,
       "p_win": 0.0065,
       "se_win": 0.00025,
       "alpha": 0.6058,
@@ -646,12 +646,12 @@
       "team": "Mexico",
       "group": "A",
       "data_confidence": "high",
-      "p_advance": 0.972,
-      "p_r16": 0.4552,
-      "p_qf": 0.1733,
-      "p_sf": 0.0614,
+      "p_advance": 0.9723,
+      "p_r16": 0.461,
+      "p_qf": 0.1764,
+      "p_sf": 0.0617,
       "p_final": 0.0196,
-      "p_win": 0.0064,
+      "p_win": 0.0062,
       "se_win": 0.00025,
       "alpha": 0.6169,
       "beta": -0.7599
@@ -660,41 +660,27 @@
       "team": "Egypt",
       "group": "H",
       "data_confidence": "high",
-      "p_advance": 0.7928,
-      "p_r16": 0.3706,
-      "p_qf": 0.1558,
-      "p_sf": 0.0555,
-      "p_final": 0.0191,
-      "p_win": 0.006,
-      "se_win": 0.00024,
+      "p_advance": 0.7931,
+      "p_r16": 0.3714,
+      "p_qf": 0.1559,
+      "p_sf": 0.0558,
+      "p_final": 0.0184,
+      "p_win": 0.0054,
+      "se_win": 0.00023,
       "alpha": 0.5044,
       "beta": -0.814
-    },
-    {
-      "team": "Canada",
-      "group": "B",
-      "data_confidence": "high",
-      "p_advance": 0.8438,
-      "p_r16": 0.4018,
-      "p_qf": 0.1434,
-      "p_sf": 0.0447,
-      "p_final": 0.0152,
-      "p_win": 0.0045,
-      "se_win": 0.00021,
-      "alpha": 0.5901,
-      "beta": -0.7203
     },
     {
       "team": "Turkey",
       "group": "D",
       "data_confidence": "high",
-      "p_advance": 0.5187,
-      "p_r16": 0.2265,
-      "p_qf": 0.1029,
-      "p_sf": 0.0404,
-      "p_final": 0.014,
-      "p_win": 0.0045,
-      "se_win": 0.00021,
+      "p_advance": 0.5196,
+      "p_r16": 0.2257,
+      "p_qf": 0.1022,
+      "p_sf": 0.0398,
+      "p_final": 0.0144,
+      "p_win": 0.0048,
+      "se_win": 0.00022,
       "alpha": 0.9604,
       "beta": -0.5633
     },
@@ -702,27 +688,41 @@
       "team": "Australia",
       "group": "D",
       "data_confidence": "high",
-      "p_advance": 0.9415,
-      "p_r16": 0.3846,
-      "p_qf": 0.1566,
-      "p_sf": 0.051,
-      "p_final": 0.0149,
-      "p_win": 0.0042,
-      "se_win": 0.0002,
+      "p_advance": 0.9427,
+      "p_r16": 0.3871,
+      "p_qf": 0.1583,
+      "p_sf": 0.053,
+      "p_final": 0.0162,
+      "p_win": 0.0047,
+      "se_win": 0.00022,
       "alpha": 0.6299,
       "beta": -0.6466
+    },
+    {
+      "team": "Canada",
+      "group": "B",
+      "data_confidence": "high",
+      "p_advance": 0.8438,
+      "p_r16": 0.4031,
+      "p_qf": 0.1438,
+      "p_sf": 0.0431,
+      "p_final": 0.0146,
+      "p_win": 0.0041,
+      "se_win": 0.0002,
+      "alpha": 0.5901,
+      "beta": -0.7203
     },
     {
       "team": "Iran",
       "group": "H",
       "data_confidence": "high",
-      "p_advance": 0.5683,
-      "p_r16": 0.2607,
-      "p_qf": 0.1032,
-      "p_sf": 0.0352,
-      "p_final": 0.0106,
-      "p_win": 0.0029,
-      "se_win": 0.00017,
+      "p_advance": 0.5663,
+      "p_r16": 0.2593,
+      "p_qf": 0.1023,
+      "p_sf": 0.0351,
+      "p_final": 0.0109,
+      "p_win": 0.0031,
+      "se_win": 0.00018,
       "alpha": 0.7552,
       "beta": -0.5543
     },
@@ -730,12 +730,12 @@
       "team": "Paraguay",
       "group": "D",
       "data_confidence": "high",
-      "p_advance": 0.366,
-      "p_r16": 0.1522,
-      "p_qf": 0.0648,
-      "p_sf": 0.0249,
-      "p_final": 0.0085,
-      "p_win": 0.0028,
+      "p_advance": 0.3668,
+      "p_r16": 0.1505,
+      "p_qf": 0.064,
+      "p_sf": 0.0243,
+      "p_final": 0.0083,
+      "p_win": 0.0027,
       "se_win": 0.00017,
       "alpha": 0.5952,
       "beta": -0.8297
@@ -744,12 +744,12 @@
       "team": "DR Congo",
       "group": "L",
       "data_confidence": "high",
-      "p_advance": 0.517,
-      "p_r16": 0.1772,
-      "p_qf": 0.0636,
-      "p_sf": 0.0233,
-      "p_final": 0.0082,
-      "p_win": 0.0027,
+      "p_advance": 0.5844,
+      "p_r16": 0.1897,
+      "p_qf": 0.0683,
+      "p_sf": 0.0256,
+      "p_final": 0.0081,
+      "p_win": 0.0025,
       "se_win": 0.00016,
       "alpha": 0.3494,
       "beta": -0.9189
@@ -758,12 +758,12 @@
       "team": "Scotland",
       "group": "C",
       "data_confidence": "high",
-      "p_advance": 0.7677,
-      "p_r16": 0.3267,
-      "p_qf": 0.1194,
-      "p_sf": 0.0365,
-      "p_final": 0.0105,
-      "p_win": 0.0026,
+      "p_advance": 0.7638,
+      "p_r16": 0.3278,
+      "p_qf": 0.1217,
+      "p_sf": 0.0362,
+      "p_final": 0.0095,
+      "p_win": 0.0025,
       "se_win": 0.00016,
       "alpha": 0.7127,
       "beta": -0.5099
@@ -772,12 +772,12 @@
       "team": "South Korea",
       "group": "A",
       "data_confidence": "high",
-      "p_advance": 0.9318,
-      "p_r16": 0.399,
+      "p_advance": 0.9325,
+      "p_r16": 0.4,
       "p_qf": 0.1232,
-      "p_sf": 0.0354,
-      "p_final": 0.0097,
-      "p_win": 0.0023,
+      "p_sf": 0.0336,
+      "p_final": 0.0091,
+      "p_win": 0.0022,
       "se_win": 0.00015,
       "alpha": 0.693,
       "beta": -0.4829
@@ -786,13 +786,13 @@
       "team": "Sweden",
       "group": "E",
       "data_confidence": "high",
-      "p_advance": 0.8963,
-      "p_r16": 0.3543,
-      "p_qf": 0.1148,
-      "p_sf": 0.0307,
-      "p_final": 0.0078,
-      "p_win": 0.0019,
-      "se_win": 0.00014,
+      "p_advance": 0.8976,
+      "p_r16": 0.3527,
+      "p_qf": 0.1132,
+      "p_sf": 0.0302,
+      "p_final": 0.0077,
+      "p_win": 0.0018,
+      "se_win": 0.00013,
       "alpha": 0.8918,
       "beta": -0.3283
     },
@@ -800,12 +800,12 @@
       "team": "Czech Republic",
       "group": "A",
       "data_confidence": "high",
-      "p_advance": 0.4942,
-      "p_r16": 0.1994,
-      "p_qf": 0.0594,
-      "p_sf": 0.0173,
-      "p_final": 0.0047,
-      "p_win": 0.0011,
+      "p_advance": 0.4932,
+      "p_r16": 0.1967,
+      "p_qf": 0.0575,
+      "p_sf": 0.016,
+      "p_final": 0.0046,
+      "p_win": 0.001,
       "se_win": 0.0001,
       "alpha": 0.7021,
       "beta": -0.4385
@@ -814,11 +814,11 @@
       "team": "United States",
       "group": "D",
       "data_confidence": "high",
-      "p_advance": 0.9311,
-      "p_r16": 0.3097,
-      "p_qf": 0.1005,
-      "p_sf": 0.024,
-      "p_final": 0.0051,
+      "p_advance": 0.9322,
+      "p_r16": 0.3088,
+      "p_qf": 0.1008,
+      "p_sf": 0.0247,
+      "p_final": 0.0052,
       "p_win": 0.001,
       "se_win": 0.0001,
       "alpha": 0.7294,
@@ -828,10 +828,10 @@
       "team": "Tunisia",
       "group": "E",
       "data_confidence": "high",
-      "p_advance": 0.1557,
-      "p_r16": 0.0582,
-      "p_qf": 0.0203,
-      "p_sf": 0.0063,
+      "p_advance": 0.1532,
+      "p_r16": 0.0571,
+      "p_qf": 0.0196,
+      "p_sf": 0.0062,
       "p_final": 0.0019,
       "p_win": 0.0005,
       "se_win": 7e-05,
@@ -842,27 +842,41 @@
       "team": "Cape Verde",
       "group": "G",
       "data_confidence": "high",
-      "p_advance": 0.603,
-      "p_r16": 0.1977,
-      "p_qf": 0.0584,
-      "p_sf": 0.0124,
+      "p_advance": 0.6027,
+      "p_r16": 0.1967,
+      "p_qf": 0.0571,
+      "p_sf": 0.0123,
       "p_final": 0.0025,
       "p_win": 0.0004,
-      "se_win": 6e-05,
+      "se_win": 7e-05,
       "alpha": 0.4926,
       "beta": -0.3873
+    },
+    {
+      "team": "Ghana",
+      "group": "K",
+      "data_confidence": "high",
+      "p_advance": 0.7017,
+      "p_r16": 0.1454,
+      "p_qf": 0.0331,
+      "p_sf": 0.007,
+      "p_final": 0.0012,
+      "p_win": 0.0002,
+      "se_win": 4e-05,
+      "alpha": 0.4127,
+      "beta": -0.3571
     },
     {
       "team": "Uzbekistan",
       "group": "L",
       "data_confidence": "high",
-      "p_advance": 0.3207,
-      "p_r16": 0.082,
-      "p_qf": 0.0225,
-      "p_sf": 0.0056,
-      "p_final": 0.0015,
-      "p_win": 0.0003,
-      "se_win": 6e-05,
+      "p_advance": 0.3215,
+      "p_r16": 0.077,
+      "p_qf": 0.0211,
+      "p_sf": 0.0062,
+      "p_final": 0.0014,
+      "p_win": 0.0002,
+      "se_win": 5e-05,
       "alpha": 0.3611,
       "beta": -0.5871
     },
@@ -870,55 +884,41 @@
       "team": "Bosnia and Herzegovina",
       "group": "B",
       "data_confidence": "high",
-      "p_advance": 0.6467,
-      "p_r16": 0.1962,
-      "p_qf": 0.0402,
-      "p_sf": 0.0077,
-      "p_final": 0.0016,
-      "p_win": 0.0002,
+      "p_advance": 0.6454,
+      "p_r16": 0.1952,
+      "p_qf": 0.0413,
+      "p_sf": 0.0074,
+      "p_final": 0.0012,
+      "p_win": 0.0001,
       "se_win": 4e-05,
       "alpha": 0.4261,
       "beta": -0.364
     },
     {
-      "team": "Ghana",
-      "group": "K",
+      "team": "Saudi Arabia",
+      "group": "G",
       "data_confidence": "high",
-      "p_advance": 0.4125,
-      "p_r16": 0.0916,
-      "p_qf": 0.0211,
-      "p_sf": 0.0043,
-      "p_final": 0.0007,
+      "p_advance": 0.3215,
+      "p_r16": 0.079,
+      "p_qf": 0.0179,
+      "p_sf": 0.0032,
+      "p_final": 0.0005,
       "p_win": 0.0001,
-      "se_win": 4e-05,
-      "alpha": 0.4127,
-      "beta": -0.3571
-    },
-    {
-      "team": "Iraq",
-      "group": "I",
-      "data_confidence": "high",
-      "p_advance": 0.1688,
-      "p_r16": 0.0387,
-      "p_qf": 0.0083,
-      "p_sf": 0.0017,
-      "p_final": 0.0004,
-      "p_win": 0.0001,
-      "se_win": 2e-05,
-      "alpha": 0.2363,
-      "beta": -0.4353
+      "se_win": 3e-05,
+      "alpha": 0.2663,
+      "beta": -0.3145
     },
     {
       "team": "South Africa",
       "group": "A",
       "data_confidence": "high",
-      "p_advance": 0.2729,
-      "p_r16": 0.0831,
-      "p_qf": 0.0184,
-      "p_sf": 0.0037,
-      "p_final": 0.0007,
+      "p_advance": 0.273,
+      "p_r16": 0.0834,
+      "p_qf": 0.0177,
+      "p_sf": 0.0033,
+      "p_final": 0.0006,
       "p_win": 0.0001,
-      "se_win": 3e-05,
+      "se_win": 4e-05,
       "alpha": 0.3878,
       "beta": -0.4038
     },
@@ -926,8 +926,8 @@
       "team": "Curaçao",
       "group": "F",
       "data_confidence": "high",
-      "p_advance": 0.0278,
-      "p_r16": 0.0028,
+      "p_advance": 0.0267,
+      "p_r16": 0.0026,
       "p_qf": 0.0003,
       "p_sf": 0.0,
       "p_final": 0.0,
@@ -940,25 +940,39 @@
       "team": "Haiti",
       "group": "C",
       "data_confidence": "high",
-      "p_advance": 0.0558,
-      "p_r16": 0.0139,
-      "p_qf": 0.003,
-      "p_sf": 0.0004,
-      "p_final": 0.0001,
+      "p_advance": 0.0552,
+      "p_r16": 0.0138,
+      "p_qf": 0.0026,
+      "p_sf": 0.0005,
+      "p_final": 0.0,
       "p_win": 0.0,
       "se_win": 1e-05,
       "alpha": 0.5417,
       "beta": -0.1189
     },
     {
+      "team": "Iraq",
+      "group": "I",
+      "data_confidence": "high",
+      "p_advance": 0.0707,
+      "p_r16": 0.0163,
+      "p_qf": 0.0037,
+      "p_sf": 0.0008,
+      "p_final": 0.0002,
+      "p_win": 0.0,
+      "se_win": 1e-05,
+      "alpha": 0.2363,
+      "beta": -0.4353
+    },
+    {
       "team": "Jordan",
       "group": "J",
       "data_confidence": "high",
-      "p_advance": 0.1607,
-      "p_r16": 0.0343,
-      "p_qf": 0.008,
-      "p_sf": 0.0017,
-      "p_final": 0.0002,
+      "p_advance": 0.0689,
+      "p_r16": 0.0164,
+      "p_qf": 0.0038,
+      "p_sf": 0.0007,
+      "p_final": 0.0001,
       "p_win": 0.0,
       "se_win": 1e-05,
       "alpha": 0.6347,
@@ -968,13 +982,13 @@
       "team": "New Zealand",
       "group": "H",
       "data_confidence": "high",
-      "p_advance": 0.2493,
-      "p_r16": 0.0548,
+      "p_advance": 0.2479,
+      "p_r16": 0.0537,
       "p_qf": 0.0099,
       "p_sf": 0.0013,
-      "p_final": 0.0001,
+      "p_final": 0.0002,
       "p_win": 0.0,
-      "se_win": 0.0,
+      "se_win": 1e-05,
       "alpha": 0.2773,
       "beta": -0.1629
     },
@@ -982,13 +996,13 @@
       "team": "Panama",
       "group": "K",
       "data_confidence": "high",
-      "p_advance": 0.3037,
-      "p_r16": 0.0542,
-      "p_qf": 0.01,
-      "p_sf": 0.0017,
-      "p_final": 0.0002,
+      "p_advance": 0.0924,
+      "p_r16": 0.0158,
+      "p_qf": 0.003,
+      "p_sf": 0.0005,
+      "p_final": 0.0001,
       "p_win": 0.0,
-      "se_win": 2e-05,
+      "se_win": 0.0,
       "alpha": 0.5035,
       "beta": -0.1473
     },
@@ -996,29 +1010,15 @@
       "team": "Qatar",
       "group": "B",
       "data_confidence": "high",
-      "p_advance": 0.3138,
-      "p_r16": 0.0457,
-      "p_qf": 0.0037,
+      "p_advance": 0.313,
+      "p_r16": 0.0459,
+      "p_qf": 0.0039,
       "p_sf": 0.0003,
       "p_final": 0.0,
       "p_win": 0.0,
       "se_win": 0.0,
       "alpha": 0.2891,
       "beta": 0.0921
-    },
-    {
-      "team": "Saudi Arabia",
-      "group": "G",
-      "data_confidence": "high",
-      "p_advance": 0.3221,
-      "p_r16": 0.079,
-      "p_qf": 0.0185,
-      "p_sf": 0.0027,
-      "p_final": 0.0005,
-      "p_win": 0.0,
-      "se_win": 2e-05,
-      "alpha": 0.2663,
-      "beta": -0.3145
     }
   ],
   "matchups": {
@@ -1047,15 +1047,15 @@
       "draw": 0.3304,
       "away_win": 0.2322
     },
-    "Argentina|Portugal": {
-      "home_win": 0.4775,
-      "draw": 0.2956,
-      "away_win": 0.2269
-    },
     "Argentina|Germany": {
       "home_win": 0.5278,
       "draw": 0.2679,
       "away_win": 0.2043
+    },
+    "Argentina|Portugal": {
+      "home_win": 0.4775,
+      "draw": 0.2956,
+      "away_win": 0.2269
     },
     "Argentina|Netherlands": {
       "home_win": 0.5081,
@@ -1117,15 +1117,15 @@
       "draw": 0.2896,
       "away_win": 0.2759
     },
-    "Spain|Portugal": {
-      "home_win": 0.4718,
-      "draw": 0.26,
-      "away_win": 0.2683
-    },
     "Spain|Germany": {
       "home_win": 0.5235,
       "draw": 0.2364,
       "away_win": 0.2401
+    },
+    "Spain|Portugal": {
+      "home_win": 0.4718,
+      "draw": 0.26,
+      "away_win": 0.2683
     },
     "Spain|Netherlands": {
       "home_win": 0.5053,
@@ -1182,15 +1182,15 @@
       "draw": 0.2874,
       "away_win": 0.3496
     },
-    "Brazil|Portugal": {
-      "home_win": 0.3927,
-      "draw": 0.2611,
-      "away_win": 0.3462
-    },
     "Brazil|Germany": {
       "home_win": 0.4397,
       "draw": 0.2432,
       "away_win": 0.3171
+    },
+    "Brazil|Portugal": {
+      "home_win": 0.3927,
+      "draw": 0.2611,
+      "away_win": 0.3462
     },
     "Brazil|Netherlands": {
       "home_win": 0.4252,
@@ -1242,15 +1242,15 @@
       "draw": 0.3658,
       "away_win": 0.3159
     },
-    "Morocco|Portugal": {
-      "home_win": 0.3471,
-      "draw": 0.3334,
-      "away_win": 0.3195
-    },
     "Morocco|Germany": {
       "home_win": 0.3875,
       "draw": 0.3125,
       "away_win": 0.3
+    },
+    "Morocco|Portugal": {
+      "home_win": 0.3471,
+      "draw": 0.3334,
+      "away_win": 0.3195
     },
     "Morocco|Netherlands": {
       "home_win": 0.3733,
@@ -1297,15 +1297,15 @@
       "draw": 0.3056,
       "away_win": 0.3444
     },
-    "France|Portugal": {
-      "home_win": 0.379,
-      "draw": 0.2779,
-      "away_win": 0.343
-    },
     "France|Germany": {
       "home_win": 0.4239,
       "draw": 0.2596,
       "away_win": 0.3165
+    },
+    "France|Portugal": {
+      "home_win": 0.379,
+      "draw": 0.2779,
+      "away_win": 0.343
     },
     "France|Netherlands": {
       "home_win": 0.4097,
@@ -1347,15 +1347,15 @@
       "draw": 0.2904,
       "away_win": 0.2522
     },
-    "England|Portugal": {
-      "home_win": 0.3658,
-      "draw": 0.2965,
-      "away_win": 0.3377
-    },
     "England|Germany": {
       "home_win": 0.4087,
       "draw": 0.2775,
       "away_win": 0.3137
+    },
+    "England|Portugal": {
+      "home_win": 0.3658,
+      "draw": 0.2965,
+      "away_win": 0.3377
     },
     "England|Netherlands": {
       "home_win": 0.3947,
@@ -1397,50 +1397,10 @@
       "draw": 0.3113,
       "away_win": 0.2506
     },
-    "Portugal|Germany": {
-      "home_win": 0.4091,
+    "Germany|Portugal": {
+      "home_win": 0.3376,
       "draw": 0.2534,
-      "away_win": 0.3376
-    },
-    "Portugal|Netherlands": {
-      "home_win": 0.3958,
-      "draw": 0.2664,
-      "away_win": 0.3378
-    },
-    "Portugal|Colombia": {
-      "home_win": 0.3893,
-      "draw": 0.2655,
-      "away_win": 0.3452
-    },
-    "Portugal|Norway": {
-      "home_win": 0.4128,
-      "draw": 0.2657,
-      "away_win": 0.3215
-    },
-    "Portugal|Belgium": {
-      "home_win": 0.4421,
-      "draw": 0.2641,
-      "away_win": 0.2938
-    },
-    "Portugal|Japan": {
-      "home_win": 0.3967,
-      "draw": 0.2951,
-      "away_win": 0.3082
-    },
-    "Portugal|Ecuador": {
-      "home_win": 0.3693,
-      "draw": 0.3514,
-      "away_win": 0.2793
-    },
-    "Portugal|Switzerland": {
-      "home_win": 0.4449,
-      "draw": 0.2631,
-      "away_win": 0.292
-    },
-    "Portugal|Austria": {
-      "home_win": 0.4465,
-      "draw": 0.2848,
-      "away_win": 0.2687
+      "away_win": 0.4091
     },
     "Germany|Netherlands": {
       "home_win": 0.3687,
@@ -1481,6 +1441,46 @@
       "home_win": 0.4252,
       "draw": 0.2726,
       "away_win": 0.3023
+    },
+    "Portugal|Netherlands": {
+      "home_win": 0.3958,
+      "draw": 0.2664,
+      "away_win": 0.3378
+    },
+    "Portugal|Colombia": {
+      "home_win": 0.3893,
+      "draw": 0.2655,
+      "away_win": 0.3452
+    },
+    "Portugal|Norway": {
+      "home_win": 0.4128,
+      "draw": 0.2657,
+      "away_win": 0.3215
+    },
+    "Portugal|Belgium": {
+      "home_win": 0.4421,
+      "draw": 0.2641,
+      "away_win": 0.2938
+    },
+    "Portugal|Japan": {
+      "home_win": 0.3967,
+      "draw": 0.2951,
+      "away_win": 0.3082
+    },
+    "Portugal|Ecuador": {
+      "home_win": 0.3693,
+      "draw": 0.3514,
+      "away_win": 0.2793
+    },
+    "Portugal|Switzerland": {
+      "home_win": 0.4449,
+      "draw": 0.2631,
+      "away_win": 0.292
+    },
+    "Portugal|Austria": {
+      "home_win": 0.4465,
+      "draw": 0.2848,
+      "away_win": 0.2687
     },
     "Netherlands|Colombia": {
       "home_win": 0.3613,
@@ -2920,9 +2920,12 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
-      "winner": null,
+      "status": "played",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "winner": "France",
       "home": "France",
       "away": "Senegal"
     },
@@ -2938,9 +2941,12 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
-      "winner": null,
+      "status": "played",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "winner": "Norway",
       "home": "Iraq",
       "away": "Norway"
     },
@@ -2956,9 +2962,12 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
-      "winner": null,
+      "status": "played",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "winner": "Argentina",
       "home": "Argentina",
       "away": "Algeria"
     },
@@ -2974,9 +2983,12 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
-      "winner": null,
+      "status": "played",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "winner": "Austria",
       "home": "Austria",
       "away": "Jordan"
     },
@@ -2992,9 +3004,12 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
-      "winner": null,
+      "status": "played",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "winner": "England",
       "home": "England",
       "away": "Croatia"
     },
@@ -3010,9 +3025,12 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
-      "winner": null,
+      "status": "played",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "winner": "Ghana",
       "home": "Ghana",
       "away": "Panama"
     },
@@ -3028,8 +3046,11 @@
       "top_label": null,
       "bottom_label": null,
       "feeds": null,
-      "status": "scheduled",
-      "score": null,
+      "status": "played",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
       "winner": null,
       "home": "Portugal",
       "away": "DR Congo"

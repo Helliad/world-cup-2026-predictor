@@ -328,23 +328,22 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 16, 2026",
-  matchday: "after matchday 2 (16 matches played)",
+  date: "June 18, 2026",
+  matchday: "after the opening round of Groups I–L (23 matches played)",
   summary:
-    "Groups E–J opened with the tournament's first real shocks: Cape Verde held Spain to a 0–0 draw and Sweden thrashed Tunisia 5–1, while Germany routed Curaçao 7–1. Argentina (15%) still lead the title race and haven't kicked off yet; Spain (14%) hold second despite dropping points.",
+    "The heavyweights opened up: Messi's hat-trick sank Algeria 3–0, Mbappé's brace beat Senegal 3–1, and England edged a 4–2 thriller with Croatia. Argentina (16%) stretched their lead at the top; Spain (13%) slipped to second after their earlier draw, and France climbed into the top five.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "Sweden", from: 46, to: 90, note: "thrashed Tunisia 5–1" },
-    { team: "Ivory Coast", from: 80, to: 98, note: "late winner sank Ecuador 1–0" },
-    { team: "Cape Verde", from: 43, to: 60, note: "held Spain to a 0–0 draw" },
-    { team: "Egypt", from: 75, to: 79, note: "drew Belgium 1–1" },
-    { team: "Saudi Arabia", from: 26, to: 32, note: "drew Uruguay 1–1" },
+    { team: "France", from: 90, to: 99, note: "Mbappé brace beat Senegal 3–1" },
+    { team: "Norway", from: 84, to: 97, note: "Haaland double in a 4–1 rout of Iraq" },
+    { team: "Austria", from: 77, to: 94, note: "3–1 over Jordan" },
+    { team: "Ghana", from: 41, to: 70, note: "stoppage-time winner past Panama 1–0" },
   ],
   down: [
-    { team: "Tunisia", from: 48, to: 16, note: "routed by Sweden" },
-    { team: "Ecuador", from: 91, to: 79, note: "edged out by Ivory Coast" },
-    { team: "Uruguay", from: 83, to: 69, note: "only drew Saudi Arabia" },
-    { team: "Iran", from: 76, to: 57, note: "let a 2–2 slip vs New Zealand" },
+    { team: "Algeria", from: 77, to: 62, note: "swept aside by Messi's Argentina" },
+    { team: "Senegal", from: 76, to: 61, note: "lost to France" },
+    { team: "Croatia", from: 88, to: 81, note: "lost a 4–2 thriller to England" },
+    { team: "Panama", from: 30, to: 9, note: "edged out by Ghana" },
   ],
 };
 

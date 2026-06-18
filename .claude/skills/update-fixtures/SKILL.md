@@ -16,8 +16,8 @@ This reproduces commit `213f19a` ("data: pin opening 8 results, re-condition
 predictions") as a repeatable routine.
 
 **This routine is fully autonomous — the user is not in the loop.** Do not ask
-the user for scores. Find the actual results yourself from the ESPN scoreboard
-(step 2), pin them, re-run, and commit. The user only reviews the result
+the user for scores. Find the actual results yourself from Wikipedia's tournament
+pages (step 2), pin them, re-run, and commit. The user only reviews the result
 afterwards. The only times you stop and surface to the user instead of
 proceeding: a dirty/unexpected working tree (step 0), a result you genuinely
 cannot confirm as Final (leave that match unrecorded and note it), or a
@@ -62,35 +62,57 @@ List them for the user with match number, date, round, group, and the
 `home`/`away` (group rounds) or `top_label`/`bottom_label` (knockout rounds) so
 they know exactly which scores to provide.
 
-### 2. Find the results from the ESPN scoreboard (autonomous — do not ask the user)
+### 2. Find the results from Wikipedia (autonomous — do not ask the user)
 
-**Source of truth: the ESPN daily scoreboard.** Do *not* rely on free-text web
-search snippets for scores — they routinely hallucinate or recycle a different
-day's headlines (e.g. opening-weekend results re-surfaced as "today's"),
-including confident-but-wrong scorelines. Always read the structured scoreboard.
+**Source of truth: the Wikipedia tournament pages.** Do *not* rely on free-text
+web-search snippets for scores — they routinely hallucinate or recycle a
+different day's headlines (e.g. opening-weekend results re-surfaced as "today's"),
+including confident-but-wrong scorelines. Only pin scores read from a structured
+result table.
 
-For each distinct due date, `WebFetch` the ESPN scoreboard for that date:
+Wikipedia is the source because it is **reachable from automated/cloud egress and
+not bot-blocked.** ESPN and the FIFA match centre are better-structured but are
+Akamai bot-blocked (HTTP 403) from the scheduled cloud runs — do not depend on
+them. (If you happen to be running locally and ESPN *is* reachable, you may
+cross-check against it, but Wikipedia must be sufficient on its own.)
+
+Group-stage matches live on the per-group articles:
 
 ```
-https://www.espn.com/soccer/scoreboard/_/league/fifa.world/date/YYYYMMDD
+https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_A   (… through Group L)
 ```
 
-(e.g. `.../date/20260617`). One fetch lists every match that day with teams,
-score, and status. Ask the fetch prompt to return, per match: home team, away
-team, score, and whether it is **FT / Final** vs **live/in-progress** vs
-**scheduled/not started**. Note that ESPN buckets a match under its **local
-kickoff date** — a late US night game can sit on the previous day's board, so if
-a due match isn't on today's board, also check the prior day's.
+Knockout matches live on:
 
-Record **only matches explicitly marked FT/Final.** Skip anything live,
-scheduled, or absent — leave it unrecorded and note it in your summary (it gets
-picked up next run). **Never guess or infer a score.**
+```
+https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage
+```
 
-If a Final score looks surprising or the scoreboard is ambiguous, confirm on that
-match's ESPN report page or the FIFA match centre before pinning. For knockout
-matches (73-104) also capture **who won** and **how** — regulation, extra time,
-or penalties; `home_score`/`away_score` record the score at the end of play (90
-or 120 min), not the shootout, and the shootout decides `winner` + `decided_by`.
+Work out which group letters (and/or the knockout page) your due matches belong
+to, then `WebFetch` each relevant page **once**, asking the prompt to return,
+per match: home team, away team, final score, date, and whether it is **played
+(has a score)** or **not yet played**.
+
+**Match fixtures by team names + date, NOT by Wikipedia's match number.** Our
+internal group-stage match ids (`data/schedule.json`) are stable but need not
+equal FIFA/Wikipedia's published 1–72 labels (knockout 73–104 do match). So find
+each due fixture on Wikipedia by its two teams, read its score, and pin it under
+**our** schedule's match number.
+
+Record **only matches Wikipedia shows as played with a final score.** Skip
+anything shown as "not yet played" / scoreless — leave it unrecorded and note it
+in your summary (it gets picked up next run, once Wikipedia reflects it). **Never
+guess or infer a score.**
+
+For knockout matches (73–104) also capture **who won** and **how** — the
+knockout-stage page annotates extra time ("a.e.t.") and penalty shootouts
+("(p)" / "X–Y on penalties"). `home_score`/`away_score` record the score at the
+end of play (90 or 120 min), not the shootout; the shootout decides `winner` +
+`decided_by` (`"regulation"` / `"extra_time"` / `"penalties"`).
+
+If *no* structured source is reachable at all (e.g. Wikipedia also returns an
+error), that is an environment failure, **not** a "no finals played" day — make
+no commit and report the access failure rather than printing the all-clear.
 
 ### 3. Append entries to `data/results_2026.json`
 

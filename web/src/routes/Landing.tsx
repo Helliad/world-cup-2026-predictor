@@ -328,24 +328,21 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 18, 2026",
-  matchday: "after the opening round of all 12 groups (24 matches played)",
+  date: "June 19, 2026",
+  matchday: "after Groups A & B's second games (28 matches played)",
   summary:
-    "The heavyweights opened up: Messi's hat-trick sank Algeria 3–0, Mbappé's brace beat Senegal 3–1, and England edged a 4–2 thriller with Croatia. Colombia rounded out the openers, coming from behind to beat Uzbekistan 3–1. Argentina (15%) lead the title race; Spain (13%) hold second after their earlier draw, with France now up to fourth.",
+    "Matchday 2 is under way. Canada and Switzerland booked the last 32 in style — Canada thrashing Qatar 6–0 for the nation's first-ever World Cup win, Switzerland brushing Bosnia aside 4–1. Mexico made it two from two past South Korea (1–0), while Czechia and South Africa played out a 1–1 draw that leaves both chasing. Argentina (15%) and Spain (14%) still head the title race.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "France", from: 90, to: 99, note: "Mbappé brace beat Senegal 3–1" },
-    { team: "Colombia", from: 87, to: 97, note: "came from behind to beat Uzbekistan 3–1" },
-    { team: "Norway", from: 84, to: 97, note: "Haaland double in a 4–1 rout of Iraq" },
-    { team: "Austria", from: 77, to: 94, note: "3–1 over Jordan" },
-    { team: "Ghana", from: 41, to: 70, note: "stoppage-time winner past Panama 1–0" },
+    { team: "Switzerland", from: 97, to: 100, note: "4–1 demolition of Bosnia sealed the last 32" },
+    { team: "Canada", from: 89, to: 100, note: "historic 6–0 rout of Qatar, a first-ever World Cup win" },
+    { team: "Mexico", from: 85, to: 100, note: "1–0 past South Korea, two wins from two" },
+    { team: "South Korea", from: 71, to: 86, note: "lost 1–0 to Mexico, but the opening win keeps them on course" },
   ],
   down: [
-    { team: "Algeria", from: 77, to: 62, note: "swept aside by Messi's Argentina" },
-    { team: "Senegal", from: 76, to: 61, note: "lost to France" },
-    { team: "Uzbekistan", from: 32, to: 19, note: "lost their opener to Colombia" },
-    { team: "Croatia", from: 88, to: 81, note: "lost a 4–2 thriller to England" },
-    { team: "Panama", from: 30, to: 9, note: "edged out by Ghana" },
+    { team: "Czech Republic", from: 69, to: 28, note: "1–1 with South Africa leaves them on the brink" },
+    { team: "South Africa", from: 47, to: 25, note: "drew 1–1 with Czechia, still without a win" },
+    { team: "Bosnia and Herzegovina", from: 60, to: 54, note: "swept aside 4–1 by Switzerland" },
   ],
 };
 

@@ -16,8 +16,8 @@ This reproduces commit `213f19a` ("data: pin opening 8 results, re-condition
 predictions") as a repeatable routine.
 
 **This routine is fully autonomous — the user is not in the loop.** Do not ask
-the user for scores. Find the actual results yourself from Wikipedia's tournament
-pages (step 2), pin them, re-run, and commit. The user only reviews the result
+the user for scores. Find the actual results yourself from the openfootball
+results feed (step 2), pin them, re-run, and commit. The user only reviews the result
 afterwards. The only times you stop and surface to the user instead of
 proceeding: a dirty/unexpected working tree (step 0), a result you genuinely
 cannot confirm as Final (leave that match unrecorded and note it), or a
@@ -62,82 +62,66 @@ List them for the user with match number, date, round, group, and the
 `home`/`away` (group rounds) or `top_label`/`bottom_label` (knockout rounds) so
 they know exactly which scores to provide.
 
-### 2. Find the results from Wikipedia (autonomous — do not ask the user)
+### 2. Pull the results with the helper (autonomous — do not ask the user)
 
-**Source of truth: the Wikipedia tournament pages.** Do *not* rely on free-text
-web-search snippets for scores — they routinely hallucinate or recycle a
-different day's headlines (e.g. opening-weekend results re-surfaced as "today's"),
-including confident-but-wrong scorelines. Only pin scores read from a structured
-result table.
+**Source of truth: the [openfootball/worldcup.json](https://github.com/openfootball/worldcup.json)
+feed** — a public-domain, structured JSON results file on GitHub
+(`raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json`),
+refreshed ~once a day during the tournament. It is the source because it is
+(a) **structured** — plain JSON, so no HTML scraping and no group-letter guessing,
+and (b) on `raw.githubusercontent.com`, a GitHub host that the cloud sandbox's
+egress allowlist permits. Do *not* pin scores from free-text web-search snippets —
+they hallucinate and recycle old headlines.
 
-Wikipedia is the source because it is **structured and not bot-blocked** — unlike
-ESPN and the FIFA match centre, which are Akamai bot-blocked (HTTP 403) from
-automated runs (don't depend on them; if you're running locally and ESPN *is*
-reachable you may cross-check, but Wikipedia must be sufficient on its own).
+Run the bundled helper from the repo root (via the `wc26` env):
 
-> **⚠️ This routine cannot run as a remote/cloud scheduled agent today — run it
-> locally.** The remote scheduled-agent sandbox only reaches hosts on a **preset,
-> Anthropic-managed egress allowlist**, and `en.wikipedia.org` is not on it, so
-> every `WebFetch`/`curl` returns `403 Host not in allowlist: en.wikipedia.org`
-> and the run can pin nothing. There is **no self-serve way** to add a domain to
-> that allowlist — see Claude Code issue
-> [#50146](https://github.com/anthropics/claude-code/issues/50146) (closed as a
-> duplicate of the master tracking request). Note the local `settings.json`
-> `allowedDomains` key governs only the *local* Bash sandbox, **not** the remote
-> routine, so it can't help here. **The only working setup is to run this skill on
-> a machine with open egress** (i.e. locally). If you are a cloud run and hit that
-> 403, stop and report it as an environment failure (see the end of this step) —
-> do not print an all-clear.
-
-Group-stage matches live on the per-group articles, knockouts on the knockout page:
-
-```
-https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_A   (… through Group L)
-https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage
+```bash
+python .claude/skills/update-fixtures/fetch_results.py        # --today YYYY-MM-DD to override the cutoff
 ```
 
-There is **no** single combined results page — `..._group_stage` 404s, and the
-main `2026_FIFA_World_Cup` article shows only standings, not per-match scores.
-Use the per-group pages.
+It fetches the feed and prints two sections:
 
-**⚠️ Wikipedia's group LETTERS do not match ours, and you can't know the mapping
-in advance.** Our internal letters (`data/groups.json`) are reconstructed; only
-the host groups align (Wikipedia A=Mexico, B=Canada, D=USA). For every other
-group, *our* Group X is some *other* Wikipedia letter (e.g. this tournament our
-Group F = Wikipedia Group E, our Group G = Wikipedia Group H). Our group-stage
-match **numbers** likewise need not equal Wikipedia's 1–72 labels (knockout
-73–104 do match). So **identify groups by their teams, never by letter:**
+- **VERIFY** — re-checks every already-pinned result against openfootball. It must
+  report `N pinned results match openfootball; 0 mismatches`. A **MISMATCH** means
+  either a name-mapping/orientation bug or a score openfootball has since
+  corrected — **stop and investigate** before doing anything else.
+- **DUE & UNPINNED** — for each schedule match due on/before today: a ready-to-
+  paste `results_2026.json` line when openfootball has a final score, or a
+  `# match N … unplayed in openfootball — skip` comment when it doesn't.
 
-1. From `data/groups.json`, list the distinct *our*-groups your due matches span,
-   with the 4 teams in each.
-2. `WebFetch` group pages, asking each prompt to return **(a) the 4 teams in that
-   group and (b) every match: date, both teams, and final score or "not yet
-   played".** The returned roster is what tells you which of your groups the page
-   actually is.
-3. Match each due fixture to its result by the **two team names** (orientation-
-   independent — ignore Wikipedia's letter *and* its match number), then pin it
-   under **our** schedule's match number.
+The helper exits `0` when nothing needs a human, `2` when something does (a verify
+mismatch, or a played **knockout** that needs hand-completion), and `3` if the
+feed is unreachable. Pin **only** the matches it emits as ready-to-paste lines —
+**never guess or infer a score.** Leave unplayed matches for the next run (note
+any you skipped); because openfootball updates only ~once/day, a match played late
+may not appear until the following run.
 
-Because the letter won't tell you in advance which page holds a group, expect to
-fetch a few group pages whose rosters don't contain your teams and discard them —
-that's normal, not an error. (Host-group due matches you can target directly:
-our A/B/D = Wikipedia A/B/D.) Per match, capture both teams, the final score, the
-date, and whether it is **played (has a score)** or **not yet played**.
+Team names are reconciled via [data/aliases.json](../../../data/aliases.json) —
+openfootball uses a few alternates (e.g. `USA`, `Bosnia & Herzegovina`) but is
+otherwise canonical, and matching is by canonical team **pair**, so openfootball's
+own group labels and match order never matter. If a future opponent's name fails
+to resolve it will surface in the helper's output as unmatched — add the alias.
 
-Record **only matches Wikipedia shows as played with a final score.** Skip
-anything shown as "not yet played" / scoreless — leave it unrecorded and note it
-in your summary (it gets picked up next run, once Wikipedia reflects it). **Never
-guess or infer a score.**
+**Knockout matches (73–104).** openfootball carries placeholder slots (`W73`,
+`1A`, `3A/B/C/D/F`) until a tie is played, then fills in the real teams +
+`score.ft`. The helper prints knockout results with any `et`/`p` (extra-time /
+penalty) fields it finds but **does not auto-emit a pin line** — set `winner` +
+`decided_by` (`"regulation"` / `"extra_time"` / `"penalties"`) **by hand**:
+`home_score`/`away_score` record the score at the end of play (90/120 min), not
+the shootout, and the shootout decides the winner.
 
-For knockout matches (73–104) also capture **who won** and **how** — the
-knockout-stage page annotates extra time ("a.e.t.") and penalty shootouts
-("(p)" / "X–Y on penalties"). `home_score`/`away_score` record the score at the
-end of play (90 or 120 min), not the shootout; the shootout decides `winner` +
-`decided_by` (`"regulation"` / `"extra_time"` / `"penalties"`).
-
-If *no* structured source is reachable at all (e.g. Wikipedia also returns an
-error), that is an environment failure, **not** a "no finals played" day — make
-no commit and report the access failure rather than printing the all-clear.
+> **Cloud reachability — the next scheduled run is the real test.**
+> `raw.githubusercontent.com` is on the documented cloud-sandbox allowlist and was
+> reachable from a remote-agent probe, so a scheduled cloud run *should* now work
+> (Wikipedia, the old source, never was — it isn't on the allowlist). But the
+> scheduled-routine sandbox has historically been tighter than the docs (an
+> earlier run saw `api.github.com` return `403 Host not in allowlist`), so treat
+> the **first cloud run on this source as the confirmation**: if the helper exits
+> `3` on a `403 Host not in allowlist`, the routine still can't reach GitHub —
+> that's an environment failure (make no commit, report it) and you must run the
+> skill **locally** (open egress always works) until it's resolved. There is no
+> self-serve way to extend the routine allowlist (Claude Code issue
+> [#50146](https://github.com/anthropics/claude-code/issues/50146)).
 
 ### 3. Append entries to `data/results_2026.json`
 

@@ -70,34 +70,59 @@ different day's headlines (e.g. opening-weekend results re-surfaced as "today's"
 including confident-but-wrong scorelines. Only pin scores read from a structured
 result table.
 
-Wikipedia is the source because it is **reachable from automated/cloud egress and
-not bot-blocked.** ESPN and the FIFA match centre are better-structured but are
-Akamai bot-blocked (HTTP 403) from the scheduled cloud runs — do not depend on
-them. (If you happen to be running locally and ESPN *is* reachable, you may
-cross-check against it, but Wikipedia must be sufficient on its own.)
+Wikipedia is the source because it is **structured and not bot-blocked** — unlike
+ESPN and the FIFA match centre, which are Akamai bot-blocked (HTTP 403) from
+automated runs (don't depend on them; if you're running locally and ESPN *is*
+reachable you may cross-check, but Wikipedia must be sufficient on its own).
 
-Group-stage matches live on the per-group articles:
+> **⚠️ This routine cannot run as a remote/cloud scheduled agent today — run it
+> locally.** The remote scheduled-agent sandbox only reaches hosts on a **preset,
+> Anthropic-managed egress allowlist**, and `en.wikipedia.org` is not on it, so
+> every `WebFetch`/`curl` returns `403 Host not in allowlist: en.wikipedia.org`
+> and the run can pin nothing. There is **no self-serve way** to add a domain to
+> that allowlist — see Claude Code issue
+> [#50146](https://github.com/anthropics/claude-code/issues/50146) (closed as a
+> duplicate of the master tracking request). Note the local `settings.json`
+> `allowedDomains` key governs only the *local* Bash sandbox, **not** the remote
+> routine, so it can't help here. **The only working setup is to run this skill on
+> a machine with open egress** (i.e. locally). If you are a cloud run and hit that
+> 403, stop and report it as an environment failure (see the end of this step) —
+> do not print an all-clear.
+
+Group-stage matches live on the per-group articles, knockouts on the knockout page:
 
 ```
 https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_A   (… through Group L)
-```
-
-Knockout matches live on:
-
-```
 https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage
 ```
 
-Work out which group letters (and/or the knockout page) your due matches belong
-to, then `WebFetch` each relevant page **once**, asking the prompt to return,
-per match: home team, away team, final score, date, and whether it is **played
-(has a score)** or **not yet played**.
+There is **no** single combined results page — `..._group_stage` 404s, and the
+main `2026_FIFA_World_Cup` article shows only standings, not per-match scores.
+Use the per-group pages.
 
-**Match fixtures by team names + date, NOT by Wikipedia's match number.** Our
-internal group-stage match ids (`data/schedule.json`) are stable but need not
-equal FIFA/Wikipedia's published 1–72 labels (knockout 73–104 do match). So find
-each due fixture on Wikipedia by its two teams, read its score, and pin it under
-**our** schedule's match number.
+**⚠️ Wikipedia's group LETTERS do not match ours, and you can't know the mapping
+in advance.** Our internal letters (`data/groups.json`) are reconstructed; only
+the host groups align (Wikipedia A=Mexico, B=Canada, D=USA). For every other
+group, *our* Group X is some *other* Wikipedia letter (e.g. this tournament our
+Group F = Wikipedia Group E, our Group G = Wikipedia Group H). Our group-stage
+match **numbers** likewise need not equal Wikipedia's 1–72 labels (knockout
+73–104 do match). So **identify groups by their teams, never by letter:**
+
+1. From `data/groups.json`, list the distinct *our*-groups your due matches span,
+   with the 4 teams in each.
+2. `WebFetch` group pages, asking each prompt to return **(a) the 4 teams in that
+   group and (b) every match: date, both teams, and final score or "not yet
+   played".** The returned roster is what tells you which of your groups the page
+   actually is.
+3. Match each due fixture to its result by the **two team names** (orientation-
+   independent — ignore Wikipedia's letter *and* its match number), then pin it
+   under **our** schedule's match number.
+
+Because the letter won't tell you in advance which page holds a group, expect to
+fetch a few group pages whose rosters don't contain your teams and discard them —
+that's normal, not an error. (Host-group due matches you can target directly:
+our A/B/D = Wikipedia A/B/D.) Per match, capture both teams, the final score, the
+date, and whether it is **played (has a score)** or **not yet played**.
 
 Record **only matches Wikipedia shows as played with a final score.** Skip
 anything shown as "not yet played" / scoreless — leave it unrecorded and note it
@@ -185,17 +210,49 @@ update with the "June 16" one). Rewrite all of its fields:
   prior was unaffected by earlier groups). `note` is a short human reason
   ("thrashed Tunisia 5-1"). List ~4-5 each side; use canonical team names.
 
+  **Getting the prior for 2nd/3rd-game teams.** From matchday 2 on, swings.py's
+  `old` already includes earlier conditioning, so it is **not** the pre-tournament
+  prior — don't use it as `from`. Read the true prior straight from the baseline
+  `predictions.json` (the version from just before the first result was ever
+  pinned, i.e. the parent of reference commit `213f19a`):
+
+  ```bash
+  git show 213f19a^:web/public/predictions.json > _pre_pred.json   # baseline, no results conditioned
+  # `from` = teams[].p_advance * 100 from _pre_pred.json (round to int)
+  # `to`   = teams[].p_advance * 100 from the freshly-written web/public/predictions.json
+  rm _pre_pred.json
+  ```
+
+  (Write the temp file *inside the repo dir*, not `/tmp` — on Windows the conda
+  Python can't see `/tmp`.) Classify `up`/`down` by the **prior→now** direction:
+  a team that won game 1 then lost game 2 can still be net-up versus its prior, so
+  it belongs in `up` with an honest `note` about the loss — keep the arrow and the
+  number consistent.
+
 Match the existing array style and keep the figures consistent with what the
 pipeline just produced.
 
-### 6. Discard the ledger row, then verify the diff
+### 6. Verify the diff (leave the ledger row alone — do NOT `git checkout` it)
 
 ```bash
-git checkout -- experiments/ledger.csv
-git status        # expect exactly 4 files: data/results_2026.json, web/public/predictions.json, web/public/outcomes_sample.json, web/src/routes/Landing.tsx
+git status        # expect 5 dirty files: the 4 below + experiments/ledger.csv
 ```
 
-If any other file is dirty, investigate before committing.
+The pipeline appended one throwaway row to `experiments/ledger.csv`. **Do not try
+to discard it with `git checkout -- experiments/ledger.csv`** — the harness
+permission classifier blocks that command (it reverts a pre-existing tracked file
+you didn't name), so a scheduled/autonomous run errors out there. Instead just
+**never stage it**: in step 7 you `git add` the 4 intended files by name, which
+leaves the ledger row out of the commit. The dirty ledger row is harmless — in a
+cloud run the checkout is ephemeral and thrown away; locally the user can discard
+it themselves.
+
+The 4 files that DO get committed:
+`data/results_2026.json`, `web/public/predictions.json`,
+`web/public/outcomes_sample.json`, `web/src/routes/Landing.tsx`.
+
+If any file *other* than those 4 + `experiments/ledger.csv` is dirty, investigate
+before committing.
 
 ### 7. Run tests, then commit (and push only if asked)
 

@@ -328,21 +328,21 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 19, 2026",
-  matchday: "after Groups A & B's second games (28 matches played)",
+  date: "June 21, 2026",
+  matchday: "after the matchday-2 games in Groups C–F (34 matches played)",
   summary:
-    "Matchday 2 is under way. Canada and Switzerland booked the last 32 in style — Canada thrashing Qatar 6–0 for the nation's first-ever World Cup win, Switzerland brushing Bosnia aside 4–1. Mexico made it two from two past South Korea (1–0), while Czechia and South Africa played out a 1–1 draw that leaves both chasing. Argentina (15%) and Spain (14%) still head the title race.",
+    "Matchday 2 rolls on. The United States booked their place in the last 32 with a composed 2–0 win over Australia, and the Netherlands hammered Sweden 5–1 to join them. Brazil (3–0 Haiti) and Morocco (1–0 Scotland) also sealed qualification, while Paraguay's 1–0 win over Turkey leaves the Turks on the brink. Argentina (15.7%) and Spain (14.1%) still head the title race, with Brazil (8.7%) third.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "Switzerland", from: 97, to: 100, note: "4–1 demolition of Bosnia sealed the last 32" },
-    { team: "Canada", from: 89, to: 100, note: "historic 6–0 rout of Qatar, a first-ever World Cup win" },
-    { team: "Mexico", from: 85, to: 100, note: "1–0 past South Korea, two wins from two" },
-    { team: "South Korea", from: 71, to: 86, note: "lost 1–0 to Mexico, but the opening win keeps them on course" },
+    { team: "United States", from: 56, to: 100, note: "2–0 win over Australia — two from two, into the last 32" },
+    { team: "Netherlands", from: 88, to: 100, note: "5–1 rout of Sweden sealed qualification" },
+    { team: "Morocco", from: 92, to: 100, note: "1–0 win over Scotland booked their place" },
+    { team: "Brazil", from: 96, to: 100, note: "3–0 past Haiti, through with a game to spare" },
+    { team: "Paraguay", from: 72, to: 76, note: "1–0 win over Turkey revived their campaign" },
   ],
   down: [
-    { team: "Czech Republic", from: 69, to: 28, note: "1–1 with South Africa leaves them on the brink" },
-    { team: "South Africa", from: 47, to: 25, note: "drew 1–1 with Czechia, still without a win" },
-    { team: "Bosnia and Herzegovina", from: 60, to: 54, note: "swept aside 4–1 by Switzerland" },
+    { team: "Turkey", from: 79, to: 19, note: "second straight defeat (0–1 Paraguay) leaves them on the brink" },
+    { team: "Haiti", from: 19, to: 1, note: "3–0 loss to Brazil, all but eliminated" },
   ],
 };
 

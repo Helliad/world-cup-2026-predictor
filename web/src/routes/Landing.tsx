@@ -328,21 +328,24 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 21, 2026",
-  matchday: "after the matchday-2 games in Groups C–F (34 matches played)",
+  date: "June 25, 2026",
+  matchday: "with matchday 2 complete and matchday 3 under way (54 of 72 group matches played)",
   summary:
-    "Matchday 2 rolls on. The United States booked their place in the last 32 with a composed 2–0 win over Australia, and the Netherlands hammered Sweden 5–1 to join them. Brazil (3–0 Haiti) and Morocco (1–0 Scotland) also sealed qualification, while Paraguay's 1–0 win over Turkey leaves the Turks on the brink. Argentina (15.7%) and Spain (14.1%) still head the title race, with Brazil (8.7%) third.",
+    "The group stage is reaching the boil. Mexico (3–0 Czech Republic) sent the Czechs home, while Ecuador's 0–0 stumble against Curaçao leaves them on the brink. Brazil (3–0 Scotland) and Morocco are already through, but Spain (13.7%) and Argentina (13.2%) edge the title race even with their final group game still to play; Brazil (10.3%) sits third.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "United States", from: 56, to: 100, note: "2–0 win over Australia — two from two, into the last 32" },
-    { team: "Netherlands", from: 88, to: 100, note: "5–1 rout of Sweden sealed qualification" },
-    { team: "Morocco", from: 92, to: 100, note: "1–0 win over Scotland booked their place" },
-    { team: "Brazil", from: 96, to: 100, note: "3–0 past Haiti, through with a game to spare" },
-    { team: "Paraguay", from: 72, to: 76, note: "1–0 win over Turkey revived their campaign" },
+    { team: "South Africa", from: 47, to: 100, note: "1–0 win over South Korea booked a knockout spot" },
+    { team: "Ghana", from: 42, to: 100, note: "0–0 with England was enough to advance" },
+    { team: "Bosnia and Herzegovina", from: 60, to: 100, note: "3–1 win over Qatar sealed qualification" },
+    { team: "Egypt", from: 76, to: 100, note: "3–1 over New Zealand, through to the last 32" },
+    { team: "Japan", from: 85, to: 100, note: "4–0 rout of Tunisia confirmed their place" },
   ],
   down: [
-    { team: "Turkey", from: 79, to: 19, note: "second straight defeat (0–1 Paraguay) leaves them on the brink" },
-    { team: "Haiti", from: 19, to: 1, note: "3–0 loss to Brazil, all but eliminated" },
+    { team: "Ecuador", from: 92, to: 31, note: "held 0–0 by Curaçao — now on the brink" },
+    { team: "Czech Republic", from: 69, to: 0, note: "0–3 to Mexico, eliminated" },
+    { team: "Uruguay", from: 84, to: 47, note: "2–2 draw with Cape Verde dents their hopes" },
+    { team: "Scotland", from: 58, to: 26, note: "0–3 to Brazil leaves them needing results" },
+    { team: "Qatar", from: 18, to: 0, note: "3–1 loss to Bosnia ends their campaign" },
   ],
 };
 

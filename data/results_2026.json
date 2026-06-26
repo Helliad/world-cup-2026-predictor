@@ -1,7 +1,7 @@
 {
   "meta": {
     "note": "Actual 2026 World Cup results as they are played. The pipeline pins these into the Monte Carlo so every downstream probability re-conditions on reality. Group entries pin the scoreline; knockout entries pin the winner (record decided_by + the two teams).",
-    "updated": "2026-06-25"
+    "updated": "2026-06-26"
   },
   "matches": [
     { "match": 1, "home": "Mexico", "away": "South Africa", "home_score": 2, "away_score": 0 },
@@ -57,6 +57,12 @@
     { "match": 51, "home": "Bosnia and Herzegovina", "away": "Qatar", "home_score": 3, "away_score": 1 },
     { "match": 52, "home": "Canada", "away": "Switzerland", "home_score": 1, "away_score": 2 },
     { "match": 53, "home": "Morocco", "away": "Haiti", "home_score": 4, "away_score": 2 },
-    { "match": 54, "home": "Scotland", "away": "Brazil", "home_score": 0, "away_score": 3 }
+    { "match": 54, "home": "Scotland", "away": "Brazil", "home_score": 0, "away_score": 3 },
+    { "match": 55, "home": "Paraguay", "away": "Australia", "home_score": 0, "away_score": 0 },
+    { "match": 56, "home": "United States", "away": "Turkey", "home_score": 2, "away_score": 3 },
+    { "match": 57, "home": "Japan", "away": "Sweden", "home_score": 1, "away_score": 1 },
+    { "match": 58, "home": "Tunisia", "away": "Netherlands", "home_score": 1, "away_score": 3 },
+    { "match": 59, "home": "Curaçao", "away": "Ivory Coast", "home_score": 0, "away_score": 2 },
+    { "match": 60, "home": "Ecuador", "away": "Germany", "home_score": 2, "away_score": 1 }
   ]
 }

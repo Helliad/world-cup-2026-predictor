@@ -328,24 +328,24 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 25, 2026",
-  matchday: "with matchday 2 complete and matchday 3 under way (54 of 72 group matches played)",
+  date: "June 26, 2026",
+  matchday: "with matchday 3 under way (60 of 72 group matches played)",
   summary:
-    "The group stage is reaching the boil. Mexico (3–0 Czech Republic) sent the Czechs home, while Ecuador's 0–0 stumble against Curaçao leaves them on the brink. Brazil (3–0 Scotland) and Morocco are already through, but Spain (13.7%) and Argentina (13.2%) edge the title race even with their final group game still to play; Brazil (10.3%) sits third.",
+    "The final round of group games is taking shape. Ecuador roared back to beat an already-qualified Germany 2–1 and book their place, while Turkey's 3–2 win over the USA came too late and Tunisia went out 1–3 to the Netherlands. Spain (14.0%) and Argentina (13.2%) still head the title race with their final group games to come; Brazil (10.6%) and Morocco are already through.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "South Africa", from: 47, to: 100, note: "1–0 win over South Korea booked a knockout spot" },
-    { team: "Ghana", from: 42, to: 100, note: "0–0 with England was enough to advance" },
-    { team: "Bosnia and Herzegovina", from: 60, to: 100, note: "3–1 win over Qatar sealed qualification" },
-    { team: "Egypt", from: 76, to: 100, note: "3–1 over New Zealand, through to the last 32" },
-    { team: "Japan", from: 85, to: 100, note: "4–0 rout of Tunisia confirmed their place" },
+    { team: "Ecuador", from: 92, to: 100, note: "beat Germany 2–1 to clinch after the Curaçao scare" },
+    { team: "Sweden", from: 46, to: 100, note: "1–1 with Japan booked a knockout place" },
+    { team: "Paraguay", from: 72, to: 100, note: "0–0 with Australia was enough to advance" },
+    { team: "Australia", from: 65, to: 100, note: "0–0 with Paraguay sealed qualification" },
+    { team: "Ivory Coast", from: 81, to: 100, note: "2–0 win over Curaçao, into the last 32" },
   ],
   down: [
-    { team: "Ecuador", from: 92, to: 31, note: "held 0–0 by Curaçao — now on the brink" },
-    { team: "Czech Republic", from: 69, to: 0, note: "0–3 to Mexico, eliminated" },
-    { team: "Uruguay", from: 84, to: 47, note: "2–2 draw with Cape Verde dents their hopes" },
-    { team: "Scotland", from: 58, to: 26, note: "0–3 to Brazil leaves them needing results" },
-    { team: "Qatar", from: 18, to: 0, note: "3–1 loss to Bosnia ends their campaign" },
+    { team: "Turkey", from: 79, to: 0, note: "3–2 win over the USA came too late — out on points" },
+    { team: "Tunisia", from: 49, to: 0, note: "1–3 to the Netherlands, eliminated" },
+    { team: "Senegal", from: 77, to: 41, note: "still winless after two; survival rides on the finale" },
+    { team: "Scotland", from: 58, to: 7, note: "losses to Morocco and Brazil leave them on the brink" },
+    { team: "South Korea", from: 71, to: 59, note: "squeezed as the third-place race tightens" },
   ],
 };
 

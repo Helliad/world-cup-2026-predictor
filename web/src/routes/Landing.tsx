@@ -110,6 +110,17 @@ export function Landing() {
             <LatestUpdate
               contenders={teams.slice(0, 6).map((t) => ({ team: t.team, p_win: t.p_win }))}
               nSims={meta.n_simulations}
+              generatedAt={meta.generated_at}
+              groupPlayed={
+                (predictions.schedule ?? []).filter(
+                  (m) => m.round === "group" && m.status === "played",
+                ).length
+              }
+              koPlayed={
+                (predictions.schedule ?? []).filter(
+                  (m) => m.round !== "group" && m.status === "played",
+                ).length
+              }
             />
           </Reveal>
         </div>
@@ -326,25 +337,39 @@ export function Landing() {
 
 // ---------- latest-results update ----------
 
-// Hand-written editorial recap, refreshed each time real results are pinned into
-// the model (data/results_2026.json → pipeline → predictions.json). The headline
-// numbers below the recap are the live championship odds, read straight from the
-// store, so the card always answers the one question that matters: who wins it.
-const LATEST_UPDATE = {
-  date: "June 30, 2026",
-  matchday: "with the group stage complete (all 72 matches played)",
-  summary:
-    "The groups are settled, the knockout draw is set, and Argentina have pulled clear at the top of the title race — with Spain their nearest challenger and France, England and Morocco heading the chasing pack. The final round still delivered shocks: Spain edged Uruguay 1–0 to dump the two-time champions out, Senegal hammered Iraq 5–0 to sneak through, and debutants Cape Verde held on to qualify.",
-};
+// The date, progress line, and title-race leaderboard on this card are all
+// derived live from the predictions (date = meta.generated_at, progress = how
+// many games are played, board = championship odds), so the card re-conditions
+// itself every pipeline run and never goes stale. The one hand-written part is
+// the optional editorial sentence below — the card reads correctly even if it is
+// left generic. Refresh it when you want colour on the latest matchday.
+const LATEST_SUMMARY =
+  "The groups are settled, the knockout draw is set, and Argentina have pulled clear at the top of the title race — with Spain their nearest challenger and France, England and Morocco heading the chasing pack. The final round still delivered shocks: Spain edged Uruguay 1–0 to dump the two-time champions out, Senegal hammered Iraq 5–0 to sneak through, and debutants Cape Verde held on to qualify.";
+
+function describeProgress(groupPlayed: number, koPlayed: number): string {
+  if (groupPlayed < 72) return `with ${groupPlayed} of 72 group games played`;
+  if (koPlayed === 0) return "with the group stage complete (all 72 matches played)";
+  return `into the knockout rounds (${koPlayed} ${koPlayed === 1 ? "tie" : "ties"} played)`;
+}
 
 function LatestUpdate({
   contenders,
   nSims,
+  generatedAt,
+  groupPlayed,
+  koPlayed,
 }: {
   contenders: { team: string; p_win: number }[];
   nSims: number;
+  generatedAt: string;
+  groupPlayed: number;
+  koPlayed: number;
 }) {
-  const u = LATEST_UPDATE;
+  const parsed = new Date(generatedAt);
+  const date = Number.isNaN(parsed.getTime())
+    ? generatedAt
+    : parsed.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
+  const matchday = describeProgress(groupPlayed, koPlayed);
   const max = Math.max(...contenders.map((c) => c.p_win), 0.0001);
   return (
     <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-border bg-surface/70 p-5 text-left shadow-lg shadow-black/5 backdrop-blur">
@@ -354,11 +379,11 @@ function LatestUpdate({
           <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
         </span>
         <span className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
-          Model update · {u.date}
+          Model update · {date}
         </span>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-muted">
-        Updated <strong className="text-text">{u.matchday}</strong>. {u.summary}
+        Updated <strong className="text-text">{matchday}</strong>. {LATEST_SUMMARY}
       </p>
       <div className="mt-4">
         <div className="mb-2.5 flex items-baseline justify-between">

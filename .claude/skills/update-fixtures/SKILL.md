@@ -36,13 +36,18 @@ The model itself is **not** retrained here — training data lives in `results.c
 - `experiments/ledger.csv` — appended a row; **do NOT commit it** (discard it,
   see step 6). The reference commit `213f19a` excluded it and left the tree clean.
 
-You also hand-edit one source file each run (step 5b):
+You *may* optionally refresh one source file (step 5b):
 
-- `web/src/routes/Landing.tsx` — the home-page "Model update" card — **commit this**
+- `web/src/routes/Landing.tsx` — the home-page "Model update" card's single
+  hand-written editorial sentence (`LATEST_SUMMARY`). Everything else on the card
+  (date, progress line, title-race leaderboard) now derives live from
+  `predictions.json`, so this edit is **optional colour** — commit it only if you
+  actually changed it.
 
-So a correct fixture update produces a diff of exactly **4 files**:
-`data/results_2026.json`, `web/public/predictions.json`,
-`web/public/outcomes_sample.json`, `web/src/routes/Landing.tsx`.
+So a correct fixture update produces a diff of **3 files** (4 only if you also
+refreshed the Landing sentence): `data/results_2026.json`,
+`web/public/predictions.json`, `web/public/outcomes_sample.json`
+(+ optionally `web/src/routes/Landing.tsx`).
 
 ## Steps
 
@@ -173,69 +178,42 @@ It prints the title race (top 5) and the biggest advance-probability and
 title-probability swings — paste the notable ones into the commit body, matching
 the style of `213f19a`. Keep these numbers handy; you reuse them in 5b.
 
-### 5b. Refresh the home-page "Model update" card
+### 5b. (Optional) refresh the home-page "Model update" card sentence
 
-The landing page shows a hand-written editorial recap of the latest matchday —
-the `LATEST_UPDATE` object in [web/src/routes/Landing.tsx](../../../web/src/routes/Landing.tsx)
-(search for `const LATEST_UPDATE`). It is **not** auto-generated, so update it
-every run to reflect the matchday you just pinned (e.g. replace a "June 14"
-update with the "June 16" one). Rewrite all of its fields:
+The landing card is **self-updating**: its date (from `meta.generated_at`), its
+progress line ("group stage complete (all 72 matches played)" / "into the
+knockout rounds (N ties played)", derived from how many games are played), and
+its title-race leaderboard all come straight from the freshly-written
+`predictions.json`. There are **no** `up`/`down`/`from`/`to` arrays to maintain
+anymore (and no need to fetch a pre-tournament prior).
 
-- `date` — the day you're publishing (today, `"Month D, YYYY"`).
-- `matchday` — short phrase for how far the tournament has got, e.g.
-  `"after matchday 2 (16 matches played)"`.
-- `summary` — 1-2 sentences on what moved, including the current title-race top
-  (use the top-5 from step 5; keep the leaders honest about whether they've
-  played yet).
-- `up` / `down` — the biggest advance-prob movers from step 5, as
-  `{ team, from, to, note }`. **`from` is the team's pre-tournament prior, `to`
-  is its re-conditioned value now.** For teams playing for the first time this
-  matchday, the swings.py `old->new` numbers map directly to `from`/`to` (their
-  prior was unaffected by earlier groups). `note` is a short human reason
-  ("thrashed Tunisia 5-1"). List ~4-5 each side; use canonical team names.
-
-  **Getting the prior for 2nd/3rd-game teams.** From matchday 2 on, swings.py's
-  `old` already includes earlier conditioning, so it is **not** the pre-tournament
-  prior — don't use it as `from`. Read the true prior straight from the baseline
-  `predictions.json` (the version from just before the first result was ever
-  pinned, i.e. the parent of reference commit `213f19a`):
-
-  ```bash
-  git show 213f19a^:web/public/predictions.json > _pre_pred.json   # baseline, no results conditioned
-  # `from` = teams[].p_advance * 100 from _pre_pred.json (round to int)
-  # `to`   = teams[].p_advance * 100 from the freshly-written web/public/predictions.json
-  rm _pre_pred.json
-  ```
-
-  (Write the temp file *inside the repo dir*, not `/tmp` — on Windows the conda
-  Python can't see `/tmp`.) Classify `up`/`down` by the **prior→now** direction:
-  a team that won game 1 then lost game 2 can still be net-up versus its prior, so
-  it belongs in `up` with an honest `note` about the loss — keep the arrow and the
-  number consistent.
-
-Match the existing array style and keep the figures consistent with what the
-pipeline just produced.
+The only hand-written part is one editorial sentence, `LATEST_SUMMARY` in
+[web/src/routes/Landing.tsx](../../../web/src/routes/Landing.tsx). Refresh it if
+you want colour on the matchday you just pinned (use the title-race top from
+step 5 and a line or two on the biggest results). The card reads correctly even
+if you leave it unchanged, so **skip this when there's nothing notable** — it is
+optional, not a required per-run edit.
 
 ### 6. Verify the diff (leave the ledger row alone — do NOT `git checkout` it)
 
 ```bash
-git status        # expect 5 dirty files: the 4 below + experiments/ledger.csv
+git status        # expect the 3 (or 4) committed files below + experiments/ledger.csv
 ```
 
 The pipeline appended one throwaway row to `experiments/ledger.csv`. **Do not try
 to discard it with `git checkout -- experiments/ledger.csv`** — the harness
 permission classifier blocks that command (it reverts a pre-existing tracked file
 you didn't name), so a scheduled/autonomous run errors out there. Instead just
-**never stage it**: in step 7 you `git add` the 4 intended files by name, which
+**never stage it**: in step 7 you `git add` the intended files by name, which
 leaves the ledger row out of the commit. The dirty ledger row is harmless — in a
 cloud run the checkout is ephemeral and thrown away; locally the user can discard
 it themselves.
 
-The 4 files that DO get committed:
+The files that DO get committed (3, or 4 if you refreshed the Landing sentence):
 `data/results_2026.json`, `web/public/predictions.json`,
-`web/public/outcomes_sample.json`, `web/src/routes/Landing.tsx`.
+`web/public/outcomes_sample.json` (+ optionally `web/src/routes/Landing.tsx`).
 
-If any file *other* than those 4 + `experiments/ledger.csv` is dirty, investigate
+If any file *other* than those + `experiments/ledger.csv` is dirty, investigate
 before committing.
 
 ### 7. Run tests, then commit (and push only if asked)
@@ -248,7 +226,8 @@ ruff check . && ruff format --check . && WC2026_QUICK=1 pytest -q
 cd web && npm run build && cd ..
 ```
 
-Then commit the 4 files with a message in the established style:
+Then commit the intended files (3, or 4 with the Landing sentence) with a message
+in the established style:
 
 ```
 data: pin <matchday/desc>, re-condition predictions
@@ -260,13 +239,33 @@ Title race <top, with %s>.
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
 ```
 
-Since the routine is autonomous, **commit** the 3 files once tests are green
-(committing on `main` is fine — the reference commits go straight to `main`).
+Since the routine is autonomous, **commit** the intended files once tests are
+green (committing on `main` is fine — the reference commits go straight to `main`).
 Push only if the user has configured this routine to push or explicitly asks;
 otherwise leave the commit local for the user to review and push.
 
 ## Notes
 
+- **The bracket is the official FIFA draw, and every page is data-driven.** Group
+  letters in `groups.json` match FIFA's official A–L labels, and the knockout
+  bracket + best-third allocation live in `data/third_place_allocation.json`
+  (`r32` in bracket-fold order + `official_table`, FIFA's Annex C). Do **not**
+  relabel groups or hand-edit the bracket structure — the pipeline resolves the
+  whole Round of 32 (including the eight best-third slots) from these, and **every**
+  view reads the regenerated `predictions.json` / `outcomes_sample.json`, so they
+  all re-condition together: Title race, Groups, Bracket (with connector lines),
+  Match Center / Schedule, Fixtures, Scorecard, and the team/match detail pages.
+  There is nothing to update per-page by hand.
+- **Post-run sanity check that all pages will be correct** (do this every run):
+  - `predictions.json` → `meta.provisional` is `false` (official allocation in use);
+  - the Round-of-32 rows in `predictions.json.schedule` show real team
+    `home`/`away`, **not** `"3rd Group …"` descriptors, once every group is played
+    (this is what the Match Center / Schedule page renders);
+  - the title favourite the pipeline prints matches the Landing leaderboard top.
+  If a third-place **combination** ever changes (only possible if a *group* result
+  is re-pinned — the group stage is otherwise locked), add that combination's row
+  to `official_table`; without it the allocation falls back to a heuristic and the
+  draw will not match FIFA.
 - Score orientation for group games is auto-normalised by `build_schedule`, but
   write the entries in the schedule's `home`/`away` order anyway.
 - The `data_snapshot` / model params in `predictions.json.meta` come from

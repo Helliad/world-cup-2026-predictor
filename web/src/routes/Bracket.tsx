@@ -89,18 +89,17 @@ export function Bracket() {
               not the model re-running.
             </p>
             <p>
-              <strong>Why a small-looking star can move everything.</strong> Take “England reach the
-              Round of 16”. It sounds minor, but England only get there in about <strong>55%</strong>{" "}
-              of simulations — so pinning it throws away the other ~45% (where they're already
-              eliminated) and roughly <strong>doubles</strong> every later-round figure. Their title
-              chance jumps from ~6% to ~10%. That isn't a glitch: you've assumed they survive the
-              round they most often go out in.
+              <strong>Why a small-looking star can move everything.</strong> Take starring a team to
+              reach the Round of 16. If the model only has it surviving its tie about half the time,
+              pinning that throws away the simulations where it's already eliminated — which roughly{" "}
+              <strong>doubles</strong> every later-round figure for it. That isn't a glitch: you've
+              assumed it survives the round it most often goes out in.
             </p>
             <p>
-              <strong>It usually doesn't crown them.</strong> After pinning England, the champion slot
-              still shows the overall favourite (Argentina) — England only becomes the likeliest{" "}
-              <em>finalist from its own half</em>. Watch the numbers along a pinned team's path: they{" "}
-              <em>fall</em> (e.g. 65% → 41% → 24%), they don't climb to the trophy.
+              <strong>It usually doesn't crown them.</strong> Pinning one team's run doesn't move the
+              champion slot — that still shows the overall favourite; the pinned team just becomes the
+              likeliest <em>finalist from its own half</em>. Watch the numbers along a pinned team's
+              path: they <em>fall</em> (e.g. 60% → 40% → 24%), they don't climb to the trophy.
             </p>
             <p>
               If too few simulations match your pinned conditions, the bar at the top warns you

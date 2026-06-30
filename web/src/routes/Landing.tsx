@@ -328,24 +328,24 @@ export function Landing() {
 // below are the model's pre-tournament number → its re-conditioned number for the
 // same outcome, so the card stays honest about what actually moved.
 const LATEST_UPDATE = {
-  date: "June 26, 2026",
-  matchday: "with matchday 3 under way (60 of 72 group matches played)",
+  date: "June 30, 2026",
+  matchday: "with the group stage complete (all 72 matches played)",
   summary:
-    "The final round of group games is taking shape. Ecuador roared back to beat an already-qualified Germany 2–1 and book their place, while Turkey's 3–2 win over the USA came too late and Tunisia went out 1–3 to the Netherlands. Spain (14.0%) and Argentina (13.2%) still head the title race with their final group games to come; Brazil (10.6%) and Morocco are already through.",
+    "The groups are settled and the title race is a three-way coin-flip: Brazil (12.6%), Argentina (12.5%) and Spain (12.2%) are separated by a whisker, with Morocco (7.1%) and France (6.4%) the next line. The final round delivered shocks — Spain edged Uruguay 1–0 to dump the two-time champions out, Senegal hammered Iraq 5–0 to sneak through, and debutants Cape Verde held on to qualify.",
   // p(reach knockouts): model's prior → re-conditioned on the result
   up: [
-    { team: "Ecuador", from: 92, to: 100, note: "beat Germany 2–1 to clinch after the Curaçao scare" },
-    { team: "Sweden", from: 46, to: 100, note: "1–1 with Japan booked a knockout place" },
-    { team: "Paraguay", from: 72, to: 100, note: "0–0 with Australia was enough to advance" },
-    { team: "Australia", from: 65, to: 100, note: "0–0 with Paraguay sealed qualification" },
-    { team: "Ivory Coast", from: 81, to: 100, note: "2–0 win over Curaçao, into the last 32" },
+    { team: "Senegal", from: 77, to: 100, note: "5–0 demolition of Iraq finally sealed it" },
+    { team: "Cape Verde", from: 44, to: 100, note: "0–0 with Saudi Arabia — debutants through" },
+    { team: "DR Congo", from: 53, to: 100, note: "3–1 over Uzbekistan to advance" },
+    { team: "Algeria", from: 78, to: 100, note: "3–3 thriller with Austria did the job" },
+    { team: "Croatia", from: 89, to: 100, note: "2–1 over Ghana, into the last 32" },
   ],
   down: [
-    { team: "Turkey", from: 79, to: 0, note: "3–2 win over the USA came too late — out on points" },
-    { team: "Tunisia", from: 49, to: 0, note: "1–3 to the Netherlands, eliminated" },
-    { team: "Senegal", from: 77, to: 41, note: "still winless after two; survival rides on the finale" },
-    { team: "Scotland", from: 58, to: 7, note: "losses to Morocco and Brazil leave them on the brink" },
-    { team: "South Korea", from: 71, to: 59, note: "squeezed as the third-place race tightens" },
+    { team: "Uruguay", from: 84, to: 0, note: "0–1 to Spain, stunned out at the group stage" },
+    { team: "Iran", from: 77, to: 0, note: "1–1 with Egypt not enough — eliminated" },
+    { team: "South Korea", from: 71, to: 0, note: "out as the third-place race closed" },
+    { team: "Saudi Arabia", from: 27, to: 0, note: "0–0 with Cape Verde, going home" },
+    { team: "Iraq", from: 17, to: 0, note: "5–0 loss to Senegal ends their run" },
   ],
 };
 

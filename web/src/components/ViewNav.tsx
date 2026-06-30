@@ -19,11 +19,30 @@ const INFO_TABS = [
   { to: "/faq", label: "FAQ" },
 ];
 
+// Short, locale-friendly "last updated" label from the predictions snapshot.
+function formatUpdated(iso: string): string | null {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+}
+
 export function ViewNav() {
   const theme = useStore((s) => s.theme);
   const toggle = useStore((s) => s.toggleTheme);
+  const generatedAt = useStore((s) => s.predictions?.meta.generated_at);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+
+  const updatedLabel = generatedAt ? formatUpdated(generatedAt) : null;
+  const updatedPill = updatedLabel && (
+    <span
+      className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-border bg-surface-2 px-2.5 py-1 text-[0.72rem] font-medium text-muted"
+      title={`Predictions last regenerated ${new Date(generatedAt!).toLocaleString()}`}
+    >
+      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
+      Updated {updatedLabel}
+    </span>
+  );
 
   // Close the mobile menu whenever the route changes.
   useEffect(() => {
@@ -70,6 +89,9 @@ export function ViewNav() {
         <NavLink to="/" className="text-step-1 font-extrabold tracking-tight">
           WC<span className="text-accent">26</span>
         </NavLink>
+
+        {/* Last-updated pill, sourced from the predictions snapshot. */}
+        {updatedPill}
 
         {/* Desktop: inline primary views. */}
         <nav className="hidden gap-1 text-sm md:flex" aria-label="Primary views">

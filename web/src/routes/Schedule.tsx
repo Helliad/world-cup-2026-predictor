@@ -7,6 +7,7 @@ import { useStore } from "../store/store";
 import type { MatchRound } from "../types";
 
 type Filter = "all" | MatchRound;
+type Tab = "upcoming" | "history";
 
 const FILTERS: { key: Filter; label: string }[] = [
   { key: "all", label: "All" },
@@ -24,16 +25,22 @@ const FILTERS: { key: Filter; label: string }[] = [
 // returning to as the tournament unfolds.
 export function Schedule() {
   const predictions = useStore((s) => s.predictions)!;
+  const [tab, setTab] = useState<Tab>("upcoming");
   const [filter, setFilter] = useState<Filter>("all");
   const predictor = useMemo(() => makePredictor(predictions), [predictions]);
 
   const schedule = predictions.schedule ?? [];
-  const days = useMemo(() => {
-    const subset = filter === "all" ? schedule : schedule.filter((m) => m.round === filter);
-    return byDate(subset);
-  }, [schedule, filter]);
-
   const played = schedule.filter((m) => m.status === "played").length;
+
+  const days = useMemo(() => {
+    // History = already-played matches (newest day first); Upcoming = the rest.
+    const inTab = schedule.filter((m) =>
+      tab === "history" ? m.status === "played" : m.status !== "played",
+    );
+    const subset = filter === "all" ? inTab : inTab.filter((m) => m.round === filter);
+    const grouped = byDate(subset);
+    return tab === "history" ? grouped.reverse() : grouped;
+  }, [schedule, tab, filter]);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
@@ -68,7 +75,31 @@ export function Schedule() {
         </Explainer>
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-1.5">
+      <div
+        className="mt-5 inline-flex rounded-lg border border-border p-0.5"
+        role="tablist"
+        aria-label="Upcoming or past matches"
+      >
+        {([
+          { key: "upcoming", label: "Upcoming" },
+          { key: "history", label: `History${played > 0 ? ` (${played})` : ""}` },
+        ] as const).map((t) => (
+          <button
+            key={t.key}
+            type="button"
+            role="tab"
+            aria-selected={tab === t.key}
+            onClick={() => setTab(t.key)}
+            className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
+              tab === t.key ? "bg-surface-2 text-text" : "text-muted hover:text-text"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-1.5">
         {FILTERS.map((f) => (
           <button
             key={f.key}
@@ -99,7 +130,15 @@ export function Schedule() {
           </section>
         ))}
         {days.length === 0 && (
-          <p className="text-muted">No matches in {ROUND_LABEL[filter as MatchRound]}.</p>
+          <p className="text-muted">
+            {tab === "history"
+              ? filter === "all"
+                ? "No matches have been played yet."
+                : `No ${ROUND_LABEL[filter as MatchRound]} matches have been played yet.`
+              : filter === "all"
+                ? "Every match has been played — see History."
+                : `No upcoming matches in ${ROUND_LABEL[filter as MatchRound]}.`}
+          </p>
         )}
       </div>
     </div>

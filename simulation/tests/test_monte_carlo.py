@@ -208,16 +208,21 @@ def test_run_is_deterministic(model, sim_inputs, params, results: SimResults) ->
 # --------------------------------------------------------------------------- #
 
 
-def test_top_team_matches_reference_frequency(
-    model, sim_inputs, params, results: SimResults
-) -> None:
+def test_top_team_matches_reference_frequency(model, sim_inputs, params) -> None:
     """The MC's most-likely champion should win at a rate consistent (within ~4
     combined standard errors) with an independent tally from the single-tournament
-    reference implementation (`simulate_tournament`)."""
-    ti = int(np.argmax(results.p_win))
-    top_team = results.teams[ti]
-    p_mc = float(results.p_win[ti])
-    se_mc = float(results.se_win[ti])
+    reference implementation (`simulate_tournament`).
+
+    Both sides run the pure pre-tournament forecast (no pinned results): the
+    reference path cannot pin played games, so the MC must be run pin-free too for
+    a like-for-like comparison — otherwise conditioning on the completed group
+    stage (now in the data) makes the two paths diverge for reasons unrelated to
+    implementation agreement."""
+    mc = _run(model, sim_inputs, params)  # pin-free MC (see _run below)
+    ti = int(np.argmax(mc.p_win))
+    top_team = mc.teams[ti]
+    p_mc = float(mc.p_win[ti])
+    se_mc = float(mc.se_win[ti])
 
     groups = sim_inputs["groups"]
     fixtures_by_group = sim_inputs["fixtures_by_group"]

@@ -170,16 +170,44 @@ def run_simulations(
     sel_group = letters_arr[top8_cols]  # [n,8]
 
     slot_info = third_slot_groups(allocation)  # [(match_no, winner_group)] in order
-    fb = [wg for _m, wg in slot_info]  # forbidden group per third-slot
+    fb = [wg for _m, wg in slot_info]  # winner group facing each third-slot
     slot_col_of_match = {m: r for r, (m, _wg) in enumerate(slot_info)}
 
     assign_team = sel_team.copy()  # naive: slot r <- rank-r third (correct when no conflict)
+
+    # Apply FIFA's official Annex C allocation (allocation['official_table']) to
+    # every sim whose qualifying combination it covers — exact, deterministic
+    # slotting that does not depend on the drawing of lots. The realized 2026
+    # combination is covered, so the bracket is the real draw, not a heuristic.
+    handled = np.zeros(n, dtype=bool)
+    official_table = allocation.get("official_table") or {}
+    if official_table:
+        bit = {c: i for i, c in enumerate("ABCDEFGHIJKL")}
+        sg_bits = np.zeros((n, sel_group.shape[1]), dtype=np.int64)
+        for c, i in bit.items():
+            sg_bits[sel_group == c] = 1 << i
+        combo_int = np.bitwise_or.reduce(sg_bits, axis=1)
+        for combo, mapping in official_table.items():
+            key = 0
+            for c in combo:
+                key |= 1 << bit[c]
+            idxs = np.nonzero(combo_int == key)[0]
+            if idxs.size == 0:
+                continue
+            sg = sel_group[idxs]
+            st = sel_team[idxs]
+            ar = np.arange(idxs.size)
+            for r, wg in enumerate(fb):
+                col = (sg == mapping[wg]).argmax(axis=1)  # the qualifying third from that group
+                assign_team[idxs, r] = st[ar, col]
+            handled[idxs] = True
+
+    # Fallback for sims the official table does not cover: the same conflict-free
+    # matching the reference path uses (no same-group Round-of-32 meeting).
     conflict = np.zeros(n, dtype=bool)
     for r, wg in enumerate(fb):
         conflict |= sel_group[:, r] == wg
-    # patch only the conflicting sims, with the same conflict-free matching the
-    # reference path uses (no same-group Round-of-32 meeting).
-    for s in np.nonzero(conflict)[0]:
+    for s in np.nonzero(conflict & ~handled)[0]:
         slot_to_rank = assign_thirds_to_slots(fb, list(sel_group[s]))
         for r in range(len(fb)):
             assign_team[s, r] = sel_team[s, slot_to_rank[r]]

@@ -107,7 +107,10 @@ export function Landing() {
             </div>
           </Reveal>
           <Reveal delay={320}>
-            <LatestUpdate />
+            <LatestUpdate
+              contenders={teams.slice(0, 6).map((t) => ({ team: t.team, p_win: t.p_win }))}
+              nSims={meta.n_simulations}
+            />
           </Reveal>
         </div>
         <button
@@ -324,33 +327,25 @@ export function Landing() {
 // ---------- latest-results update ----------
 
 // Hand-written editorial recap, refreshed each time real results are pinned into
-// the model (data/results_2026.json → pipeline → predictions.json). The figures
-// below are the model's pre-tournament number → its re-conditioned number for the
-// same outcome, so the card stays honest about what actually moved.
+// the model (data/results_2026.json → pipeline → predictions.json). The headline
+// numbers below the recap are the live championship odds, read straight from the
+// store, so the card always answers the one question that matters: who wins it.
 const LATEST_UPDATE = {
   date: "June 30, 2026",
   matchday: "with the group stage complete (all 72 matches played)",
   summary:
-    "The groups are settled and the title race is a three-way coin-flip: Brazil (12.6%), Argentina (12.5%) and Spain (12.2%) are separated by a whisker, with Morocco (7.1%) and France (6.4%) the next line. The final round delivered shocks — Spain edged Uruguay 1–0 to dump the two-time champions out, Senegal hammered Iraq 5–0 to sneak through, and debutants Cape Verde held on to qualify.",
-  // p(reach knockouts): model's prior → re-conditioned on the result
-  up: [
-    { team: "Senegal", from: 77, to: 100, note: "5–0 demolition of Iraq finally sealed it" },
-    { team: "Cape Verde", from: 44, to: 100, note: "0–0 with Saudi Arabia — debutants through" },
-    { team: "DR Congo", from: 53, to: 100, note: "3–1 over Uzbekistan to advance" },
-    { team: "Algeria", from: 78, to: 100, note: "3–3 thriller with Austria did the job" },
-    { team: "Croatia", from: 89, to: 100, note: "2–1 over Ghana, into the last 32" },
-  ],
-  down: [
-    { team: "Uruguay", from: 84, to: 0, note: "0–1 to Spain, stunned out at the group stage" },
-    { team: "Iran", from: 77, to: 0, note: "1–1 with Egypt not enough — eliminated" },
-    { team: "South Korea", from: 71, to: 0, note: "out as the third-place race closed" },
-    { team: "Saudi Arabia", from: 27, to: 0, note: "0–0 with Cape Verde, going home" },
-    { team: "Iraq", from: 17, to: 0, note: "5–0 loss to Senegal ends their run" },
-  ],
+    "The groups are settled, the knockout draw is set, and Argentina have pulled clear at the top of the title race — with Spain their nearest challenger and France, England and Morocco heading the chasing pack. The final round still delivered shocks: Spain edged Uruguay 1–0 to dump the two-time champions out, Senegal hammered Iraq 5–0 to sneak through, and debutants Cape Verde held on to qualify.",
 };
 
-function LatestUpdate() {
+function LatestUpdate({
+  contenders,
+  nSims,
+}: {
+  contenders: { team: string; p_win: number }[];
+  nSims: number;
+}) {
   const u = LATEST_UPDATE;
+  const max = Math.max(...contenders.map((c) => c.p_win), 0.0001);
   return (
     <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-border bg-surface/70 p-5 text-left shadow-lg shadow-black/5 backdrop-blur">
       <div className="flex items-center gap-2">
@@ -365,49 +360,38 @@ function LatestUpdate() {
       <p className="mt-3 text-sm leading-relaxed text-muted">
         Updated <strong className="text-text">{u.matchday}</strong>. {u.summary}
       </p>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <UpdateColumn title="Stock up" tone="up" rows={u.up} />
-        <UpdateColumn title="Stock down" tone="down" rows={u.down} />
+      <div className="mt-4">
+        <div className="mb-2.5 flex items-baseline justify-between">
+          <span className="text-[0.7rem] font-semibold uppercase tracking-wide text-muted">
+            Title race · who wins it all
+          </span>
+          <Link to="/title" className="text-[0.7rem] font-semibold text-accent hover:underline">
+            All 48 →
+          </Link>
+        </div>
+        <ol className="space-y-2">
+          {contenders.map((c, i) => (
+            <li key={c.team} className="flex items-center gap-2.5">
+              <span className="w-3 text-right text-[0.7rem] tabular-nums text-muted">{i + 1}</span>
+              <TeamBadge team={c.team} className="h-4 w-4 text-[0.5rem]" />
+              <span className="w-24 truncate text-xs font-medium">{c.team}</span>
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-2">
+                <div
+                  className="h-full rounded-full bg-prob-fill"
+                  style={{ width: `${(c.p_win / max) * 100}%` }}
+                />
+              </div>
+              <span className="w-10 shrink-0 text-right text-xs font-semibold tabular-nums">
+                {pct(c.p_win)}
+              </span>
+            </li>
+          ))}
+        </ol>
       </div>
       <p className="mt-3 text-[0.7rem] leading-relaxed text-muted/80">
-        Figures are each team's chance of reaching the knockouts: the model's pre-tournament
-        number → re-conditioned on the result now pinned into all 100,000 simulations.
+        Each team's chance of lifting the trophy, across all {nSims.toLocaleString()} simulations,
+        re-conditioned on every result played so far.
       </p>
-    </div>
-  );
-}
-
-function UpdateColumn({
-  title,
-  tone,
-  rows,
-}: {
-  title: string;
-  tone: "up" | "down";
-  rows: { team: string; from: number; to: number; note: string }[];
-}) {
-  const isUp = tone === "up";
-  return (
-    <div>
-      <div className="mb-2 flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted">
-        <span className={isUp ? "text-prob-fill" : "text-accent"}>{isUp ? "▲" : "▼"}</span>
-        {title}
-      </div>
-      <ul className="space-y-2">
-        {rows.map((r) => (
-          <li key={r.team} className="flex items-center gap-2">
-            <TeamBadge team={r.team} className="h-4 w-4 text-[0.5rem]" />
-            <span className="min-w-0 flex-1 truncate text-xs font-medium" title={r.note}>
-              {r.team}
-            </span>
-            <span className="shrink-0 text-[0.7rem] tabular-nums text-muted">
-              {r.from}%
-              <span className="px-0.5">→</span>
-              <strong className={isUp ? "text-prob-fill" : "text-accent"}>{r.to}%</strong>
-            </span>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

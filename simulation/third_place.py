@@ -71,6 +71,11 @@ def assign_thirds_to_slots(forbidden: list[str], ranked_groups: list[str]) -> li
     return list(range(n))  # no conflict-free matching exists (vanishingly rare)
 
 
+def combo_key(groups: list[str]) -> str:
+    """Sorted-letter key for a set of qualifying third-place groups (e.g. 'BDEFIJKL')."""
+    return "".join(sorted(groups))
+
+
 def select_best_thirds(
     thirds: list[tuple[str, TeamResult]],
     allocation: dict,
@@ -80,12 +85,21 @@ def select_best_thirds(
 
     ``thirds`` is [(group_letter, TeamResult)] for all 12 thirds. Returns
     ``{match_number: team_name}`` for the eight winner-vs-third matches.
+
+    When FIFA's official Annex C allocation (``allocation['official_table']``)
+    covers the qualifying combination, that exact slotting is used; otherwise the
+    documented same-group-avoiding heuristic is the fallback.
     """
     lots = {g: float(rng.random()) for g, _ in thirds}
     ranked = rank_thirds(thirds, lots)
     top8 = ranked[:8]
+    slots = third_slot_groups(allocation)  # [(match_no, winner_group)]
 
-    slots = third_slot_groups(allocation)
+    official = (allocation.get("official_table") or {}).get(combo_key([g for g, _ in top8]))
+    if official is not None:
+        team_by_group = {g: tr.team for g, tr in top8}
+        return {match_no: team_by_group[official[winner_group]] for match_no, winner_group in slots}
+
     forbidden = [winner_group for _match_no, winner_group in slots]
     ranked_groups = [g for g, _ in top8]
     slot_to_rank = assign_thirds_to_slots(forbidden, ranked_groups)

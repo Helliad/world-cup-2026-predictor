@@ -48,14 +48,42 @@ def _third(group: str, points: int, gf: int, ga: int) -> tuple[str, TeamResult]:
 
 
 def test_eight_third_slots_with_expected_winner_groups(allocation: dict) -> None:
-    """There are exactly 8 winner-vs-third slots, mapped to the bracket's
-    winner groups in match order (matches 1,3,5,7,9,11,13,15)."""
+    """There are exactly 8 winner-vs-third slots. With the official FIFA bracket
+    stored in fold order, the third slots sit at list entries 1,2,7,8,11,12,15,16
+    and face winner groups E,I,D,G,A,L,B,K respectively."""
     slots = third_slot_groups(allocation)
     assert len(slots) == 8
-    assert [m for m, _ in slots] == [1, 3, 5, 7, 9, 11, 13, 15]
-    assert [g for _, g in slots] == ["A", "E", "B", "G", "C", "F", "D", "H"]
+    assert [m for m, _ in slots] == [1, 2, 7, 8, 11, 12, 15, 16]
+    assert [g for _, g in slots] == ["E", "I", "D", "G", "A", "L", "B", "K"]
     # The slot winner-groups are exactly the documented winners_facing_thirds set.
     assert {g for _, g in slots} == set(allocation["winners_facing_thirds"])
+
+
+def test_official_table_matches_realized_2026_draw(allocation: dict) -> None:
+    """The encoded Annex C row for the realized 2026 combination (third-place
+    groups B,D,E,F,I,J,K,L) must reproduce the official Round-of-32 third-place
+    matchups: each winner group faces the third of the documented source group."""
+    # Third-placed team of each qualifying group (distinct keys -> no lots needed).
+    realized = ["B", "D", "E", "F", "I", "J", "K", "L"]
+    thirds = [_third(g, points=8 - i, gf=10, ga=0) for i, g in enumerate(realized)]
+    # Plus four clearly-worst non-qualifying thirds.
+    thirds += [_third(g, points=0, gf=0, ga=0) for g in ["A", "C", "G", "H"]]
+
+    assignment = select_best_thirds(thirds, allocation, np.random.default_rng(0))
+    slot_wg = dict(third_slot_groups(allocation))  # match_no -> winner group
+    by_winner = {slot_wg[mn]: team for mn, team in assignment.items()}
+
+    # Official Annex C allocation for combination BDEFIJKL.
+    assert by_winner == {
+        "A": "TE",  # Mexico   vs 3rd E (Ecuador)
+        "B": "TJ",  # Switzerland vs 3rd J (Algeria)
+        "D": "TB",  # USA      vs 3rd B (Bosnia)
+        "E": "TD",  # Germany  vs 3rd D (Paraguay)
+        "G": "TI",  # Belgium  vs 3rd I (Senegal)
+        "I": "TF",  # France   vs 3rd F (Sweden)
+        "K": "TL",  # Colombia vs 3rd L (Ghana)
+        "L": "TK",  # England  vs 3rd K (DR Congo)
+    }
 
 
 # --------------------------------------------------------------------------- #

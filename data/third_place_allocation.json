@@ -1,25 +1,28 @@
 {
-  "provisional": true,
-  "note": "PROVISIONAL bracket + best-third allocation (§2.2, §8.1 — release gate). FIFA publishes a lookup mapping the sorted set of the 8 qualifying third-place groups to specific bracket slots; until that official 2026 table is encoded, this file defines (a) a valid, documented 32-team bracket and (b) a deterministic fallback that ranks the 8 best thirds 1..8 and assigns them to the winner-vs-third slots in bracket order, swapping to avoid a third meeting its own group's winner. All predictions are flagged provisional in meta and the UI until replaced.",
-  "winners_facing_thirds": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "provisional": false,
+  "note": "Official FIFA 2026 Round-of-32 bracket. The r32 list mirrors the official slot structure and fold of data/schedule.json (matches 73-88); it is stored in bracket-fold order so the simulator's pairwise fold reproduces the real tree. 'fifa_match_order' maps each list entry (1-16) to its FIFA match number. 'official_table' encodes FIFA's Annex C third-place allocation, keyed by the sorted set of the eight groups whose third-placed team qualifies; each value maps a winner-vs-third slot's winner group to the source group of the third it faces. The realized 2026 combination (BDEFIJKL) is encoded; other combinations fall back to the documented same-group-avoiding heuristic.",
+  "winners_facing_thirds": ["A", "B", "D", "E", "G", "I", "K", "L"],
   "r32": [
-    { "match": 1,  "top": "W_A", "bottom": "3RD" },
-    { "match": 2,  "top": "R_C", "bottom": "R_D" },
-    { "match": 3,  "top": "W_E", "bottom": "3RD" },
-    { "match": 4,  "top": "W_I", "bottom": "R_K" },
-    { "match": 5,  "top": "W_B", "bottom": "3RD" },
-    { "match": 6,  "top": "R_E", "bottom": "R_F" },
-    { "match": 7,  "top": "W_G", "bottom": "3RD" },
-    { "match": 8,  "top": "W_J", "bottom": "R_L" },
-    { "match": 9,  "top": "W_C", "bottom": "3RD" },
-    { "match": 10, "top": "R_A", "bottom": "R_B" },
-    { "match": 11, "top": "W_F", "bottom": "3RD" },
-    { "match": 12, "top": "W_K", "bottom": "R_I" },
-    { "match": 13, "top": "W_D", "bottom": "3RD" },
-    { "match": 14, "top": "R_G", "bottom": "R_H" },
-    { "match": 15, "top": "W_H", "bottom": "3RD" },
-    { "match": 16, "top": "W_L", "bottom": "R_J" }
+    { "match": 1,  "top": "W_E", "bottom": "3RD" },
+    { "match": 2,  "top": "W_I", "bottom": "3RD" },
+    { "match": 3,  "top": "R_A", "bottom": "R_B" },
+    { "match": 4,  "top": "W_F", "bottom": "R_C" },
+    { "match": 5,  "top": "R_K", "bottom": "R_L" },
+    { "match": 6,  "top": "W_H", "bottom": "R_J" },
+    { "match": 7,  "top": "W_D", "bottom": "3RD" },
+    { "match": 8,  "top": "W_G", "bottom": "3RD" },
+    { "match": 9,  "top": "W_C", "bottom": "R_F" },
+    { "match": 10, "top": "R_E", "bottom": "R_I" },
+    { "match": 11, "top": "W_A", "bottom": "3RD" },
+    { "match": 12, "top": "W_L", "bottom": "3RD" },
+    { "match": 13, "top": "W_J", "bottom": "R_H" },
+    { "match": 14, "top": "R_D", "bottom": "R_G" },
+    { "match": 15, "top": "W_B", "bottom": "3RD" },
+    { "match": 16, "top": "W_K", "bottom": "3RD" }
   ],
-  "fold": "Sequential: Round-of-16 match k is contested by the winners of Round-of-32 matches (2k-1, 2k). Matches 1-8 form the top half (Semi-final 1), matches 9-16 the bottom half (Semi-final 2). This guarantees a valid 32->16->8->4->2->1 single-elimination tree and no same-group meeting before the Round of 16.",
-  "official_table": null
+  "fifa_match_order": [74, 77, 73, 75, 83, 84, 81, 82, 76, 78, 79, 80, 86, 88, 85, 87],
+  "fold": "Sequential: Round-of-16 match k is contested by the winners of Round-of-32 list entries (2k-1, 2k). Entries 1-8 form the top half (Semi-final 1), 9-16 the bottom half (Semi-final 2). This matches the official feeds in data/schedule.json (matches 89-104) and guarantees a valid 32->16->8->4->2->1 single-elimination tree with no same-group meeting before the Round of 16.",
+  "official_table": {
+    "BDEFIJKL": { "A": "E", "B": "J", "D": "B", "E": "D", "G": "I", "I": "F", "K": "L", "L": "K" }
+  }
 }

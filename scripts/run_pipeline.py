@@ -30,10 +30,11 @@ import numpy as np
 
 from config import config_hash, load_config, resolve_path
 from model.dixon_coles import DixonColesModel
-from simulation.group_stage import rank_group, tally
+from simulation.group_stage import TeamResult, rank_group, tally
 from simulation.knockout import KnockoutParams
 from simulation.monte_carlo import SimResults, run_simulations
 from simulation.setup import load_sim_inputs
+from simulation.third_place import select_best_thirds, third_slot_groups
 from simulation.tournament import STAGES
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -108,14 +109,24 @@ def _resolve_label(label: str | None, ctx: dict) -> str | None:
     return None
 
 
-def build_schedule() -> list[dict]:
+def _winner_group_of(label: str | None) -> str | None:
+    """The group letter from a "Winner Group X" slot label (the winner a third faces)."""
+    if label and label.startswith("Winner Group "):
+        return label.rsplit(" ", 1)[-1]
+    return None
+
+
+def build_schedule(allocation: dict) -> list[dict]:
     """The full 104-match schedule (data/schedule.json) merged with any actual
     results (data/results_2026.json): each entry gains a status/score, and
     knockout participants are filled in as results determine them.
 
     The pipeline only records *facts* here (played scores, and teams a result has
     decided); pre-result "most-likely occupant" projections are left to the
-    frontend, which reads them from the simulation's bracket sample.
+    frontend, which reads them from the simulation's bracket sample. The one
+    exception is the eight best-third Round-of-32 slots: once every group is
+    played the qualifying thirds and FIFA's official allocation are facts too, so
+    they are resolved to real teams here.
     """
     schedule = json.loads((ROOT / "data" / "schedule.json").read_text(encoding="utf-8"))["matches"]
     results_path = ROOT / "data" / "results_2026.json"
@@ -134,6 +145,7 @@ def build_schedule() -> list[dict]:
             group_matches.setdefault(m["group"], []).append(m)
     group_winner: dict[str, str] = {}
     group_runner: dict[str, str] = {}
+    group_third: dict[str, TeamResult] = {}
     for letter, ms in group_matches.items():
         if not all(m["match"] in played for m in ms):
             continue
@@ -152,10 +164,25 @@ def build_schedule() -> list[dict]:
         order = rank_group(points, gf, ga, res, np.zeros(len(members)))
         group_winner[letter] = members[order[0]]
         group_runner[letter] = members[order[1]]
+        t = order[2]
+        group_third[letter] = TeamResult(
+            team=members[t], rank=3, points=int(points[t]), gf=int(gf[t]), ga=int(ga[t])
+        )
+
+    # Best-third allocation: only a fact once all 12 groups are complete, at which
+    # point the qualifying thirds and FIFA's official slotting are deterministic.
+    third_by_winner_group: dict[str, str] = {}
+    if len(group_third) == len(group_matches):
+        assignment = select_best_thirds(
+            list(group_third.items()), allocation, np.random.default_rng(0)
+        )
+        slot_wg = dict(third_slot_groups(allocation))  # match_no -> winner group
+        third_by_winner_group = {slot_wg[mn]: team for mn, team in assignment.items()}
 
     ctx = {
         "group_winner": group_winner,
         "group_runner": group_runner,
+        "third_by_winner_group": third_by_winner_group,
         "winner_of": {},  # match_no -> winning team (knockout, from results)
         "loser_of": {},
     }
@@ -185,8 +212,15 @@ def build_schedule() -> list[dict]:
             else:
                 entry.update(status="scheduled", score=None, winner=None)
         else:
-            home = _resolve_label(m.get("top_label"), ctx)
-            away = _resolve_label(m.get("bottom_label"), ctx)
+            top_label, bottom_label = m.get("top_label"), m.get("bottom_label")
+            home = _resolve_label(top_label, ctx)
+            away = _resolve_label(bottom_label, ctx)
+            # Best-third slots: "Winner Group X" vs "3rd Group .../...". The third
+            # is identified by the winner group it faces, via the official table.
+            if home is None and (top_label or "").startswith("3rd Group") and away is not None:
+                home = ctx["third_by_winner_group"].get(_winner_group_of(bottom_label))
+            if away is None and (bottom_label or "").startswith("3rd Group") and home is not None:
+                away = ctx["third_by_winner_group"].get(_winner_group_of(top_label))
             if played_r:
                 home, away = played_r["home"], played_r["away"]
                 winner = played_r["winner"]
@@ -274,7 +308,7 @@ def build_predictions(
         "matchups": matchups,
         "bracket_r32": bracket_r32,
         "fixtures": build_fixtures(model, cfg),
-        "schedule": build_schedule(),
+        "schedule": build_schedule(allocation),
     }
 
 
